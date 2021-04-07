@@ -10,6 +10,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
+                    @if (Auth::user()->roleCheck('admin'))
+                        admin
+                    @endif
+                    @if (Auth::user()->roleCheck('student'))
+                        student
+                    @endif
+                    @if (Auth::user()->roleCheck('company'))
+                        company
+                    @endif
                 </div>
             </div>
         </div>
