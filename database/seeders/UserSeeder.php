@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Company;
+use App\Models\Offer;
 
 class UserSeeder extends Seeder
 {
@@ -23,10 +24,16 @@ class UserSeeder extends Seeder
 
         // Seed the table with students and companies
         User::factory(2)->create(['role_id' => 2])->each(function ($user) {
-            $user->student()->save(Student::factory()->make())->save();
+            $user->student()->save(Student::factory()->make());
         });
-        User::factory(2)->create(['role_id' => 3])->each(function ($user) {
-            $user->company()->save(Company::factory()->make())->save();
+        User::factory(5)->create(['role_id' => 3])->each(function ($user) {
+            // Make connection between User and Company
+            $user->company()->save(Company::factory()->make());
+            // Generate $n offers for each company
+            $n = 3;
+            for ($i = 1; $i <= $n; $i++) {
+                $user->company->offers()->save(Offer::factory()->make());
+            }
         });
     }
 }
