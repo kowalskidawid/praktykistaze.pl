@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Offer;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OfferFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Offer::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class OfferFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => $this->faker->randomElement($array = array (1,2,3)),
-            'position' => $this->faker->jobTitle
+            'name' => $this->faker->word
         ];
     }
 }

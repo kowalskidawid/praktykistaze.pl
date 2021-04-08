@@ -16,10 +16,12 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('position');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
