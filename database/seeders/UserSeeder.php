@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Genereta one user for every role
+        // Generate one basic user for every role
         User::factory()->create(['role_id' => 1, 'email' => 'admin@admin.com']);
         User::factory()->create(['role_id' => 2, 'email' => 'student@student.com'])->student()->save(Student::factory()->make());
         User::factory()->create(['role_id' => 3, 'email' => 'company@company.com'])->company()->save(Company::factory()->make());
