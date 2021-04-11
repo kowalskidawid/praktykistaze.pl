@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Category;
+use App\Models\Favourite;
+use App\Models\Application;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +23,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             UserSeeder::class,
+            FavouriteSeeder::class,
+            ApplicationSeeder::class,
         ]);
     }
 }
