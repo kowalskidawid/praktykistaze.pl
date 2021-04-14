@@ -1,7 +1,7 @@
 <div class="border-b">
     <div class="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
         {{-- Logo --}}
-        <a href="{{route('home')}}" class="mr-4 flex items-center">
+        <a href="{{route('home')}}" class="mr-4 flex items-center flex-shrink-0">
             <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
                 <g class="logo">
                   <path fill="#202938" d="M6 0a6 6 0 00-6 6v20a6 6 0 006 6h1V16a9 9 0 115 8.064V32h14a6 6 0 006-6V6a6 6 0 00-6-6H6z"/>
@@ -56,7 +56,7 @@
         @endguest
         {{-- User --}}
         @if (Auth::user())
-        <div class="ml-4 flex items-center">
+        <div class="ml-4 flex items-center flex-shrink-0">
             <a href="" class="flex items-center">
                 <div class="h-10 w-10 bg-gray-300 rounded-full"></div>
                 <div class="ml-3 hidden md:block">
