@@ -1,7 +1,7 @@
 <div class="border-b">
     <div class="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
         {{-- Logo --}}
-        <a href="" class="mr-4 flex items-center">
+        <a href="{{route('home')}}" class="mr-4 flex items-center">
             <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
                 <g class="logo">
                   <path fill="#202938" d="M6 0a6 6 0 00-6 6v20a6 6 0 006 6h1V16a9 9 0 115 8.064V32h14a6 6 0 006-6V6a6 6 0 00-6-6H6z"/>
@@ -48,17 +48,28 @@
             </li>
         </ul>
         {{-- Guest --}}
-        {{-- <div class="list-none hidden ml-4 sm:flex items-center space-x-4 font-medium text-sm">
-            <a href="" class="flex items-center h-10 border rounded-lg px-5 hover:bg-gray-50">Login</a>
-            <a href="" class="flex items-center h-10 border rounded-lg border-gray-800 px-5 bg-gray-800 text-white hover:bg-gray-700 hover:border-gray-700">Register</a>
-        </div> --}}
+        @guest
+        <div class="list-none hidden ml-4 sm:flex items-center space-x-4 font-medium text-sm">
+            <a href="{{route('login')}}" class="flex items-center h-10 border rounded-lg px-5 hover:bg-gray-50">Login</a>
+            <a href="{{route('register')}}" class="flex items-center h-10 border rounded-lg border-gray-800 px-5 bg-gray-800 text-white hover:bg-gray-700 hover:border-gray-700">Register</a>
+        </div>
+        @endguest
         {{-- User --}}
+        @if (Auth::user())
         <div class="ml-4 flex items-center">
             <a href="" class="flex items-center">
                 <div class="h-10 w-10 bg-gray-300 rounded-full"></div>
                 <div class="ml-3 hidden md:block">
-                    <p class="text-sm font-semibold">John Example</p>
-                    <p class="text-xs">john@example.com</p>
+                    @if (Auth::user()->roleCheck('admin'))
+                    <p class="text-sm font-semibold">Admin</p>
+                    @endif
+                    @if (Auth::user()->roleCheck('student'))
+                    <p class="text-sm font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
+                    @endif
+                    @if (Auth::user()->roleCheck('company'))
+                    <p class="text-sm font-semibold">{{ Auth::user()->company->company_name }}</p>
+                    @endif
+                    <p class="text-xs">{{ Auth::user()->email }}</p>
                 </div>
             </a>
             <x-dropdown align="right" width="48">
@@ -79,5 +90,6 @@
                 </x-slot>
             </x-dropdown>
         </div>
+        @endif
     </div>
 </div>
