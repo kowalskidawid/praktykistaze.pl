@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
         ]);
 
         if ($request->role === 'Student') {
-
             $role = Role::find(2);
             $role->users()->create([
                 'email' => $request->email, 
@@ -55,11 +54,9 @@ class RegisteredUserController extends Controller
             ]);
 
             Auth::login($user);
-
             return redirect(RouteServiceProvider::HOME);
 
         } else if ($request->role === 'Company') {
-
             $role = Role::find(3);
             $role->users()->create([
                 'email' => $request->email, 
@@ -71,18 +68,7 @@ class RegisteredUserController extends Controller
             ]);
 
             Auth::login($user);
-
             return redirect(RouteServiceProvider::HOME);
-
         }
-
-        // Auth::login($user = User::create([
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]));
-
-        // event(new Registered($user));
-
-        // return redirect(RouteServiceProvider::HOME);
     }
 }
