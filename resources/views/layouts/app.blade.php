@@ -23,7 +23,7 @@
     {{-- <nav class="bg-white p-4 shadow-sm">
         @include('partials.navbar')
     </nav> --}}
-    <nav>
+    <nav class="sticky top-0 bg-white">
         @include('partials.navbar')
     </nav>
     <main class="bg-gray-100 pb-12">
