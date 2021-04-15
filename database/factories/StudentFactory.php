@@ -23,7 +23,9 @@ class StudentFactory extends Factory
     {
         return [
             'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName
+            'last_name' => $this->faker->lastName,
+            'city' => $this->faker->city,
+            'location_id' =>  $this->faker->randomElement($array = array (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16))
         ];
     }
 }

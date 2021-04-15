@@ -17,11 +17,14 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('location_id');
+            $table->string('city');
             $table->string('position');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 

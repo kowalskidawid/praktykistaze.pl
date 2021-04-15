@@ -23,6 +23,8 @@ class OfferFactory extends Factory
     {
         return [
             'category_id' => $this->faker->randomElement($array = array (1,2,3)),
+            'location_id' =>  $this->faker->randomElement($array = array (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)),
+            'city' => $this->faker->city,
             'position' => $this->faker->jobTitle
         ];
     }

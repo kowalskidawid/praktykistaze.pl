@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\Category;
 use App\Models\Favourite;
 use App\Models\Application;
+use App\Models\Location;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             CategorySeeder::class,
+            LocationSeeder::class,
             UserSeeder::class,
             FavouriteSeeder::class,
             ApplicationSeeder::class,

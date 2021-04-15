@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
 use App\Models\Category;
+use App\Models\Location;
 use App\Models\Favourite;
 use App\Models\Application;
 
@@ -23,6 +24,12 @@ class Offer extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    // Create a connection to Location model
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 
     // Create a connection to Favourite model

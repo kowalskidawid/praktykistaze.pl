@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Location;
 use App\Models\Favourite;
 use App\Models\Application;
 
@@ -21,6 +22,12 @@ class Student extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Create a connection to Location model
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 
     // Create a connection to Favourite model
