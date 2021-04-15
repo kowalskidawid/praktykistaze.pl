@@ -29,7 +29,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                                 </svg>
-                                <p class="ml-1 text-sm text-red-400 font-semibold">{{ Str::limit($offer->city.', '.$offer->location->name, 20) }}</p>
+                                <p class="ml-1 text-sm text-red-400 font-semibold">{{ $offer->city }}</p>
+                                {{-- <p class="ml-1 text-sm text-red-400 font-semibold">{{ Str::limit($offer->city.', '.$offer->location->name, 20) }}</p> --}}
                             </div>
                         </div>
                     </div>
