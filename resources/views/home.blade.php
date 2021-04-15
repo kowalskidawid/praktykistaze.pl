@@ -2,6 +2,7 @@
 
 @section('content')
 {{-- Hero --}}
+{{-- TODO: design --}}
 <div class="w-full py-32 bg-indigo-600 mb-6 flex items-center">
     <div class="w-full max-w-screen-xl mx-auto p-4">
         <h1 class="text-5xl text-white font-bold">Poszukujesz <span class="text-red-300">praktyk</span>?</h1>
