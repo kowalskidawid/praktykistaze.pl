@@ -14,7 +14,7 @@
         @csrf
         <!-- User role selection -->
         <div class="mt-4">
-            <label for="role" class="block font-medium text-sm text-gray-700">I am</label>
+            {{-- <label for="role" class="block font-medium text-sm text-gray-700">I am</label> --}}
             <select id="role" name="role" class="w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 <option>Student</option>
                 <option>Company</option>
