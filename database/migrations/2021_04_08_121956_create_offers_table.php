@@ -20,6 +20,7 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('location_id');
             $table->string('city');
             $table->string('position');
+            $table->longText('description');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');

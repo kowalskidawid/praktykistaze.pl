@@ -26,7 +26,7 @@
     <nav>
         @include('partials.navbar')
     </nav>
-    <main>
+    <main class="bg-gray-100 pb-12">
         @yield('content')
     </main>
     <footer>
