@@ -7,7 +7,7 @@
     <div class="w-full max-w-screen-xl mx-auto p-4">
         <h1 class="text-5xl text-white font-bold">Poszukujesz <span class="text-red-300">praktyk</span>?</h1>
         <p class="text-indigo-100 max-w-xl mt-4 leading-relaxed tracking-wide text-xl">Przeglądaj najnowsze oferty staży i praktyk i zdobądź wymagane doświadczenie by być konkurencyjnym na rynku pracy.</p>
-        <a href="{{route('home')}}" class="border-2 border-indigo-500 rounded-lg py-2 px-4 text-white inline-block mt-6">Sprawdź oferty</a>
+        <a href="{{route('offers.index')}}" class="border-2 border-indigo-500 rounded-lg py-2 px-4 text-white inline-block mt-6">Sprawdź oferty</a>
     </div>
 </div>
 

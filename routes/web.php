@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OffersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// Home page
 Route::get('/', [HomeController::class, 'home'])->name('home');
+// Offers
+Route::group(['prefix' => 'offers', 'as' => 'offers.'], function () {
+    Route::get('/', [OffersController::class, 'index'])->name('index');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

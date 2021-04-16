@@ -13,7 +13,7 @@
         {{-- Menu --}}
         <ul class="list-none w-full flex justify-around space-x-0 items-center font-medium sm:space-x-10 sm:justify-center">
             <li>
-                <a href="" class="{{ (request()->is('/offers')) ? 'text-indigo-700 font-semibold' : '' }}">
+                <a href="{{route('offers.index')}}" class="{{ (request()->is('/offers')) ? 'text-indigo-700 font-semibold' : '' }}">
                     <div class="h-10 w-10 bg-gray-300 rounded-lg sm:hidden"></div>
                     <span class="hidden sm:block">Oferty Pracy</span>
                 </a>
