@@ -14,8 +14,25 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['name' => 'administracja']);
-        Category::create(['name' => 'informatyka']);
-        Category::create(['name' => 'marketing']);
+        $categories = [
+            "Administracja biurowa",
+            "Badania i Rozwój",
+            "Design i Kreacja",
+            "Finanse",
+            "HR",
+            "Inżynieria i Technologia",
+            "IT",
+            "Logistyka",
+            "Marketing i Media",
+            "Obsługa Klienta",
+            "Prawo i Administracja",
+            "Sprzedaż",
+            "Zarządzanie",
+            "Konsulting i Strategia",
+            "Inne"
+        ];
+        foreach ($categories as $category) {
+            Category::create(['name' => $category]);
+        }
     }
 }
