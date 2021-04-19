@@ -7,7 +7,7 @@
     <div class="bg-white rounded-lg p-4 shadow-sm">
 
         <form id="searchForm" role="form" action="{{ route('offers.index') }}" method="GET">
-            <label for="location">Location</label>
+            <label for="location" class="block font-medium text-sm text-gray-700">Location</label>
             <select id="location" name="location" class="w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 @if ( Request::get('location') === null )
                     <option value="" selected></option>
@@ -16,9 +16,24 @@
                 @endif
                 @foreach ($locations as $location)
                     @if ( (int)Request::get('location') === $location->id )
-                        <option value="{{ $location->id }}" selected>{{ $location->name }}</option>
+                        <option value="{{ $location->id }}" selected>{{ $location->name }}  ({{ $location->offers()->count() }})</option>
                     @else
-                        <option value="{{ $location->id }}">{{ $location->name }}</option>
+                        <option value="{{ $location->id }}">{{ $location->name }}  ({{ $location->offers()->count() }})</option>
+                    @endif
+                @endforeach
+            </select>
+            <label for="category" class="mt-4 block font-medium text-sm text-gray-700">Category</label>
+            <select id="category" name="category" class="w-full mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                @if ( Request::get('category') === null )
+                    <option value="" selected></option>
+                @else
+                    <option value=""></option>
+                @endif
+                @foreach ($categories as $category)
+                    @if ( (int)Request::get('category') === $category->id )
+                        <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                    @else
+                        <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
                     @endif
                 @endforeach
             </select>
@@ -57,7 +72,7 @@
                 </div>
                 {{-- Right --}}
                 <div class="">
-                    <div class="w-min bg-blue-100 text-blue-500 py-2 px-4 rounded text-xs uppercase font-semibold">{{ $offer->category->name }}</div>
+                    <div class="w-min bg-blue-100 text-blue-500 py-2 px-4 rounded text-xs uppercase font-semibold whitespace-nowrap">{{ $offer->category->name }}</div>
                 </div>
             </div>
         </div>

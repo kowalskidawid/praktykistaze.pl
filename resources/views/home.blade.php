@@ -40,7 +40,7 @@
                     <p class="mt-2 text-sm">{{ Str::limit($offer->description, 150) }}</p>
                 </div>
                 <div class="mt-6">
-                    <div class="w-min bg-blue-100 text-blue-500 py-2 px-4 rounded text-xs uppercase font-semibold">{{ $offer->category->name }}</div>
+                    <div class="w-min bg-blue-100 text-blue-500 py-2 px-4 rounded text-xs uppercase font-semibold whitespace-nowrap">{{ $offer->category->name }}</div>
                 </div>
             </div>
         @endforeach

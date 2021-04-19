@@ -12,17 +12,23 @@ class OffersController extends Controller
     // Display a listing of the resource.
     public function index(Request $request)
     {
+        // List of values for select inputs in form
         $locations = Location::get();
         $categories = Category::get();
-
+        // Requested values for filtering the results
+        $location = $request->location;
+        $category = $request->category;
+        // Number of items per page, used in pagination
         $perPage = 12;
-        if ($request->location) {
-            $offers = Offer::where('location_id', '=', $request->location)
-                        ->paginate($perPage);
-        } else {
-            $offers = Offer::paginate($perPage);
-        }
-
+        // Requested offers
+        $offers = Offer::when($location, function ($query, $location) {
+                    return $query->where('location_id', '=', $location);
+                })
+                ->when($category, function ($query, $category) {
+                    return $query->where('category_id', '=', $category);
+                })
+                ->paginate($perPage);
+                
         return view('offers.index', compact('offers', 'locations', 'categories'));
     }
     // Display the specified resource.
