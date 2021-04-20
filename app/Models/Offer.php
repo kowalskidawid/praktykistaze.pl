@@ -35,12 +35,12 @@ class Offer extends Model
     // Create a connection to Favourite model
     public function favourites()
     {
-        return $this->belongsToMany(Favourite::class, 'favourites');
+        return $this->belongsToMany(Student::class, 'favourites', 'offer_id', 'student_id');
     }
 
     // Create a connection to Application model
     public function applications()
     {
-        return $this->belongsToMany(Application::class, 'applications');
+        return $this->belongsToMany(Student::class, 'applications', 'offer_id', 'student_id');
     }
 }
