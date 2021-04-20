@@ -18,14 +18,22 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('location_id');
-            $table->string('city');
+            $table->unsignedBigInteger('type_id');
+            $table->integer('offer_duration');
+            $table->date('job_start')->nullable();
+            $table->integer('job_duration')->nullable();
             $table->string('position');
+            $table->string('city');
+            $table->integer('salary')->nullable();
+            $table->integer('vacancies')->nullable();
+            $table->string('image')->nullable();
             $table->longText('description');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 

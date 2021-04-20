@@ -11,6 +11,7 @@ use App\Models\Favourite;
 use App\Models\Application;
 use App\Models\Location;
 use App\Models\Size;
+use App\Models\Type;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             CategorySeeder::class,
+            TypeSeeder::class,
             LocationSeeder::class,
             SizeSeeder::class,
             UserSeeder::class,
