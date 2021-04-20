@@ -49,7 +49,7 @@
         </ul>
         {{-- Guest --}}
         @guest
-        <div class="list-none hidden ml-4 sm:flex items-center space-x-4 font-medium text-sm">
+        <div class="hidden ml-4 sm:flex items-center space-x-4 font-medium text-sm">
             <a href="{{route('login')}}" class="flex items-center h-10 border rounded-lg px-5 hover:bg-gray-50">Login</a>
             <a href="{{route('register')}}" class="flex items-center h-10 border rounded-lg border-gray-800 px-5 bg-gray-800 text-white hover:bg-gray-700 hover:border-gray-700">Register</a>
         </div>

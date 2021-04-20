@@ -60,7 +60,7 @@
                     <div class="rounded-lg bg-gray-200 h-14 w-14 flex-shrink-0"></div>
                     {{-- Offer details --}}
                     <div class="flex flex-col ml-4">
-                        <p class="font-semibold text-lg">{{ Str::limit($offer->position) }}</p>
+                        <a href="{{ route('offers.show', ['offer' => $offer]) }}" class="font-semibold text-lg">{{ Str::limit($offer->position) }}</a>
                         <div class="flex items-center mt-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />

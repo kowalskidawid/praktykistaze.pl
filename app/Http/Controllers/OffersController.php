@@ -32,9 +32,9 @@ class OffersController extends Controller
         return view('offers.index', compact('offers', 'locations', 'categories'));
     }
     // Display the specified resource.
-    public function show()
+    public function show(Offer $offer)
     {
-        // TODO
+        return view('offers.show', compact('offer'));
     }
     // Apply for the offer.
     public function apply()
