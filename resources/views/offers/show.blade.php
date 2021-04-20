@@ -21,11 +21,51 @@
                 </div>
             </div>
             {{-- Company details --}}
-            <ul class="">
-                <li>Size</li>
-                <li>Phone</li>
-                <li>Website</li>
-                <li>Email</li>
+            <ul class="pt-4 pb-4 flex flex-col space-y-4">
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-green-700 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->company->size->size }}+</p>
+                        <p class="text-xs">Company size</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-pink-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->company->phone }}</p>
+                        <p class="text-xs">Phone</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-indigo-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->company->website }}</p>
+                        <p class="text-xs">Website</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->company->email }}</p>
+                        <p class="text-xs">Contact email</p>
+                    </div>
+                </li>
             </ul>
         </div>
         {{-- Offer info --}}
