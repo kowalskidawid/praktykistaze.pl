@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Location;
 use App\Models\Offer;
+use App\Models\Size;
 
 class Company extends Model
 {
@@ -22,6 +23,12 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
     
+    // Create a connection to Size model
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
+    }
+
     // Create a connection to Location model
     public function location()
     {

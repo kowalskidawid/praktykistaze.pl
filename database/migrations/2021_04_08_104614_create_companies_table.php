@@ -16,12 +16,19 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('location_id')->nullable();
+            $table->unsignedBigInteger('size_id')->nullable();
             $table->string('company_name');
             $table->string('city')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->text('email')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('website', 255)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('size_id')->references('id')->on('sizes');
             $table->foreign('location_id')->references('id')->on('locations');
         });
     }

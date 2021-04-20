@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Favourite;
 use App\Models\Application;
 use App\Models\Location;
+use App\Models\Size;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             LocationSeeder::class,
+            SizeSeeder::class,
             UserSeeder::class,
             FavouriteSeeder::class,
             ApplicationSeeder::class,
