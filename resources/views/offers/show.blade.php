@@ -16,7 +16,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                         </svg>
-                        <p class="ml-1 text-sm text-red-400 font-semibold">{{ $offer->city }}</p>
+                        <p class="ml-1 text-sm text-red-400 font-semibold">{{ $offer->company->city }}</p>
                     </div>
                 </div>
             </div>
@@ -70,12 +70,73 @@
         </div>
         {{-- Offer info --}}
         <div class="flex flex-col space-y-2 bg-white rounded-lg p-6 shadow-sm">
-            <ul class="">
-                <li>Type</li>
-                <li>Salary</li>
-                <li>City</li>
-                <li>FromDate</li>
-                <li>Duration</li>
+            <ul class="pt-4 pb-4 flex flex-col space-y-4">
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->type->name }}</p>
+                        <p class="text-xs">Rodzaj pracy</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->salary }}</p>
+                        <p class="text-xs">Salary</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->city }}</p>
+                        <p class="text-xs">City</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->job_duration }}</p>
+                        <p class="text-xs">Długość stażu</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->job_start }}</p>
+                        <p class="text-xs">Data stażu</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm">{{ $offer->vacancies }}</p>
+                        <p class="text-xs">Wakaty</p>
+                    </div>
+                </li>
             </ul>
             {{-- Guest --}}
             @guest
@@ -85,19 +146,25 @@
             @endguest
             {{-- Student --}}
             @if (Auth::user())
-            <div class="flex space-x-4 justify-between">
-                <a href="" class="flex items-center h-10 rounded-lg px-5 bg-gray-800 text-white hover:bg-gray-700 font-medium text-sm">Apply</a>
-                <a href="" class="flex items-center h-10 border rounded-lg px-2 hover:bg-gray-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                    </svg>
-                </a>
-            </div>
+                @if (Auth::user()->roleCheck('student'))
+                    @if ($offer->isActive())
+                    <div class="flex space-x-4 justify-between">
+                        <a href="" class="flex items-center h-10 rounded-lg px-5 bg-gray-800 text-white hover:bg-gray-700 font-medium text-sm">Apply</a>
+                        <a href="" class="flex items-center h-10 border rounded-lg px-2 hover:bg-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            </svg>
+                        </a>
+                    </div>
+                    @else
+                    <p>Offer is archived.</p>
+                    @endif
+                @endif
             @endif
         </div>
     </div>
     {{-- Offer details --}}
-    <div class="w-full bg-white rounded-lg p-6 shadow-sm">
+    <div class="w-full h-full bg-white rounded-lg p-6 shadow-sm">
         {{-- Offer header --}}
         <div class="mb-6">
             <p class="mb-2 font-semibold text-blue-400">{{ $offer->category->name }}</p>

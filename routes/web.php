@@ -17,10 +17,10 @@ use App\Http\Controllers\OffersController;
 
 // Home page
 Route::get('/', [HomeController::class, 'home'])->name('home');
-// Offers
+// Offers page
 Route::group(['prefix' => 'offers', 'as' => 'offers.'], function () {
     Route::get('/', [OffersController::class, 'index'])->name('index');
-    Route::get('/{offer}', [OffersController::class, 'show'])->name('show');
+    Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
 });
 
 // Route::get('/dashboard', function () {
