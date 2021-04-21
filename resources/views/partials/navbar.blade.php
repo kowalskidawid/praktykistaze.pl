@@ -18,6 +18,18 @@
                     <span class="hidden sm:block">Oferty Pracy</span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('companies.index')}}" class="{{ (request()->is('/offers')) ? 'text-indigo-700 font-semibold' : '' }}">
+                    <div class="h-10 w-10 bg-gray-300 rounded-lg sm:hidden"></div>
+                    <span class="hidden sm:block">Companies</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('students.index')}}" class="{{ (request()->is('/offers')) ? 'text-indigo-700 font-semibold' : '' }}">
+                    <div class="h-10 w-10 bg-gray-300 rounded-lg sm:hidden"></div>
+                    <span class="hidden sm:block">Students</span>
+                </a>
+            </li>
             <li class="flex items-center">
                 <a href="" class="{{ (request()->is('/articles*')) ? 'text-indigo-700 font-semibold' : '' }}">
                     <div class="h-10 w-10 bg-gray-300 rounded-lg sm:hidden"></div>
