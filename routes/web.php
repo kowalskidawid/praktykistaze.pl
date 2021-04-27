@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,16 @@ Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
     Route::get('/', [StudentsController::class, 'index'])->name('index');
     Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+// Dashboard page
+Route::group(['middleware' => 'auth', 'prefix' => '/dashboard', 'as' => 'dashboard.'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    // Student
+    Route::get('/favourites', [DashboardController::class, 'favourites'])->middleware('roleStudent')->name('favourites');
+    Route::get('/applications', [DashboardController::class, 'applications'])->middleware('roleStudent')->name('applications');
+    // Company
+    Route::get('/offers', [DashboardController::class, 'offers'])->middleware('roleStudent')->name('offers');
+});
 
 require __DIR__.'/auth.php';
