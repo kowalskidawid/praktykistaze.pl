@@ -7,10 +7,10 @@ use App\Models\Offer;
 
 class HomeController extends Controller
 {
-    public function home()
+    public function index()
     {
         $offers = Offer::latest()->take(3)->get();
 
-        return view('home', compact('offers'));
+        return view('index', compact('offers'));
     }
 }

@@ -19,7 +19,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 // Home page
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 // Offers page
 Route::group(['prefix' => 'offers', 'as' => 'offers.'], function () {
     Route::get('/', [OffersController::class, 'index'])->name('index');

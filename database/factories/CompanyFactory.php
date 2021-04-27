@@ -26,7 +26,7 @@ class CompanyFactory extends Factory
             'size_id' => $this->faker->randomElement($array= array(1,2,3,4)),
             'company_name' => $this->faker->company,
             'city' => $this->faker->city,
-            'image' => '',
+            'image' => '/images/company.jpg',
             'description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->tollFreePhoneNumber,

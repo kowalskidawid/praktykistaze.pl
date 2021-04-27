@@ -1,208 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-screen-xl mx-auto p-4 flex space-x-4">
-    {{-- Left Column --}}
-    <div class="h-full flex flex-col space-y-4">
-        {{-- Company info --}}
-        <div class="flex flex-col space-y-2 bg-white rounded-lg p-6 shadow-sm">
-            <div class="flex">
-                {{-- Company avatar --}}
-                <div class="rounded-lg bg-gray-200 h-14 w-14 flex-shrink-0"></div>
-                {{-- Company details --}}
-                <div class="flex flex-col ml-4">
-                    <a href="{{ route('companies.show', $offer->company) }}" class="font-semibold text-lg whitespace-nowrap">{{ Str::limit($offer->company->company_name) }}</a>
-                    <div class="flex items-center mt-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                        </svg>
-                        <p class="ml-1 text-sm text-red-400 font-semibold">{{ $offer->company->city }}</p>
-                    </div>
-                </div>
-            </div>
-            {{-- Company details --}}
-            <ul class="pt-4 pb-4 flex flex-col space-y-4">
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-green-700 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->company->size->size }}+</p>
-                        <p class="text-xs capitalize">{{ $offer->company->size->name }} company</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-pink-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->company->phone }}</p>
-                        <p class="text-xs">Phone</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-indigo-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->company->website }}</p>
-                        <p class="text-xs">Website</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->company->email }}</p>
-                        <p class="text-xs">Contact email</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        {{-- Offer info --}}
-        <div class="flex flex-col space-y-2 bg-white rounded-lg p-6 shadow-sm">
-            <ul class="pt-4 pb-4 flex flex-col space-y-4">
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->type->name }}</p>
-                        <p class="text-xs">Rodzaj pracy</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->salary }}</p>
-                        <p class="text-xs">Salary</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->city }}</p>
-                        <p class="text-xs">City</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->job_duration }}</p>
-                        <p class="text-xs">Długość stażu</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->job_start }}</p>
-                        <p class="text-xs">Data stażu</p>
-                    </div>
-                </li>
-                <li class="flex items-center">
-                    <div class="p-2 flex items-center justify-center bg-blue-500 rounded-lg text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <p class="font-semibold text-sm">{{ $offer->vacancies }}</p>
-                        <p class="text-xs">Wakaty</p>
-                    </div>
-                </li>
-            </ul>
-            {{-- Guest --}}
-            @guest
-            <div class="flex space-x-4 justify-between">
-                <a href="{{ route('login') }}" class="flex items-center h-10 rounded-lg px-5 bg-gray-800 text-white hover:bg-gray-700 font-medium text-sm">Login to apply</a>
-            </div>
-            @endguest
-            {{-- Student --}}
-            @if (Auth::user())
-                @if (Auth::user()->roleCheck('student'))
-                    @if ($offer->isActive())
-                    <div class="flex space-x-4 justify-between">
-                        <a href="" class="flex items-center h-10 rounded-lg px-5 bg-gray-800 text-white hover:bg-gray-700 font-medium text-sm">Apply</a>
-                        <a href="" class="flex items-center h-10 border rounded-lg px-2 hover:bg-gray-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                            </svg>
-                        </a>
-                    </div>
-                    @else
-                    <p>Offer is archived.</p>
-                    @endif
-                @endif
-            @endif
-        </div>
-    </div>
-    {{-- Offer details --}}
-    <div class="w-full h-full bg-white rounded-lg p-6 shadow-sm">
-        {{-- Offer header --}}
-        <div class="mb-6">
-            <p class="mb-2 font-semibold text-blue-400">{{ $offer->category->name }}</p>
-            <h1 class="text-4xl font-bold">{{ $offer->position }}</h1>
-            <div class="mt-4 flex space-x-4 text-sm text-gray-500">
-                <div class="flex space-x-1 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    {{-- <p>30 April 2021</p> --}}
-                    <p>{{ $offer->created_at->format('d F Y') }}</p>
-                </div>
-                <div class="flex space-x-1 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    @if ($offer->isActive())
-                    <p>{{ $offer->daysLeft() }} days left</p>
-                    @else
-                    <p>Offer is not active</p>
-                    @endif
-                </div>
-                <div class="flex space-x-1 items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-                    <p>{{ $offer->applications->count() }} applications</p>
-                    {{-- <p>5 applications</p> --}}
-                </div>
-            </div>
-        </div>
-        {{-- Offer image --}}
-        <div class="mb-6 rounded-lg bg-gray-200 h-72 w-full flex-shrink-0"></div>
-        {{-- Offer description --}}
-        <h1 class="text-2xl font-bold mb-2">Description</h1>
-        <p>{{ $offer->description }}</p>
+
+{{-- Image --}}
+<div class="bg-gray-200 p-4 w-full h-64 flex items-end" style="background: url({{ asset('images/offer.jpg') }}); background-size: cover; background-repeat: no-repeat;">
+    <div class="w-full flex justify-between">
+        <a href="{{ url()->previous() }}" class="w-10 h-10 flex justify-center items-center rounded-lg bg-white shadow-md">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.83 5L7.41 1.41L6 0L0 6L6 12L7.41 10.59L3.83 7H16V5H3.83Z" fill="#111827"/>
+            </svg>
+        </a>
+        <a href="" class="w-10 h-10 flex justify-center items-center rounded-lg bg-white shadow-md">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 15.1972C7.484 14.7396 6.9008 14.2636 6.284 13.7572H6.276C4.10401 11.9812 1.64241 9.97163 0.555217 7.56364C0.198032 6.79702 0.00874142 5.96294 9.12476e-06 5.11725C-0.0023763 3.95684 0.463034 2.84444 1.29106 2.03147C2.11909 1.21849 3.23984 0.773571 4.40001 0.797256C5.34451 0.798747 6.26867 1.07172 7.0624 1.58365C7.41118 1.81003 7.72674 2.08386 8 2.39725C8.27479 2.08509 8.59044 1.81142 8.9384 1.58365C9.73178 1.07162 10.6557 0.79863 11.6 0.797256C12.7602 0.773571 13.8809 1.21849 14.7089 2.03147C15.537 2.84444 16.0024 3.95684 16 5.11725C15.9918 5.9643 15.8025 6.7998 15.4448 7.56764C14.3576 9.97563 11.8968 11.9844 9.7248 13.7572L9.7168 13.7636C9.0992 14.2668 8.5168 14.7428 8.0008 15.2036L8 15.1972ZM4.40001 2.39725C3.65482 2.38793 2.93607 2.67313 2.40001 3.19085C1.88352 3.69818 1.59486 4.39328 1.59995 5.11725C1.60908 5.73364 1.74868 6.34112 2.00961 6.89964C2.52282 7.9386 3.2153 8.87888 4.05521 9.67724C4.84801 10.4772 5.76 11.2516 6.5488 11.9028C6.7672 12.0828 6.9896 12.2644 7.212 12.446L7.352 12.5604C7.5656 12.7348 7.7864 12.9156 8 13.0932L8.0104 13.0836L8.0152 13.0796H8.02L8.0272 13.074H8.0312H8.0352L8.0496 13.062L8.0824 13.0356L8.088 13.0308L8.0968 13.0244H8.1016L8.1088 13.018L8.64 12.582L8.7792 12.4676C9.004 12.2844 9.2264 12.1028 9.4448 11.9228C10.2336 11.2716 11.1464 10.498 11.9392 9.69404C12.7792 8.89608 13.4717 7.95605 13.9848 6.91724C14.2504 6.35388 14.392 5.74005 14.4 5.11725C14.4033 4.39552 14.1148 3.70308 13.6 3.19725C13.065 2.67719 12.3461 2.38964 11.6 2.39725C10.6895 2.38951 9.81915 2.77115 9.208 3.44605L8 4.83805L6.792 3.44605C6.18085 2.77115 5.31047 2.38951 4.40001 2.39725Z" fill="#111827"/>
+            </svg>
+        </a>
     </div>
 </div>
+{{-- Header --}}
+<div class="p-4 border-b border-gray-200">
+    <p class="text-sm font-semibold text-indigo-700">{{ $offer->category->name }}</p>
+    <h1 class="text-2xl font-bold">{{ $offer->position }}</h1>
+    <ul class="mt-2 flex space-x-4 text-xs text-gray-700">
+        <li>
+            <span>2 days ago</span>
+        </li>
+        <li>
+            <span>28 days left</span>
+        </li>
+        <li>
+            <span>6 applications</span>
+        </li>
+    </ul>
+</div>
+{{-- Offer details --}}
+<div class="p-4 pb-0 grid grid-cols-2 border-b border-gray-200">
+    <div class="flex space-x-4 items-center pr-8 pb-4">
+        <div class="w-10 h-10 flex justify-center items-center rounded-lg bg-indigo-500"></div>
+        <div>
+            <p class="text-sm font-semibold">1750 pln</p>
+            <p class="text-xs">Staż</p>
+        </div>
+    </div>
+    <div class="flex space-x-4 items-center pr-8 pb-4">
+        <div class="w-10 h-10 flex justify-center items-center rounded-lg bg-indigo-500"></div>
+        <div>
+            <p class="text-sm font-semibold">1750 pln</p>
+            <p class="text-xs">Staż</p>
+        </div>
+    </div>
+    <div class="flex space-x-4 items-center pr-8 pb-4">
+        <div class="w-10 h-10 flex justify-center items-center rounded-lg bg-indigo-500"></div>
+        <div>
+            <p class="text-sm font-semibold">1750 pln</p>
+            <p class="text-xs">Staż</p>
+        </div>
+    </div>
+    <div class="flex space-x-4 items-center pr-8 pb-4">
+        <div class="w-10 h-10 flex justify-center items-center rounded-lg bg-indigo-500"></div>
+        <div>
+            <p class="text-sm font-semibold">1750 pln</p>
+            <p class="text-xs">Staż</p>
+        </div>
+    </div>
+</div>
+{{-- Description --}}
+<div class="p-4">
+    <p>{{ $offer->description }}</p>
+</div>
+{{-- Buttons --}}
+<div class="p-4">
+    <button class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Aplikuj</button>
+</div>
+{{-- Company details --}}
+<div class="p-4">
+    <a href="" class="bg-white rounded-xl border border-gray-200 shadow-lg p-4 flex flex-col space-y-4">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold">{{ $offer->company->company_name }}</p>
+                <p class="text-sm">{{ $offer->company->city }}</p>
+            </div>
+            <div class="rounded-lg w-16 h-16 bg-gray-200" style="background: url({{ $offer->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
+        </div>
+        <div>
+            <p class="text-lg font-semibold">{{ $offer->company->size->size }}+</p>
+            <p class="text-sm">{{ $offer->company->size->name }}</p>
+        </div>
+        <div>
+            <p class="text-lg font-semibold">{{ $offer->company->email }}</p>
+            <p class="text-sm">Email kontaktowy</p>
+        </div>
+        <div>
+            <p class="text-lg font-semibold">{{ $offer->company->phone }}</p>
+            <p class="text-sm">Numer telefonu</p>
+        </div>
+        <div>
+            <p class="text-lg font-semibold">{{ $offer->company->website }}</p>
+            <p class="text-sm">Strona internetowa</p>
+        </div>
+    </a>
+</div>
+
 @endsection
