@@ -13,39 +13,61 @@
             </div>
             {{-- Links --}}
             <ul class="p-4 border-b border-gray-200 flex flex-col space-y-4">
-                <li class="text-2xl font-semibold">Oferty</li>
-                <li class="text-2xl font-semibold">Artykuły</li>
-                <li class="text-2xl font-semibold">Firmy</li>
-                <li class="text-2xl font-semibold">Studenci</li>
+                <li class="text-2xl font-semibold">
+                    <a href="{{ route('offers.index') }}">Oferty</a>
+                </li>
+                <li class="text-2xl font-semibold">
+                    <a href="{{ route('articles.index') }}">Artykuły</a>
+                </li>
+                <li class="text-2xl font-semibold">
+                    <a href="{{ route('companies.index') }}">Firmy</a>
+                </li>
+                <li class="text-2xl font-semibold">
+                    <a href="{{ route('students.index') }}">Studenci</a>
+                </li>
             </ul>
             {{-- User profile --}}
+            @if (Auth::user())
             <div class="p-4 flex items-center space-x-4">
+                @if (Auth::user()->roleCheck('admin'))
                 <div class="rounded-full h-9 w-9 bg-gray-200"></div>
                 <div class="flex flex-col">
-                    <p class="text-sm font-semibold">Anna Nowak</p>
-                    <p class="text-sm">anna@nowak.com</p>
+                    <p class="text-sm font-semibold">Admin</p>
+                    <p class="text-sm">{{ Auth::user()->email }}</p>
                 </div>
+                @endif
+                @if (Auth::user()->roleCheck('company'))
+                <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="flex flex-col">
+                    <p class="text-sm font-semibold">{{ Auth::user()->company->company_name }}</p>
+                    <p class="text-sm">{{ Auth::user()->email }}</p>
+                </div>
+                @endif
+                @if (Auth::user()->roleCheck('student'))
+                <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->student->image }}); background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="flex flex-col">
+                    <p class="text-sm font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
+                    <p class="text-sm">{{ Auth::user()->email }}</p>
+                </div>
+                @endif
             </div>
             {{-- Links --}}
-            <ul class="p-4 border-b border-gray-200 flex flex-col space-y-4">
-                <li class="font-semibold flex space-x-6 items-center pl-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-                        <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
-                    </svg>
-                    <span>Profil</span>
-                </li>
+            <ul class="p-4 pt-0 border-b border-gray-200 flex flex-col space-y-4">
                 <li class="font-semibold flex space-x-6 items-center pl-2.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 16 14">
                         <path fill="#111827" d="M4.8 13.4A3.2 3.2 0 011.7 11H0V9.4h1.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32-.392a1.6 1.6 0 00-1.6-1.6zM16 11H8.8V9.4H16V11zM8.8 7a3.2 3.2 0 01-3.1-2.4H0V3h5.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32V3.8a1.6 1.6 0 00-1.6-1.6zM16 4.6h-3.2V3H16v1.6z"/>
                     </svg>
                     <span>Ustawienia</span>
                 </li>
+                @if (Auth::user()->roleCheck('company'))
                 <li class="font-semibold flex space-x-6 items-center pl-2.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                         <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
                     </svg>
                     <span>Oferty</span>
                 </li>
+                @endif
+                @if (Auth::user()->roleCheck('student'))
                 <li class="font-semibold flex space-x-6 items-center pl-2.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                         <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
@@ -58,13 +80,22 @@
                     </svg>
                     <span>Ulubione</span>
                 </li>
+                @endif
             </ul>
+            @endif
         </div>
         {{-- Buttons --}}
         <div class="p-4 flex flex-col space-y-4">
-            <a href="" class="px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Utwórz konto</a>
-            <a href="" class="px-4 py-2 font-semibold text-indigo-600 border-2 border-indigo-600 rounded-lg flex justify-center">Zaloguj się</a>
-            <a href="" class="px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Wyloguj</a>
+            @guest
+            <a href="{{ route('register') }}" class="px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Utwórz konto</a>
+            <a href="{{ route('login') }}" class="px-4 py-2 font-semibold text-indigo-600 border-2 border-indigo-600 rounded-lg flex justify-center">Zaloguj się</a>
+            @endguest
+            @if (Auth::user())
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <input type="submit" class="w-full px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg flex justify-center" value="Wyloguj">
+            </form>
+            @endif
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -34,6 +35,11 @@ Route::group(['prefix' => 'companies', 'as' => 'companies.'], function () {
 Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
     Route::get('/', [StudentsController::class, 'index'])->name('index');
     Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
+});
+// Articles page
+Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
+    Route::get('/', [ArticlesController::class, 'index'])->name('index');
+    Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
 });
 // Dashboard page
 Route::group(['middleware' => 'auth', 'prefix' => '/dashboard', 'as' => 'dashboard.'], function () {

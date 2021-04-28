@@ -19,12 +19,28 @@
             <input type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Szukaj">
         </div>
         <div class="flex flex-col space-y-2">
+            <label for="" class="text-sm font-medium">Miasto</label>
+            <input type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Miasto">
+        </div>
+        <div class="flex flex-col space-y-2">
             <label for="" class="text-sm font-medium">Województwo</label>
             <select class="border border-gray-200 rounded-lg bg-gray-100">
                 <option value="wielkopolska">Wielkopolska</option>
                 <option value="wielkopolska">Wielkopolska</option>
                 <option value="wielkopolska">Wielkopolska</option>
             </select>
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label for="" class="text-sm font-medium">Kategoria</label>
+            <select class="border border-gray-200 rounded-lg bg-gray-100">
+                <option value="wielkopolska">Programowanie</option>
+                <option value="wielkopolska">Programowanie</option>
+                <option value="wielkopolska">Programowanie</option>
+            </select>
+        </div>
+        <div class="flex flex-col space-y-2">
+            <label for="" class="text-sm font-medium">Płatny</label>
+            <input type="checkbox" name="" id="">
         </div>
         <div class="py-4">
             <input type="submit" class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center" value="Szukaj">
@@ -35,7 +51,7 @@
 <div class="p-4 flex flex-col space-y-4">
     @foreach ($offers as $offer)
     <a href="{{ route('offers.show', ['offer' => $offer]) }}" class="p-4 bg-white rounded-2xl border-2 border-gray-100 shadow-lg flex space-x-4 items-center">
-        <div class="rounded-lg w-16 h-16 bg-gray-200"></div>
+        <div class="rounded-lg w-16 h-16 bg-gray-200" style="background: url({{ $offer->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
         <div>
             <p class="text-lg font-semibold">{{ $offer->position }}</p>
             <p class="text-sm">{{ $offer->category->name }}</p>

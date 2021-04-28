@@ -24,9 +24,9 @@ class CreateOffersTable extends Migration
             $table->integer('job_duration')->nullable();
             $table->string('position');
             $table->string('city');
+            $table->string('image')->nullable();
             $table->integer('salary')->nullable();
             $table->integer('vacancies')->nullable();
-            $table->string('image')->nullable();
             $table->longText('description');
             $table->timestamps();
 

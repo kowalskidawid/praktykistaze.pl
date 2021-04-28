@@ -10,11 +10,13 @@
     </div>
     <div class="flex flex-col space-y-2">
         <a href="{{ route('offers.index') }}" class="px-4 py-2 max-w-min whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Sprawdź oferty</a>
+        @guest
         <div class="text-xs">
             <span>lub </span>
-            <a href="" class="font-medium text-indigo-600">zarejestruj się</a>
+            <a href="{{ route('register') }}" class="font-medium text-indigo-600">zarejestruj się</a>
             <span> by aplikować</span>
         </div>
+        @endguest
     </div>
 </div>
 {{-- New offers --}}
@@ -25,7 +27,7 @@
         <a href="{{ route('offers.show', ['offer' => $offer]) }}" class="p-4 bg-white rounded-2xl border-2 border-gray-100 shadow-lg flex space-x-4 items-center">
             <div class="rounded-lg w-16 h-16 bg-gray-200" style="background: url({{ $offer->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
             <div>
-                <p class="text-lg font-semibold">{{ $offer->position }}</p>
+                <p class="text-lg font-semibold">{{ Str::limit($offer->position, 25) }}</p>
                 <p class="text-sm">{{ $offer->category->name }}</p>
             </div>
         </a>

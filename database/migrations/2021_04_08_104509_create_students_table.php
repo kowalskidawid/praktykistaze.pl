@@ -20,6 +20,14 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->string('city')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('email')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('website', 255)->nullable();
+            $table->string('linkedin', 255)->nullable();
+            $table->string('github', 255)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
