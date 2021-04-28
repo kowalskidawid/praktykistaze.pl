@@ -18,6 +18,9 @@ class OffersController extends Controller
         // Requested values for filtering the results
         $location = $request->location;
         $category = $request->category;
+        $position = $request->position;
+        $city = $request->city;
+        $salary = $request->salary;
         // Number of items per page, used in pagination
         $perPage = 12;
         // Requested offers
@@ -26,6 +29,15 @@ class OffersController extends Controller
                 })
                 ->when($category, function ($query, $category) {
                     return $query->where('category_id', '=', $category);
+                })
+                ->when($city, function ($query, $city) {
+                    return $query->where('city', 'LIKE', '%'.$city.'%');
+                })
+                ->when($position, function ($query, $position) {
+                    return $query->where('position', 'LIKE', '%'.$position.'%');
+                })
+                ->when($salary, function ($query, $salary) {
+                    return $query->where('salary', '>', 0);
                 })
                 ->paginate($perPage);
                 

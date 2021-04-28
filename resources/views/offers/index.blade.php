@@ -13,34 +13,52 @@
     </button>
 </div>
 <div id="filter" class="border-b border-gray-200 p-4 pt-0 shadow-md mb-4" style="display: none;">
-    <form action="" class="flex flex-col space-y-4">
+    <form class="flex flex-col space-y-4" id="searchForm" role="form" action="{{ route('offers.index') }}" method="GET">
         <div class="flex flex-col space-y-2">
-            <label for="" class="text-sm font-medium">Szukaj</label>
-            <input type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Szukaj">
+            <label for="position" class="text-sm font-medium">Szukaj</label>
+            <input name="position" type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Szukaj">
         </div>
         <div class="flex flex-col space-y-2">
-            <label for="" class="text-sm font-medium">Miasto</label>
-            <input type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Miasto">
+            <label for="city" class="text-sm font-medium">Miasto</label>
+            <input name="city" type="text" class="border border-gray-200 rounded-lg bg-gray-100" placeholder="Miasto">
         </div>
         <div class="flex flex-col space-y-2">
-            <label for="" class="text-sm font-medium">Województwo</label>
-            <select class="border border-gray-200 rounded-lg bg-gray-100">
-                <option value="wielkopolska">Wielkopolska</option>
-                <option value="wielkopolska">Wielkopolska</option>
-                <option value="wielkopolska">Wielkopolska</option>
+            <label for="location" class="text-sm font-medium">Województwo</label>
+            <select name="location" class="border border-gray-200 rounded-lg bg-gray-100">
+                @if ( Request::get('location') === null )
+                    <option value="" selected></option>
+                @else
+                    <option value=""></option>
+                @endif
+                @foreach ($locations as $location)
+                    @if ( (int)Request::get('location') === $location->id )
+                        <option value="{{ $location->id }}" selected>{{ $location->name }}  ({{ $location->offers()->count() }})</option>
+                    @else
+                        <option value="{{ $location->id }}">{{ $location->name }}  ({{ $location->offers()->count() }})</option>
+                    @endif
+                @endforeach
             </select>
         </div>
         <div class="flex flex-col space-y-2">
-            <label for="" class="text-sm font-medium">Kategoria</label>
-            <select class="border border-gray-200 rounded-lg bg-gray-100">
-                <option value="wielkopolska">Programowanie</option>
-                <option value="wielkopolska">Programowanie</option>
-                <option value="wielkopolska">Programowanie</option>
+            <label for="category" class="text-sm font-medium">Kategoria</label>
+            <select name="category" class="border border-gray-200 rounded-lg bg-gray-100">
+                @if ( Request::get('category') === null )
+                    <option value="" selected></option>
+                @else
+                    <option value=""></option>
+                @endif
+                @foreach ($categories as $category)
+                    @if ( (int)Request::get('category') === $category->id )
+                        <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                    @else
+                        <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
+                    @endif
+                @endforeach
             </select>
         </div>
-        <div class="flex flex-col space-y-2">
-            <label for="" class="text-sm font-medium">Płatny</label>
-            <input type="checkbox" name="" id="">
+        <div class="flex space-x-2 items-center">
+            <input name="salary" type="checkbox" value="true">
+            <label for="salary" class="text-sm font-medium">Płatny</label>
         </div>
         <div class="py-4">
             <input type="submit" class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center" value="Szukaj">
