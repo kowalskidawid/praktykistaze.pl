@@ -9,9 +9,13 @@
             <path d="M3.83 5L7.41 1.41L6 0L0 6L6 12L7.41 10.59L3.83 7H16V5H3.83Z" fill="#111827"/>
         </svg>
     </a>
+    @if(Auth::user())
+    @if ($student == Auth::user()->student)
     <a href="" class="h-10 px-4 flex justify-center font-semibold items-center rounded-lg bg-white border border-gray-200">
         Edytuj
     </a>
+    @endif
+    @endif
 </div>
 {{-- Company --}}
 <div class="p-4 flex w-full items-center border-b border-gray-200">

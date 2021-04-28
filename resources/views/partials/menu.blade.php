@@ -28,27 +28,33 @@
             </ul>
             {{-- User profile --}}
             @if (Auth::user())
-            <div class="p-4 flex items-center space-x-4">
+            <div>
                 @if (Auth::user()->roleCheck('admin'))
-                <div class="rounded-full h-9 w-9 bg-gray-200"></div>
-                <div class="flex flex-col">
-                    <p class="text-sm font-semibold">Admin</p>
-                    <p class="text-sm">{{ Auth::user()->email }}</p>
-                </div>
+                <a href="" class="p-4 flex items-center space-x-4">
+                    <div class="rounded-full h-9 w-9 bg-gray-200"></div>
+                    <div class="flex flex-col">
+                        <p class="text-sm font-semibold">Admin</p>
+                        <p class="text-sm">{{ Auth::user()->email }}</p>
+                    </div>
+                </a>
                 @endif
                 @if (Auth::user()->roleCheck('company'))
-                <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
-                <div class="flex flex-col">
-                    <p class="text-sm font-semibold">{{ Auth::user()->company->company_name }}</p>
-                    <p class="text-sm">{{ Auth::user()->email }}</p>
-                </div>
+                <a href="{{ route('companies.show', ['company' => Auth::user()->company]) }}" class="p-4 flex items-center space-x-4">
+                    <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->company->image }}); background-size: cover; background-repeat: no-repeat;"></div>
+                    <div class="flex flex-col">
+                        <p class="text-sm font-semibold">{{ Auth::user()->company->company_name }}</p>
+                        <p class="text-sm">{{ Auth::user()->email }}</p>
+                    </div>
+                </a>
                 @endif
                 @if (Auth::user()->roleCheck('student'))
-                <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->student->image }}); background-size: cover; background-repeat: no-repeat;"></div>
-                <div class="flex flex-col">
-                    <p class="text-sm font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
-                    <p class="text-sm">{{ Auth::user()->email }}</p>
-                </div>
+                <a href="{{ route('students.show', ['student' => Auth::user()->student]) }}" class="p-4 flex items-center space-x-4">
+                    <div class="rounded-full h-9 w-9 bg-gray-200" style="background: url({{ Auth::user()->student->image }}); background-size: cover; background-repeat: no-repeat;"></div>
+                    <div class="flex flex-col">
+                        <p class="text-sm font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
+                        <p class="text-sm">{{ Auth::user()->email }}</p>
+                    </div>
+                </a>
                 @endif
             </div>
             {{-- Links --}}
