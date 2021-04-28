@@ -74,7 +74,7 @@
 </div>
 {{-- Company details --}}
 <div class="p-4">
-    <a href="" class="bg-white rounded-xl border border-gray-200 shadow-lg p-4 flex flex-col space-y-4">
+    <a href="{{ route('companies.show', [$offer->company]) }}" class="bg-white rounded-xl border border-gray-200 shadow-lg p-4 flex flex-col space-y-4">
         <div class="flex w-full justify-between items-center">
             <div>
                 <p class="text-lg font-semibold">{{ $offer->company->company_name }}</p>

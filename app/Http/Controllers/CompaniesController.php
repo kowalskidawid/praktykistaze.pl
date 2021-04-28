@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Offer;
 
 class CompaniesController extends Controller
 {
@@ -36,6 +37,8 @@ class CompaniesController extends Controller
     // Display the specified resource.
     public function show(Company $company)
     {
-        return view('companies.show', compact('company'));
+        $offers = $company->offers()->latest()->take(3)->get();
+
+        return view('companies.show', compact('company', 'offers'));
     }
 }
