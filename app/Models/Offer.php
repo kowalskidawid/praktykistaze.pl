@@ -75,4 +75,17 @@ class Offer extends Model
         $daysLeft = $currentDate->diff($endDate);
         return $daysLeft->format('%a');
     }
+
+    // 
+    public function isFavourite(User $user)
+    {
+        return $this->favourites()->where("user_id", $user->id)->exists();
+    }
+
+    // 
+    public function isApplied(User $user)
+    {
+        return $this->applications()->where("user_id", $user->id)->exists();
+    }
+    
 }

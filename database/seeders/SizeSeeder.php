@@ -14,9 +14,9 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        Size::create(['name' => 'micro', 'size' => 1]);
-        Size::create(['name' => 'small', 'size' => 10]);
-        Size::create(['name' => 'medium', 'size' => 50]);
-        Size::create(['name' => 'large', 'size' => 250]);
+        Size::create(['name' => 'Micro Company', 'size' => 1]);
+        Size::create(['name' => 'Small Company', 'size' => 10]);
+        Size::create(['name' => 'Medium Company', 'size' => 50]);
+        Size::create(['name' => 'Large Company', 'size' => 250]);
     }
 }

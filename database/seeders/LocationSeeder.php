@@ -28,7 +28,7 @@ class LocationSeeder extends Seeder
             "Pomorskie",
             "Śląskie",
             "Świętokrzyskie",
-            "Warmińskow-mazurskie",
+            "Warmińsko-mazurskie",
             "Wielkopolskie",
             "Zachodniopomorskie"
         ];
