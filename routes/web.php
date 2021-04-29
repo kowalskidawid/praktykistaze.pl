@@ -7,6 +7,7 @@ use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Company\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,16 +54,13 @@ Route::group(['middleware' => ['auth', 'roleStudent'], 'prefix' => 'student', 'a
     Route::post('/{offer}/favorite', [StudentController::class, 'favouriteOffer'])->name('favourite');
     Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
 });
-// // Dashboard page
-// Route::group(['middleware' => 'auth', 'prefix' => '/dashboard', 'as' => 'dashboard.'], function () {
-//     Route::get('/', [DashboardController::class, 'index'])->name('index');
-//     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
-//     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
-//     // Student
-//     Route::get('/favourites', [DashboardController::class, 'favourites'])->middleware('roleStudent')->name('favourites');
-//     Route::get('/applications', [DashboardController::class, 'applications'])->middleware('roleStudent')->name('applications');
-//     // Company
-//     Route::get('/offers', [DashboardController::class, 'offers'])->middleware('roleStudent')->name('offers');
-// });
+// Company Auth Pages
+Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
+    // Settings
+    Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
+    Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
+    // Offers
+    Route::get('/offers', [CompanyController::class, 'offers'])->name('offers');
+});
 
 require __DIR__.'/auth.php';

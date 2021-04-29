@@ -60,17 +60,21 @@
             {{-- Links --}}
             <ul class="p-4 pt-0 border-b border-gray-200 flex flex-col space-y-4">
                 @if (Auth::user()->roleCheck('company'))
-                <li class="font-semibold flex space-x-6 items-center pl-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 16 14">
-                        <path fill="#111827" d="M4.8 13.4A3.2 3.2 0 011.7 11H0V9.4h1.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32-.392a1.6 1.6 0 00-1.6-1.6zM16 11H8.8V9.4H16V11zM8.8 7a3.2 3.2 0 01-3.1-2.4H0V3h5.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32V3.8a1.6 1.6 0 00-1.6-1.6zM16 4.6h-3.2V3H16v1.6z"/>
-                    </svg>
-                    <span>Ustawienia</span>
+                <li>
+                    <a href="{{ route('company.settings') }}" class="font-semibold flex space-x-6 items-center pl-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 16 14">
+                            <path fill="#111827" d="M4.8 13.4A3.2 3.2 0 011.7 11H0V9.4h1.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32-.392a1.6 1.6 0 00-1.6-1.6zM16 11H8.8V9.4H16V11zM8.8 7a3.2 3.2 0 01-3.1-2.4H0V3h5.7a3.2 3.2 0 113.1 4zm0-4.8a1.6 1.6 0 101.6 1.672v.32V3.8a1.6 1.6 0 00-1.6-1.6zM16 4.6h-3.2V3H16v1.6z"/>
+                        </svg>
+                        <span>Ustawienia</span>
+                    </a>
                 </li>
-                <li class="font-semibold flex space-x-6 items-center pl-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-                        <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
-                    </svg>
-                    <span>Oferty</span>
+                <li>
+                    <a href="{{ route('company.offers') }}" class="font-semibold flex space-x-6 items-center pl-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                            <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
+                        </svg>
+                        <span>Oferty</span>
+                    </a>
                 </li>
                 @endif
                 @if (Auth::user()->roleCheck('student'))

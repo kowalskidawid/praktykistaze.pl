@@ -15,6 +15,7 @@ class StudentController extends Controller
     {
         return view('student.settings');
     }
+    // 
     public function profile(Request $request)
     {
         $this->validate($request, [

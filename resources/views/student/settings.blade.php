@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="p-4 pb-0">
-    <h1 class="font-bold text-2xl">Ustawienia konta</h1>
-</div>
 {{-- Profile settings --}}
+<div class="p-4 pb-0">
+    <h1 class="font-bold text-2xl">Ustawienia profilu</h1>
+</div>
 <div class="p-4">
     <form class="flex flex-col space-y-4" id="profileForm" role="form" action="{{ route('student.profile') }}" method="POST">
         @csrf
@@ -21,6 +21,10 @@
             <input type="submit" class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center" value="Zapisz">
         </div>
     </form>
+</div>
+{{-- Account settings --}}
+<div class="p-4 pb-0">
+    <h1 class="font-bold text-2xl">Ustawienia konta</h1>
 </div>
 
 @endsection

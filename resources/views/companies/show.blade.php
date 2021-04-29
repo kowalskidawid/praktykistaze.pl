@@ -11,7 +11,7 @@
     </a>
     @if(Auth::user())
     @if ($company == Auth::user()->company)
-    <a href="" class="h-10 px-4 flex justify-center font-semibold items-center rounded-lg bg-white border border-gray-200">
+    <a href="{{ route('company.settings') }}" class="h-10 px-4 flex justify-center font-semibold items-center rounded-lg bg-white border border-gray-200">
         Edytuj
     </a>
     @endif
