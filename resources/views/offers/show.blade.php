@@ -96,7 +96,7 @@
         <button class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Aplikuj</button>
     </form>
     @else
-    <p class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center">Twoje zgłoszenie zostało wysłane!</p>
+    <p class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-green-600 rounded-lg flex justify-center">Twoje zgłoszenie zostało wysłane!</p>
     @endif
     @endif
     @endif
