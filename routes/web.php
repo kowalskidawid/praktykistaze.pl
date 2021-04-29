@@ -47,8 +47,11 @@ Route::group(['middleware' => ['auth', 'roleStudent'], 'prefix' => 'student', 'a
     Route::post('/profile', [StudentController::class, 'profile'])->name('profile');
     // Applications
     Route::get('/applications', [StudentController::class, 'applications'])->name('applications');
+    Route::post('/{offer}/apply', [StudentController::class, 'apply'])->name('apply');
     // Favourites
     Route::get('/favourites', [StudentController::class, 'favourites'])->name('favourites');
+    Route::post('/{offer}/favorite', [StudentController::class, 'favouriteOffer'])->name('favourite');
+    Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
 });
 // // Dashboard page
 // Route::group(['middleware' => 'auth', 'prefix' => '/dashboard', 'as' => 'dashboard.'], function () {
