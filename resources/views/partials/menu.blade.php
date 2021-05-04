@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('company.offers') }}" class="font-semibold flex space-x-6 items-center pl-2.5">
+                    <a href="{{ route('company.offers.index') }}" class="font-semibold flex space-x-6 items-center pl-2.5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                             <path fill="#111827" d="M12.571 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zM3.43 16a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm9.142-9.143a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857zm-9.142 0a3.429 3.429 0 110-6.857 3.429 3.429 0 010 6.857z"/>
                         </svg>

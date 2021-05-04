@@ -41,7 +41,7 @@
         </div>
     </nav>
     {{-- MAIN --}}
-    <main class="">
+    <main class="md:max-w-4xl md:m-auto">
         @yield('content')
     </main>
     {{-- FOOTER --}}

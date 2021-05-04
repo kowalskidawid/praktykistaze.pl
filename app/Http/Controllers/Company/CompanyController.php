@@ -22,11 +22,4 @@ class CompanyController extends Controller
         auth()->user()->company->update($request->all());
         return redirect()->back()->withSuccess('Profile updated');
     }
-    // Offers
-    public function offers()
-    {
-        $offers = auth()->user()->company->offers->reverse();
-
-        return view('company.offers', compact('offers'));
-    }
 }

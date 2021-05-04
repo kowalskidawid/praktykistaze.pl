@@ -30,6 +30,9 @@
                 <p class="text-lg font-semibold">{{ Str::limit($offer->position, 25) }}</p>
                 <p class="text-sm">{{ $offer->category->name }}</p>
             </div>
+            <div class="hidden md:block">
+                <p>{{ $offer->salary }}</p>
+            </div>
         </a>
         @endforeach
     </div>

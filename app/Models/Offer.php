@@ -18,6 +18,26 @@ class Offer extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        "position",
+        "city",
+        "location",
+        "category",
+        "type",
+        "job_duration",
+        "job_start",
+        "salary",
+        "vacancies",
+        "description",
+        "offer_duration",
+        "image",
+    ];
+
     // Create a connection to Company model
     public function company()
     {

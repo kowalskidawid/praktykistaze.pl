@@ -8,6 +8,7 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Company\OfferController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,7 +61,14 @@ Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'a
     Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
     Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
     // Offers
-    Route::get('/offers', [CompanyController::class, 'offers'])->name('offers');
+    Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
+        Route::get('/', [OfferController::class, 'index'])->name('index');
+        Route::get('/create', [OfferController::class, 'create'])->name('create');
+        Route::post('/store', [OfferController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [OfferController::class, 'edit'])->name('edit');
+        Route::post('/{id}/update', [OfferController::class, 'update'])->name('update');
+        Route::post('/{id}/image', [OfferController::class, 'image'])->name('image');
+    });
 });
 
 require __DIR__.'/auth.php';
