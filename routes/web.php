@@ -70,5 +70,12 @@ Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'a
         Route::post('/{id}/image', [OfferController::class, 'image'])->name('image');
     });
 });
-
+// Auth
 require __DIR__.'/auth.php';
+// Language
+// Route::get('/greeting/{locale}', function ($locale) {
+//     if (! in_array($locale, ['en', 'es', 'fr'])) {
+//         abort(400);
+//     }
+//     App::setLocale($locale);
+// });
