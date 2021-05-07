@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'lang' => 'Język polski',
+    'title' => 'Strona główna',
 ];

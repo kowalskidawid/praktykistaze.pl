@@ -20,58 +20,66 @@ use App\Http\Controllers\Company\OfferController;
 |
 */
 
-// Home page
-Route::get('/', [HomeController::class, 'index'])->name('index');
-// Offers page
-Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
-    Route::get('/', [OffersController::class, 'index'])->name('index');
-    Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
-});
-// Companies page
-Route::group(['prefix' => 'companies', 'as' => 'companies.'], function() {
-    Route::get('/', [CompaniesController::class, 'index'])->name('index');
-    Route::get('/id/{company}', [CompaniesController::class, 'show'])->name('show');
-});
-// Students page
-Route::group(['prefix' => 'students', 'as' => 'students.'], function() {
-    Route::get('/', [StudentsController::class, 'index'])->name('index');
-    Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
-});
-// Articles page
-Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
-    Route::get('/', [ArticlesController::class, 'index'])->name('index');
-    Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
-});
-// Student Auth Pages
-Route::group(['middleware' => ['auth', 'roleStudent'], 'prefix' => 'student', 'as' => 'student.'], function() {
-    // Settings
-    Route::get('/settings', [StudentController::class, 'settings'])->name('settings');
-    Route::post('/profile', [StudentController::class, 'profile'])->name('profile');
-    // Applications
-    Route::get('/applications', [StudentController::class, 'applications'])->name('applications');
-    Route::post('/{offer}/apply', [StudentController::class, 'apply'])->name('apply');
-    // Favourites
-    Route::get('/favourites', [StudentController::class, 'favourites'])->name('favourites');
-    Route::post('/{offer}/favorite', [StudentController::class, 'favouriteOffer'])->name('favourite');
-    Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
-});
-// Company Auth Pages
-Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
-    // Settings
-    Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
-    Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
-    // Offers
+// Route to change language
+Route::get('language/{locale}', function ($language){
+    \Session::put('locale', $language);
+    return redirect()->route('index');
+})->name('language');
+// Routes
+Route::group(['middleware' => 'language'], function () {
+    // Home page
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    // Offers page
     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
-        Route::get('/', [OfferController::class, 'index'])->name('index');
-        Route::get('/create', [OfferController::class, 'create'])->name('create');
-        Route::post('/store', [OfferController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [OfferController::class, 'edit'])->name('edit');
-        Route::post('/{id}/update', [OfferController::class, 'update'])->name('update');
-        Route::post('/{id}/image', [OfferController::class, 'image'])->name('image');
+        Route::get('/', [OffersController::class, 'index'])->name('index');
+        Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
     });
+    // Companies page
+    Route::group(['prefix' => 'companies', 'as' => 'companies.'], function() {
+        Route::get('/', [CompaniesController::class, 'index'])->name('index');
+        Route::get('/id/{company}', [CompaniesController::class, 'show'])->name('show');
+    });
+    // Students page
+    Route::group(['prefix' => 'students', 'as' => 'students.'], function() {
+        Route::get('/', [StudentsController::class, 'index'])->name('index');
+        Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
+    });
+    // Articles page
+    Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
+        Route::get('/', [ArticlesController::class, 'index'])->name('index');
+        Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
+    });
+    // Student Auth Pages
+    Route::group(['middleware' => ['auth', 'roleStudent'], 'prefix' => 'student', 'as' => 'student.'], function() {
+        // Settings
+        Route::get('/settings', [StudentController::class, 'settings'])->name('settings');
+        Route::post('/profile', [StudentController::class, 'profile'])->name('profile');
+        // Applications
+        Route::get('/applications', [StudentController::class, 'applications'])->name('applications');
+        Route::post('/{offer}/apply', [StudentController::class, 'apply'])->name('apply');
+        // Favourites
+        Route::get('/favourites', [StudentController::class, 'favourites'])->name('favourites');
+        Route::post('/{offer}/favorite', [StudentController::class, 'favouriteOffer'])->name('favourite');
+        Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
+    });
+    // Company Auth Pages
+    Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
+        // Settings
+        Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
+        Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
+        // Offers
+        Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
+            Route::get('/', [OfferController::class, 'index'])->name('index');
+            Route::get('/create', [OfferController::class, 'create'])->name('create');
+            Route::post('/store', [OfferController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [OfferController::class, 'edit'])->name('edit');
+            Route::post('/{id}/update', [OfferController::class, 'update'])->name('update');
+            Route::post('/{id}/image', [OfferController::class, 'image'])->name('image');
+        });
+    });
+    // Auth
+    require __DIR__.'/auth.php';
 });
-// Auth
-require __DIR__.'/auth.php';
 // Language
 // Route::get('/greeting/{locale}', function ($locale) {
 //     if (! in_array($locale, ['en', 'es', 'fr'])) {

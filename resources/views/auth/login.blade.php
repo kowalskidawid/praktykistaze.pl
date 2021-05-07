@@ -34,7 +34,7 @@
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login', app()->getLocale()) }}">
         @csrf
 
         <!-- Email Address -->
@@ -67,7 +67,7 @@
                 {{ __('Log in') }}
             </x-button>
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request', app()->getLocale()) }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif

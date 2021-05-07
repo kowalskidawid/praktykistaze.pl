@@ -28,7 +28,7 @@
     </x-slot> --}}
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register', app()->getLocale()) }}">
         @csrf
         <!-- User role selection -->
         <div class="mt-4">
@@ -57,7 +57,7 @@
             <x-button class="mr-4">
                 {{ __('Register') }}
             </x-button>
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login', app()->getLocale()) }}">
                 {{ __('Already registered?') }}
             </a>
         </div>

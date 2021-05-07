@@ -12,7 +12,7 @@
             </div>
         </div>
         {{-- Links --}}
-        <ul>
+        <ul class="flex flex-col space-y-1">
             <li>
                 <a href="{{ route('index') }}" class="p-2 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('/') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
     </div>
     {{-- BOTTOM --}}
     <div>
-        <ul>
+        <ul class="flex flex-col space-y-1">
             <li>
                 <a href="{{ route('login') }}" class="p-2 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('login') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
