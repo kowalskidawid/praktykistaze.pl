@@ -23,7 +23,8 @@ use App\Http\Controllers\Company\OfferController;
 // Route to change language
 Route::get('language/{locale}', function ($language){
     \Session::put('locale', $language);
-    return redirect()->route('index');
+    return redirect()->back();
+    // return redirect()->route('index');
 })->name('language');
 // Routes
 Route::group(['middleware' => 'language'], function () {

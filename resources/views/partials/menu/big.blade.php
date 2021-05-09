@@ -4,13 +4,13 @@
         {{-- Header --}}
         <div class="flex justify-between items-center space-x-8">
             {{-- Logo --}}
-            <div class="px-2 flex space-x-2 items-center">
+            <a href="{{ route('index') }}" class="px-2 flex space-x-2 items-center">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 0C4.4087 0 2.88258 0.632141 1.75736 1.75736C0.632141 2.88258 0 4.4087 0 6L0 26C0 27.5913 0.632141 29.1174 1.75736 30.2426C2.88258 31.3679 4.4087 32 6 32H7V16C7.00038 14.0431 7.63853 12.1397 8.81778 10.5781C9.99703 9.01649 11.6531 7.88177 13.5352 7.34584C15.4172 6.80992 17.4226 6.902 19.2476 7.60812C21.0727 8.31425 22.6178 9.59596 23.649 11.2591C24.6802 12.9222 25.1412 14.8761 24.9623 16.8247C24.7834 18.7734 23.9742 20.6106 22.6574 22.0581C21.3405 23.5056 19.5878 24.4845 17.6647 24.8464C15.7416 25.2084 13.753 24.9337 12 24.064V32H26C27.5913 32 29.1174 31.3679 30.2426 30.2426C31.3679 29.1174 32 27.5913 32 26V6C32 4.4087 31.3679 2.88258 30.2426 1.75736C29.1174 0.632141 27.5913 0 26 0L6 0Z" fill="#111827"/>
                     <path d="M20 16C20 17.0609 19.5786 18.0783 18.8284 18.8284C18.0783 19.5786 17.0609 20 16 20C14.9391 20 13.9217 19.5786 13.1716 18.8284C12.4214 18.0783 12 17.0609 12 16C12 14.9391 12.4214 13.9217 13.1716 13.1716C13.9217 12.4214 14.9391 12 16 12C17.0609 12 18.0783 12.4214 18.8284 13.1716C19.5786 13.9217 20 14.9391 20 16Z" fill="#111827"/>
                 </svg>
                 <h1 class="text-2xl font-bold">Praktyki</h1>
-            </div>
+            </a>
             {{-- Burger --}}
             <button class="w-8 h-8 rounded flex justify-center items-center hover:bg-gray-200 md:hidden" onclick="toggleMobileMenu()">
                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('offers') ? 'bg-gray-200' : ''}}">
+                <a href="{{ route('offers.index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('offers') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" d="M20.0755 6H23.4615C24.8637 6 26 7.14585 26 8.55996V11.9745C26 13.3886 24.8637 14.5345 23.4615 14.5345H20.0755C18.6732 14.5345 17.537 13.3886 17.537 11.9745V8.55996C17.537 7.14585 18.6732 6 20.0755 6" fill="#111827"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53852 6H11.9245C13.3268 6 14.463 7.14585 14.463 8.55996V11.9745C14.463 13.3886 13.3268 14.5345 11.9245 14.5345H8.53852C7.13626 14.5345 6 13.3886 6 11.9745V8.55996C6 7.14585 7.13626 6 8.53852 6ZM8.53852 17.4655H11.9245C13.3268 17.4655 14.463 18.6114 14.463 20.0255V23.44C14.463 24.8532 13.3268 26 11.9245 26H8.53852C7.13626 26 6 24.8532 6 23.44V20.0255C6 18.6114 7.13626 17.4655 8.53852 17.4655ZM23.4615 17.4655H20.0755C18.6732 17.4655 17.537 18.6114 17.537 20.0255V23.44C17.537 24.8532 18.6732 26 20.0755 26H23.4615C24.8637 26 26 24.8532 26 23.44V20.0255C26 18.6114 24.8637 17.4655 23.4615 17.4655Z" fill="#111827"/>
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('companies') ? 'bg-gray-200' : ''}}">
+                <a href="{{ route('companies.index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('companies') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.9491 18.5399C12.4991 18.5399 9.58813 19.1037 9.58813 21.2794C9.58813 23.4561 12.5179 24 15.9491 24C19.3991 24 22.31 23.4363 22.31 21.2605C22.31 19.0839 19.3803 18.5399 15.9491 18.5399" fill="#111827"/>
                         <path opacity="0.4" d="M15.949 16.467C18.2851 16.467 20.1583 14.5831 20.1583 12.2335C20.1583 9.88306 18.2851 8 15.949 8C13.6129 8 11.7397 9.88306 11.7397 12.2335C11.7397 14.5831 13.6129 16.467 15.949 16.467" fill="#111827"/>
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('students') ? 'bg-gray-200' : ''}}">
+                <a href="{{ route('students.index') }}" class="p-2 pr-8 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('students') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.3493 18.8577C9.38553 18.8577 6 19.47 6 21.9174C6 24.3666 9.364 25 13.3493 25C17.3131 25 20.6987 24.3877 20.6987 21.9404C20.6987 19.4911 17.3347 18.8577 13.3493 18.8577" fill="#111827"/>
                         <path opacity="0.4" d="M13.3494 16.5248C16.049 16.5248 18.2124 14.4062 18.2124 11.7624C18.2124 9.11865 16.049 7 13.3494 7C10.6507 7 8.48633 9.11865 8.48633 11.7624C8.48633 14.4062 10.6507 16.5248 13.3494 16.5248" fill="#111827"/>
