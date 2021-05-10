@@ -16,20 +16,18 @@
     {{-- MENU-MOBILE --}}
     <div class="fixed top-0 left-0 z-10 md:hidden">        
         <div id="menuMobile" style="display: none">
-            @include('partials.menu.big')
+            @include('partials.menu', ['menu' => 'big'])
         </div>
     </div>
     {{-- MAIN --}}
     <main class="flex items-start w-full">
         {{-- MENU --}}
         <div class="hidden md:block">
-            {{-- MENU-SHRINKED --}}
             <div id="menuShrinked" style="display: block">
-                @include('partials.menu.small')
+                @include('partials.menu', ['menu' => 'small'])
             </div>
-            {{-- MENU-EXPANDED --}}
             <div id="menuExpanded" style="display: none">
-                @include('partials.menu.big')
+                @include('partials.menu', ['menu' => 'big'])
             </div>
         </div>
         <div class="w-full h-screen flex flex-col justify-between overflow-y-auto">
@@ -43,6 +41,19 @@
     </main>
     {{-- SCRIPTS --}}
     <script>
+        // TODO: needs clean up
+        (function () {
+            const x = document.getElementById("menuShrinked");
+            const y = document.getElementById("menuExpanded");
+            let menu = localStorage.getItem('menu');
+            if (menu) {
+                x.style.display = "none";
+                y.style.display = "block";
+            } else {
+                x.style.display = "block";
+                y.style.display = "none";
+            }
+        })();
         function toggleMobileMenu() {
             const x = document.getElementById("menuMobile");
             if (x.style.display === "none") {
@@ -55,9 +66,11 @@
             const x = document.getElementById("menuShrinked");
             const y = document.getElementById("menuExpanded");
             if (x.style.display === "none") {
+                localStorage.setItem('menu', 0);
                 x.style.display = "block";
                 y.style.display = "none";
             } else {
+                localStorage.setItem('menu', 1);
                 x.style.display = "none";
                 y.style.display = "block";
             }
