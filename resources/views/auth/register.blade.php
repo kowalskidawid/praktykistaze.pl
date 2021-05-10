@@ -12,7 +12,7 @@
     </x-slot> --}}
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-    <form method="POST" action="{{ route('register', app()->getLocale()) }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
         <!-- User role selection -->
         <div class="mt-4">

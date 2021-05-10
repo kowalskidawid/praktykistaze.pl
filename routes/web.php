@@ -51,7 +51,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
     });
     // Student Auth Pages
-    Route::group(['middleware' => ['auth', 'roleStudent'], 'prefix' => 'student', 'as' => 'student.'], function() {
+    Route::group(['middleware' => ['auth', 'verified', 'roleStudent'], 'prefix' => 'student', 'as' => 'student.'], function() {
         // Settings
         Route::get('/settings', [StudentController::class, 'settings'])->name('settings');
         Route::post('/profile', [StudentController::class, 'profile'])->name('profile');

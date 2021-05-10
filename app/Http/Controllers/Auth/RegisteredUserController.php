@@ -54,8 +54,9 @@ class RegisteredUserController extends Controller
             ]);
             
             event(new Registered($user));
-            Auth::login($user);
-            return redirect(RouteServiceProvider::HOME);
+            // Auth::login($user);
+            // return redirect(RouteServiceProvider::HOME);
+            return redirect()->route('verification.notice');
 
         } else if ($request->role === 'Company') {
             $role = Role::find(3);
@@ -69,8 +70,9 @@ class RegisteredUserController extends Controller
             ]);
 
             event(new Registered($user));
-            Auth::login($user);
-            return redirect(RouteServiceProvider::HOME);
+            // Auth::login($user);
+            // return redirect(RouteServiceProvider::HOME);
+            return redirect()->route('verification.notice');
         }
     }
 }
