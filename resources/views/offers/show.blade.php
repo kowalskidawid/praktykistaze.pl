@@ -3,8 +3,8 @@
 @section('content')
 
 {{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'students.title'])
+@include('partials.header', ['title' => 'offers.title'])
 {{-- Content --}}
-<p>Lista studentów</p>
+<p>Podgląd oferty</p>
 
 @endsection

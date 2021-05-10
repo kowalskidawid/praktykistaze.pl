@@ -5,6 +5,6 @@
 {{-- Header: Pass a lang file as $title --}}
 @include('partials.header', ['title' => 'students.title'])
 {{-- Content --}}
-<p>Lista studentów</p>
+<p>Profil studenta</p>
 
 @endsection
