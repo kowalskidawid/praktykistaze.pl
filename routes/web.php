@@ -64,7 +64,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
     });
     // Company Auth Pages
-    Route::group(['middleware' => ['auth', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
+    Route::group(['middleware' => ['auth', 'verified', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
         // Settings
         Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
         Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
@@ -81,10 +81,3 @@ Route::group(['middleware' => 'language'], function () {
     // Auth
     require __DIR__.'/auth.php';
 });
-// Language
-// Route::get('/greeting/{locale}', function ($locale) {
-//     if (! in_array($locale, ['en', 'es', 'fr'])) {
-//         abort(400);
-//     }
-//     App::setLocale($locale);
-// });

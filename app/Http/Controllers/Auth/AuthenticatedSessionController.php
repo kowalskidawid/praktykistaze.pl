@@ -29,17 +29,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            $user = User::where('email', $request->email)->firstOrFail();
-            if ($user->hasVerifiedEmail()) {
-                $request->authenticate();
-                $request->session()->regenerate();
-                return redirect()->intended(RouteServiceProvider::HOME);
-            } else {
-                return redirect()->route('verification.notice');
-            }
-        }
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -51,11 +43,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
