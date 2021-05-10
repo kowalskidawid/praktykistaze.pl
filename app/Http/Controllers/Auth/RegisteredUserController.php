@@ -52,7 +52,8 @@ class RegisteredUserController extends Controller
                 'first_name' => 'Name',
                 'last_name' => 'Surname',
             ]);
-
+            
+            event(new Registered($user));
             Auth::login($user);
             return redirect(RouteServiceProvider::HOME);
 
@@ -67,6 +68,7 @@ class RegisteredUserController extends Controller
                 'company_name' => 'Company Name'
             ]);
 
+            event(new Registered($user));
             Auth::login($user);
             return redirect(RouteServiceProvider::HOME);
         }
