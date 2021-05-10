@@ -46,10 +46,10 @@
             const x = document.getElementById("menuShrinked");
             const y = document.getElementById("menuExpanded");
             let menu = localStorage.getItem('menu');
-            if (menu) {
+            if (menu == 1) {
                 x.style.display = "none";
                 y.style.display = "block";
-            } else {
+            } else if (menu == 0) {
                 x.style.display = "block";
                 y.style.display = "none";
             }
