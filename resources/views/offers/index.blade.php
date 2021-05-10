@@ -17,9 +17,12 @@
         </button>
         <p class="ml-4 text-xl font-semibold">Oferty</p>
     </div>
+    {{-- User avatar and details --}}
+    @if (Auth::user())
     <div>
         <div class="rounded-full w-8 h-8 bg-gray-900"></div>
     </div>
+    @endif
 </div>
 {{-- Content --}}
 

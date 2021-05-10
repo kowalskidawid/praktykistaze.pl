@@ -55,6 +55,7 @@
     {{-- BOTTOM --}}
     <div>
         <ul class="flex flex-col space-y-1">
+            @guest
             <li>
                 <a href="{{ route('login') }}" class="p-2 flex space-x-2 items-center rounded-lg cursor-pointer hover:bg-gray-200 {{ request()->is('login') ? 'bg-gray-200' : ''}}">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +72,20 @@
                     </svg>
                 </a>
             </li>
+            @endguest
+            @if (Auth::user())
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="p-2 flex items-center rounded-lg cursor-pointer hover:bg-gray-200">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M6 10.447C6 7.996 8.03024 6 10.5245 6H15.4856C17.9748 6 20 7.99 20 10.437V21.553C20 24.005 17.9698 26 15.4744 26H10.5154C8.02515 26 6 24.01 6 21.563V20.623V10.447Z" fill="#111827"/>
+                            <path d="M25.779 15.4548L22.9332 12.5458C22.6391 12.2458 22.1657 12.2458 21.8726 12.5478C21.5804 12.8498 21.5814 13.3368 21.8745 13.6368L23.4338 15.2298H21.9388H13.5485C13.1346 15.2298 12.7986 15.5748 12.7986 15.9998C12.7986 16.4258 13.1346 16.7698 13.5485 16.7698H23.4338L21.8745 18.3628C21.5814 18.6628 21.5804 19.1498 21.8726 19.4518C22.0196 19.6028 22.2115 19.6788 22.4043 19.6788C22.5952 19.6788 22.7871 19.6028 22.9332 19.4538L25.779 16.5458C25.9202 16.4008 26 16.2048 26 15.9998C26 15.7958 25.9202 15.5998 25.779 15.4548Z" fill="#111827"/>
+                        </svg>
+                    </button>
+                </form>
+            </li>
+            @endif
         </ul>
     </div>
 </div>
