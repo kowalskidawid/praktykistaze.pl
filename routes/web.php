@@ -7,9 +7,7 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ArticlesController;
-use App\Http\Controllers\Student\StudentController;
-use App\Http\Controllers\Company\CompanyController;
-use App\Http\Controllers\Company\OfferController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +44,10 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
         Route::get('/', [ArticlesController::class, 'index'])->name('index');
         Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
+    });
+    // Dashboard page
+    Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
 
 

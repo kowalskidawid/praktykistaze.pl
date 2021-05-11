@@ -15,8 +15,18 @@
     </div>
     {{-- User avatar and details --}}
     @if (Auth::user())
-    <div>
+    <a href="{{ route('dashboard.index') }}" class="flex items-center space-x-2">
         <div class="rounded-full w-8 h-8 bg-gray-900"></div>
-    </div>
+        <div class="flex flex-col">
+            @if (Auth::user()->roleCheck('student'))
+            <p class="text-xs font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
+            @elseif (Auth::user()->roleCheck('company'))
+            <p class="text-xs font-semibold">{{ Auth::user()->company->company_name }}</p>
+            @elseif (Auth::user()->roleCheck('admin'))
+            <p class="text-xs font-semibold">Admin</p>
+            @endif
+            <p class="text-xs">{{ Auth::user()->email }}</p>
+        </div>
+    </a>
     @endif
 </div>
