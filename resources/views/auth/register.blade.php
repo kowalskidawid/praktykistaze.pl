@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 {{-- Header: Pass a lang file as $title --}}
 @include('partials.header', ['title' => 'register.title'])
 {{-- Content --}}
@@ -39,10 +40,10 @@
         </div>
         <div class="flex items-center mt-4">
             <x-button class="mr-4">
-                {{ __('Register') }}
+                Register
             </x-button>
             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                Already registered?
             </a>
         </div>
     </form>

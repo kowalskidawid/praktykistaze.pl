@@ -7,4 +7,5 @@ return [
     'students' => 'Students',
     'login' => 'Login',
     'register' => 'Register',
+    'logout' => 'Logout',
 ];

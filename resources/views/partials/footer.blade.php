@@ -1,6 +1,6 @@
 <div class="p-4 bg-gray-900 flex justify-between">
     <p class="text-white text-xs">
-        {{ __('test.lang') }}
+        {{ __('layout/footer.language') }}
     </p>
     <ul class="flex space-x-2">
         <li>

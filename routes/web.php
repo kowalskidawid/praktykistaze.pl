@@ -49,38 +49,6 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
-
-
-    // // Student Auth Pages
-    // Route::group(['middleware' => ['auth', 'verified', 'roleStudent'], 'prefix' => 'student', 'as' => 'student.'], function() {
-    //     // Settings
-    //     Route::get('/settings', [StudentController::class, 'settings'])->name('settings');
-    //     Route::post('/profile', [StudentController::class, 'profile'])->name('profile');
-    //     // Applications
-    //     Route::get('/applications', [StudentController::class, 'applications'])->name('applications');
-    //     Route::post('/{offer}/apply', [StudentController::class, 'apply'])->name('apply');
-    //     // Favourites
-    //     Route::get('/favourites', [StudentController::class, 'favourites'])->name('favourites');
-    //     Route::post('/{offer}/favorite', [StudentController::class, 'favouriteOffer'])->name('favourite');
-    //     Route::post('/{offer}/unfavorite', [StudentController::class, 'unfavouriteOffer'])->name('unfavourite');
-    // });
-    // // Company Auth Pages
-    // Route::group(['middleware' => ['auth', 'verified', 'roleCompany'], 'prefix' => 'company', 'as' => 'company.'], function() {
-    //     // Settings
-    //     Route::get('/settings', [CompanyController::class, 'settings'])->name('settings');
-    //     Route::post('/profile', [CompanyController::class, 'profile'])->name('profile');
-    //     // Offers
-    //     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
-    //         Route::get('/', [OfferController::class, 'index'])->name('index');
-    //         Route::get('/create', [OfferController::class, 'create'])->name('create');
-    //         Route::post('/store', [OfferController::class, 'store'])->name('store');
-    //         Route::get('/{id}/edit', [OfferController::class, 'edit'])->name('edit');
-    //         Route::post('/{id}/update', [OfferController::class, 'update'])->name('update');
-    //         Route::post('/{id}/image', [OfferController::class, 'image'])->name('image');
-    //     });
-    // });
-
-
     // Auth
     require __DIR__.'/auth.php';
 });

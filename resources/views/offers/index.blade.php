@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'offers.title'])
+@include('partials.header', ['title' => 'layout/header.offers'])
 {{-- Content --}}
 <p>Lista ofert</p>
 
