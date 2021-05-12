@@ -9,11 +9,11 @@
     <form class="p-4 bg-gray-100 rounded-2xl" id="searchForm" role="form" action="{{ route('offers.index') }}" method="GET">
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             <div class="flex flex-col space-y-2">
-                <label for="position" class="text-sm font-medium">Stanowisko</label>
-                <input name="position" type="text" class="border border-gray-200 rounded-lg" placeholder="Stanowisko" value="{{ Request::get('position') }}">
+                <label for="position" class="text-sm font-medium">{{ __('app/offers.position') }}</label>
+                <input name="position" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/offers.position') }}" value="{{ Request::get('position') }}">
             </div>
             <div class="flex flex-col space-y-2">
-                <label for="category" class="text-sm font-medium">Kategoria</label>
+                <label for="category" class="text-sm font-medium">{{ __('app/offers.category') }}</label>
                 <select name="category" class="border border-gray-200 rounded-lg">
                     @if ( Request::get('category') === null )
                         <option value="" selected></option>
@@ -30,11 +30,11 @@
                 </select>
             </div>
             <div class="flex flex-col space-y-2">
-                <label for="city" class="text-sm font-medium">Miasto</label>
-                <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="Miasto" value="{{ Request::get('city') }}">
+                <label for="city" class="text-sm font-medium">{{ __('app/offers.city') }}</label>
+                <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/offers.city') }}" value="{{ Request::get('city') }}">
             </div>
             <div class="flex flex-col space-y-2">
-                <label for="location" class="text-sm font-medium">Województwo</label>
+                <label for="location" class="text-sm font-medium">{{ __('app/offers.location') }}</label>
                 <select name="location" class="border border-gray-200 rounded-lg">
                     @if ( Request::get('location') === null )
                         <option value="" selected></option>
@@ -51,23 +51,23 @@
                 </select>
             </div>
             <div class="flex flex-col space-y-2">
-                <label for="salary" class="text-sm font-medium">Pensja</label>
+                <label for="salary" class="text-sm font-medium">{{ __('app/offers.salary') }}</label>
                 <select name="salary" class="border border-gray-200 rounded-lg">
                     @if ( Request::get('salary') === null )
-                        <option value="0" selected>Wszystkie oferty</option>
+                        <option value="0" selected>{{ __('app/offers.salary-all') }}</option>
                     @else
-                        <option value="0">Wszystkie oferty</option>
+                        <option value="0">{{ __('app/offers.salary-all') }}</option>
                     @endif
                     @if ( (int)Request::get('salary') === 1 )
-                        <option value="1" selected>Tylko płatne</option>
+                        <option value="1" selected>{{ __('app/offers.salary-paid') }}</option>
                     @else
-                        <option value="1">Tylko płatne</option>
+                        <option value="1">{{ __('app/offers.salary-paid') }}</option>
                     @endif
                 </select>
             </div>
         </div>
         <div class="mt-4 flex justify-center">
-            <input type="submit" class="px-8 py-2 whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center cursor-pointer w-full md:w-auto" value="Szukaj">
+            <input type="submit" class="px-8 py-2 whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center cursor-pointer w-full md:w-auto" value="{{ __('app/offers.search') }}">
         </div>
     </form>
     <table class="w-full mt-8">
@@ -93,13 +93,13 @@
                     <span class="font-medium text-sm text-white bg-blue-500 px-2 py-1 rounded whitespace-nowrap">{{ $offer->category->name }}</span>
                 </td>
                 <td class="p-4 hidden sm:table-cell">
-                    <p class="font-medium">{{ $offer->city }}</p>
+                    <p class="">{{ $offer->city }}</p>
                 </td>
                 <td class="p-4 hidden md:table-cell">
-                    <p class="font-medium">{{ $offer->location->name }}</p>
+                    <p class="">{{ $offer->location->name }}</p>
                 </td>
                 <td class="p-4 hidden md:table-cell">
-                    <p class="font-medium">{{ $offer->salary }} PLN</p>
+                    <p class="">{{ $offer->salary }} PLN</p>
                 </td>
             </tr>
             @endforeach
