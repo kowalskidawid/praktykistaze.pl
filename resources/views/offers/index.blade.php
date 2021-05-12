@@ -7,7 +7,7 @@
 {{-- Content --}}
 <div class="p-4">
     <form class="p-4 bg-gray-100 rounded-2xl" id="searchForm" role="form" action="{{ route('offers.index') }}" method="GET">
-        <div class="grid grid-cols-6 gap-4">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             <div class="flex flex-col space-y-2">
                 <label for="position" class="text-sm font-medium">Stanowisko</label>
                 <input name="position" type="text" class="border border-gray-200 rounded-lg" placeholder="Stanowisko" value="{{ Request::get('position') }}">
@@ -51,18 +51,26 @@
                 </select>
             </div>
             <div class="flex flex-col space-y-2">
-                <p class="text-sm font-medium">Pensja</p>
-                <div class="flex space-x-2 items-center h-full">
-                    <input class="rounded" name="salary" type="checkbox" value="true">
-                    <label for="salary" class="text-sm font-medium">Płatny</label>
-                </div>
-            </div>
-            <div class="py-4">
-                <input type="submit" class="px-4 py-2 w-full whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center" value="Szukaj">
+                <label for="salary" class="text-sm font-medium">Pensja</label>
+                <select name="salary" class="border border-gray-200 rounded-lg">
+                    @if ( Request::get('salary') === null )
+                        <option value="0" selected>Wszystkie oferty</option>
+                    @else
+                        <option value="0">Wszystkie oferty</option>
+                    @endif
+                    @if ( (int)Request::get('salary') === 1 )
+                        <option value="1" selected>Tylko płatne</option>
+                    @else
+                        <option value="1">Tylko płatne</option>
+                    @endif
+                </select>
             </div>
         </div>
+        <div class="mt-4 flex justify-center">
+            <input type="submit" class="px-8 py-2 whitespace-nowrap font-medium text-white bg-indigo-600 rounded-lg flex justify-center cursor-pointer w-full md:w-auto" value="Szukaj">
+        </div>
     </form>
-    <table class="w-full">
+    <table class="w-full mt-8">
         {{-- <thead>
             <tr class="border-b border-gray-200">
                 <th class="p-4 text-left font-medium text-gray-500">Stanowisko</th>
