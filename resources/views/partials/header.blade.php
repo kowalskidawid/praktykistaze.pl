@@ -15,9 +15,9 @@
     </div>
     {{-- User avatar and details --}}
     @if (Auth::user())
-    <a href="{{ route('dashboard.index') }}" class="flex items-center space-x-2">
+    <a href="{{ route('dashboard.index') }}" class="flex items-center space-x-3">
         <div class="rounded-full w-8 h-8 bg-gray-900"></div>
-        <div class="flex flex-col">
+        <div class="hidden sm:flex flex-col">
             @if (Auth::user()->roleCheck('student'))
             <p class="text-xs font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
             @elseif (Auth::user()->roleCheck('company'))
