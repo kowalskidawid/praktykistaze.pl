@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.fullscreen')
 
 @section('content')
 <x-auth-card>
-    {{-- <x-slot name="logo">
+    <x-slot name="logo">
         <a href="/">
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </a>
-    </x-slot> --}}
+    </x-slot>
     <!-- Validation Errors -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
     <form method="POST" action="{{ route('register') }}">
@@ -34,11 +34,11 @@
             <x-label for="password_confirmation" :value="__('Confirm Password')" />
             <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
         </div>
-        <div class="flex items-center mt-4">
+        <div class="flex justify-between items-center mt-4">
             <x-button class="mr-4">
                 Register
             </x-button>
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            <a class="ml-4 text-sm font-medium text-blue-600 hover:underline" href="{{ route('login') }}">
                 Already registered?
             </a>
         </div>

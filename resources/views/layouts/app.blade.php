@@ -25,7 +25,7 @@
             @include('partials.header')
         </header>
         <main class="bg-gray-50 pb-8">
-            <div class="p-4 m-auto max-w-screen-lg">
+            <div class="p-4 m-auto max-w-screen-lg h-full">
                 @yield('content')
             </div>
         </main>

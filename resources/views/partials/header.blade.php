@@ -20,10 +20,10 @@
                 <path d="M20 16C20 17.0609 19.5786 18.0783 18.8284 18.8284C18.0783 19.5786 17.0609 20 16 20C14.9391 20 13.9217 19.5786 13.1716 18.8284C12.4214 18.0783 12 17.0609 12 16C12 14.9391 12.4214 13.9217 13.1716 13.1716C13.9217 12.4214 14.9391 12 16 12C17.0609 12 18.0783 12.4214 18.8284 13.1716C19.5786 13.9217 20 14.9391 20 16Z" fill="#111827"/>
             </svg>
         </a>
-        <div class="hidden sm:flex space-x-4 items-center font-medium text-gray-900">
-            <a href="{{ route('offers.index') }}" class="hover:text-blue-600 {{ request()->is('offers') ? 'text-blue-600' : ''}}">Offers</a>
-            <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies') ? 'text-blue-600' : ''}}">Companies</a>
-            <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students') ? 'text-blue-600' : ''}}">Students</a>
+        <div class="hidden sm:flex space-x-4 items-center font-medium text-gray-500">
+            <a href="{{ route('offers.index') }}" class="hover:text-black {{ request()->is('offers') ? 'text-black' : ''}}">Offers</a>
+            <a href="{{ route('companies.index') }}" class="hover:text-black {{ request()->is('companies') ? 'text-black' : ''}}">Companies</a>
+            <a href="{{ route('students.index') }}" class="hover:text-black {{ request()->is('students') ? 'text-black' : ''}}">Students</a>
         </div>
     </div>
     {{-- User --}}

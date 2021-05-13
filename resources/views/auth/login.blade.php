@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.fullscreen')
 
 @section('content')
 <x-auth-card>
@@ -42,12 +42,12 @@
             </label>
         </div>
 
-        <div class="flex items-center mt-4">
-            <x-button class="mr-3">
+        <div class="flex items-center justify-between mt-4">
+            <x-button>
                 {{ __('Log in') }}
             </x-button>
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request')}}">
+                <a class="ml-4 text-sm font-medium text-blue-600 hover:underline" href="{{ route('password.request')}}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
