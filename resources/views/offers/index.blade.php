@@ -1,10 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="mb-8 p-4">
+    <div class="flex space-x-2 items-center mb-4">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.4" d="M20.0755 6H23.4615C24.8637 6 26 7.14585 26 8.55996V11.9745C26 13.3886 24.8637 14.5345 23.4615 14.5345H20.0755C18.6732 14.5345 17.537 13.3886 17.537 11.9745V8.55996C17.537 7.14585 18.6732 6 20.0755 6" fill="#111827"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53852 6H11.9245C13.3268 6 14.463 7.14585 14.463 8.55996V11.9745C14.463 13.3886 13.3268 14.5345 11.9245 14.5345H8.53852C7.13626 14.5345 6 13.3886 6 11.9745V8.55996C6 7.14585 7.13626 6 8.53852 6ZM8.53852 17.4655H11.9245C13.3268 17.4655 14.463 18.6114 14.463 20.0255V23.44C14.463 24.8532 13.3268 26 11.9245 26H8.53852C7.13626 26 6 24.8532 6 23.44V20.0255C6 18.6114 7.13626 17.4655 8.53852 17.4655ZM23.4615 17.4655H20.0755C18.6732 17.4655 17.537 18.6114 17.537 20.0255V23.44C17.537 24.8532 18.6732 26 20.0755 26H23.4615C24.8637 26 26 24.8532 26 23.44V20.0255C26 18.6114 24.8637 17.4655 23.4615 17.4655Z" fill="#111827"/>
+        </svg>
+        <h1 class="text-2xl font-semibold">Offers</h1>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatem, impedit odit rerum, obcaecati velit nesciunt quia aut, aspernatur necessitatibus unde eaque provident at enim assumenda in esse expedita quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus incidunt cum, consequatur distinctio enim omnis quam. Magnam laudantium, similique voluptatum eligendi cumque eveniet dolorem, dolores dicta nemo excepturi aspernatur a?</p>
+</div>
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
     {{-- Search --}}
     <div>
-        <form class="p-4 bg-gray-50 border border-gray-200 rounded-lg flex flex-col space-y-8" role="form" action="{{ route('offers.index') }}" method="GET">
+        <form class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8" role="form" action="{{ route('offers.index') }}" method="GET">
             {{-- <h1 class="text-lg font-medium">Search offers</h1> --}}
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
@@ -73,7 +83,7 @@
     {{-- Results --}}
     <div class="w-full flex flex-col space-y-4">
         @foreach ($offers as $offer)
-        <a href="{{ route('offers.show', $offer) }}" class="p-4 border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
+        <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
             <div class="flex space-x-4 items-center">
                 <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>

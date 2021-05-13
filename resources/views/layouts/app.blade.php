@@ -20,7 +20,7 @@
         </div>
     </div>
     {{-- MAIN --}}
-    <div>
+    <div class="bg-gray-50 pb-8">
         <header class="sticky top-0 bg-white border-b border-gray-200">
             @include('partials.header')
         </header>
@@ -28,7 +28,7 @@
             @yield('content')
         </main>
     </div>
-    <footer class="border-t border-gray-200 mt-8">
+    <footer class="border-t border-gray-200">
         @include('partials.footer')
     </footer>
     {{-- SCRIPTS --}}

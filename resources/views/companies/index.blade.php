@@ -4,7 +4,7 @@
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
     {{-- Search --}}
     <div>
-        <form class="p-4 bg-gray-50 border border-gray-200 rounded-lg flex flex-col space-y-8" role="form" action="{{ route('companies.index') }}" method="GET">
+        <form class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8" role="form" action="{{ route('companies.index') }}" method="GET">
             {{-- <h1 class="text-lg font-medium">Search offers</h1> --}}
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
@@ -41,7 +41,7 @@
     {{-- Results --}}
     <div class="w-full flex flex-col space-y-4">
         @foreach ($companies as $company)
-        <a href="{{ route('companies.show', $company) }}" class="p-4 border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
+        <a href="{{ route('companies.show', $company) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
             <div class="flex space-x-4 items-center">
                 <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>
