@@ -2,8 +2,4 @@
 
 @section('content')
 
-{{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'layout/header.home'])
-{{-- Content --}}
-
 @endsection

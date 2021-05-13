@@ -1,5 +1,6 @@
-<div class="p-4 flex items-center justify-between sticky top-0 bg-white border-b border-gray-200">
-    <div class="flex items-center">
+<div class="p-4 max-w-screen-lg flex items-center justify-between m-auto">
+    {{-- Mobile burger --}}
+    <div class="flex items-center sm:hidden">
         <button class="w-8 h-8 rounded flex justify-center items-center hover:bg-gray-200 md:hidden" onclick="toggleMobileMenu()">
             <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 14.6667C18 15.403 17.403 16 16.6667 16H1.33333C0.596954 16 0 15.403 0 14.6667C0 13.9303 0.596954 13.3333 1.33333 13.3333H16.6667C17.403 13.3333 18 13.9303 18 14.6667ZM18 8C18 8.73638 17.403 9.33333 16.6667 9.33333H1.33333C0.596954 9.33333 0 8.73638 0 8C0 7.26362 0.596954 6.66667 1.33333 6.66667H16.6667C17.403 6.66667 18 7.26362 18 8ZM18 1.33333C18 2.06971 17.403 2.66667 16.6667 2.66667H1.33333C0.596954 2.66667 0 2.06971 0 1.33333C0 0.596954 0.596954 0 1.33333 0H16.6667C17.403 0 18 0.596954 18 1.33333Z" fill="#111827"/>
@@ -10,10 +11,22 @@
                 <path d="M18 14.6667C18 15.403 17.403 16 16.6667 16H1.33333C0.596954 16 0 15.403 0 14.6667C0 13.9303 0.596954 13.3333 1.33333 13.3333H16.6667C17.403 13.3333 18 13.9303 18 14.6667ZM18 8C18 8.73638 17.403 9.33333 16.6667 9.33333H1.33333C0.596954 9.33333 0 8.73638 0 8C0 7.26362 0.596954 6.66667 1.33333 6.66667H16.6667C17.403 6.66667 18 7.26362 18 8ZM18 1.33333C18 2.06971 17.403 2.66667 16.6667 2.66667H1.33333C0.596954 2.66667 0 2.06971 0 1.33333C0 0.596954 0.596954 0 1.33333 0H16.6667C17.403 0 18 0.596954 18 1.33333Z" fill="#111827"/>
             </svg>
         </button>
-        <p class="ml-4 text-lg font-semibold">{{ __($title) }}</p>
-        {{-- <p class="ml-4 text-xl font-semibold">{{ __('index.title') }}</p> --}}
     </div>
-    {{-- User avatar and details --}}
+    {{-- Desktop navigation --}}
+    <div class="hidden sm:flex space-x-8 items-center">
+        <a href="{{ route('index') }}" class="hidden sm:flex space-x-2 items-center">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 0C4.4087 0 2.88258 0.632141 1.75736 1.75736C0.632141 2.88258 0 4.4087 0 6L0 26C0 27.5913 0.632141 29.1174 1.75736 30.2426C2.88258 31.3679 4.4087 32 6 32H7V16C7.00038 14.0431 7.63853 12.1397 8.81778 10.5781C9.99703 9.01649 11.6531 7.88177 13.5352 7.34584C15.4172 6.80992 17.4226 6.902 19.2476 7.60812C21.0727 8.31425 22.6178 9.59596 23.649 11.2591C24.6802 12.9222 25.1412 14.8761 24.9623 16.8247C24.7834 18.7734 23.9742 20.6106 22.6574 22.0581C21.3405 23.5056 19.5878 24.4845 17.6647 24.8464C15.7416 25.2084 13.753 24.9337 12 24.064V32H26C27.5913 32 29.1174 31.3679 30.2426 30.2426C31.3679 29.1174 32 27.5913 32 26V6C32 4.4087 31.3679 2.88258 30.2426 1.75736C29.1174 0.632141 27.5913 0 26 0L6 0Z" fill="#111827"/>
+                <path d="M20 16C20 17.0609 19.5786 18.0783 18.8284 18.8284C18.0783 19.5786 17.0609 20 16 20C14.9391 20 13.9217 19.5786 13.1716 18.8284C12.4214 18.0783 12 17.0609 12 16C12 14.9391 12.4214 13.9217 13.1716 13.1716C13.9217 12.4214 14.9391 12 16 12C17.0609 12 18.0783 12.4214 18.8284 13.1716C19.5786 13.9217 20 14.9391 20 16Z" fill="#111827"/>
+            </svg>
+        </a>
+        <div class="hidden sm:flex space-x-4 items-center font-semibold text-sm text-gray-600">
+            <a href="{{ route('offers.index') }}" class="hover:text-blue-600 {{ request()->is('offers') ? 'text-blue-600' : ''}}">Offers</a>
+            <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies') ? 'text-blue-600' : ''}}">Companies</a>
+            <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students') ? 'text-blue-600' : ''}}">Students</a>
+        </div>
+    </div>
+    {{-- User --}}
     @if (Auth::user())
     <a href="{{ route('dashboard.index') }}" class="flex items-center space-x-3">
         <div class="rounded-full w-8 h-8 bg-gray-900"></div>

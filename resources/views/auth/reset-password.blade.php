@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'reset-password.title'])
-{{-- Content --}}
 <x-auth-card>
     <x-slot name="logo">
         <a href="/">

@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-{{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'layout/header.companies'])
-{{-- Content --}}
 <div class="p-4 mb-16 mt-8 max-w-screen-lg m-auto">
     <header>
         <div class="flex space-x-4 items-center">
@@ -17,5 +13,4 @@
         </div>
     </header>
 </div>
-
 @endsection

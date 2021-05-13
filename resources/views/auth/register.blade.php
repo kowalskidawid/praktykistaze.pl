@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-{{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'register.title'])
-{{-- Content --}}
 <x-auth-card>
     {{-- <x-slot name="logo">
         <a href="/">
@@ -48,5 +44,4 @@
         </div>
     </form>
 </x-auth-card>
-
 @endsection

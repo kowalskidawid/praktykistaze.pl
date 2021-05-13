@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-{{-- Header: Pass a lang file as $title --}}
-@include('partials.header', ['title' => 'layout/header.students'])
-{{-- Content --}}
 <div class="p-4 flex space-x-8 max-w-screen-xl m-auto">
     <div class="w-full">
         {{-- Image --}}
@@ -18,5 +14,4 @@
         <p>{{ $student->about }}</p>
     </div>
 </div>
-
 @endsection
