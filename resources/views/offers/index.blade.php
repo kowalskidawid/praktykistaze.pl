@@ -83,7 +83,7 @@
     {{-- Results --}}
     <div class="w-full flex flex-col space-y-4">
         @foreach ($offers as $offer)
-        <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
+        <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border-l-4 rounded-lg shadow flex items-center justify-between transition hover:shadow-lg {{ Auth::user() && $offer->isFavourite(Auth::user()) ? 'border-pink-400' : ''}}">
             <div class="flex space-x-4 items-center">
                 <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>

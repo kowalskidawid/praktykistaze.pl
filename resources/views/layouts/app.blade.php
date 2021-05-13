@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
-<body class="relative w-full h-screen flex flex-col justify-between overflow-y-auto">
+<body class="relative">
     {{-- MENU-MOBILE --}}
     <div class="fixed top-0 left-0 z-10 md:hidden">        
         <div id="menuMobile" style="display: none">
@@ -20,17 +20,19 @@
         </div>
     </div>
     {{-- MAIN --}}
-    <div class="bg-gray-50 pb-8">
+    <div style="min-height: 100vh; display: grid; grid-template-rows: min-content auto min-content;">
         <header class="sticky top-0 bg-white border-b border-gray-200">
             @include('partials.header')
         </header>
-        <main class="max-w-screen-lg m-auto p-4">
-            @yield('content')
+        <main class="bg-gray-50 pb-8">
+            <div class="p-4 m-auto max-w-screen-lg">
+                @yield('content')
+            </div>
         </main>
+        <footer class="border-t border-gray-200">
+            @include('partials.footer')
+        </footer>
     </div>
-    <footer class="border-t border-gray-200">
-        @include('partials.footer')
-    </footer>
     {{-- SCRIPTS --}}
     <script>
         function toggleMobileMenu() {
