@@ -7,6 +7,8 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\FavouritesController;
+use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,11 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
         Route::get('/', [OffersController::class, 'index'])->name('index');
         Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
+        // Favourites, student routes
+        Route::post('/id/{offer}/favorite', [FavouritesController::class, 'store'])->middleware(['auth', 'verified', 'roleStudent'])->name('favourite');
+        Route::post('/id/{offer}/unfavorite', [FavouritesController::class, 'destroy'])->middleware(['auth', 'verified', 'roleStudent'])->name('unfavourite');
+        // Applications, student and company routes
+        Route::post('/id/{offer}/apply', [ApplicationsController::class, 'store'])->middleware(['auth', 'verified', 'roleStudent'])->name('apply');
     });
     // Companies page
     Route::group(['prefix' => 'companies', 'as' => 'companies.'], function() {

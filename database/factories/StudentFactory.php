@@ -27,7 +27,7 @@ class StudentFactory extends Factory
             'city' => $this->faker->city,
             'location_id' =>  $this->faker->randomElement($array = array (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)),
             'image' => '/images/student.jpg',
-            'description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'description' => $this->faker->paragraph($nbSentences = 50, $variableNbSentences = true),
             'skills' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->tollFreePhoneNumber,

@@ -7,7 +7,7 @@
 {{-- Content --}}
 <div class="p-4">
     <form class="p-4 bg-gray-100 rounded-2xl" id="searchForm" role="form" action="{{ route('students.index') }}" method="GET">
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-4">
             <div class="flex flex-col space-y-2">
                 <label for="location" class="text-sm font-medium">{{ __('app/students.location') }}</label>
                 <select name="location" class="border border-gray-200 rounded-lg">

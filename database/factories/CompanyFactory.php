@@ -27,7 +27,7 @@ class CompanyFactory extends Factory
             'company_name' => $this->faker->company,
             'city' => $this->faker->city,
             'image' => '/images/company.jpg',
-            'description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'description' => $this->faker->paragraph($nbSentences = 50, $variableNbSentences = true),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->tollFreePhoneNumber,
             'website' => $this->faker->domainName
