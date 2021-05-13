@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
 
 @section('main')
-<p>Dashboard</p>
+<p>Profile</p>
 @endsection

@@ -29,7 +29,7 @@
         </div>
         <div class="hidden md:flex flex-col space-y-4">
             @foreach ($offers as $offer)
-            <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border-l-4 rounded-lg shadow flex items-center justify-between transition hover:shadow-lg {{ Auth::user() && $offer->isFavourite(Auth::user()) ? 'border-pink-400' : ''}}">
+            <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
                 <div class="flex space-x-4 items-center">
                     <div>
                         <p class="font-semibold">{{ $offer->position }}</p>
@@ -48,7 +48,7 @@
         <p>{{ $company->description }}</p>
         <div class="md:hidden pt-4 space-y-4">
             @foreach ($offers as $offer)
-            <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border-l-4 rounded-lg shadow flex items-center justify-between transition hover:shadow-lg {{ Auth::user() && $offer->isFavourite(Auth::user()) ? 'border-pink-400' : ''}}">
+            <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
                 <div class="flex space-x-4 items-center">
                     <div>
                         <p class="font-semibold">{{ $offer->position }}</p>

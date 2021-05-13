@@ -20,7 +20,7 @@
                 <path d="M20 16C20 17.0609 19.5786 18.0783 18.8284 18.8284C18.0783 19.5786 17.0609 20 16 20C14.9391 20 13.9217 19.5786 13.1716 18.8284C12.4214 18.0783 12 17.0609 12 16C12 14.9391 12.4214 13.9217 13.1716 13.1716C13.9217 12.4214 14.9391 12 16 12C17.0609 12 18.0783 12.4214 18.8284 13.1716C19.5786 13.9217 20 14.9391 20 16Z" fill="#111827"/>
             </svg>
         </a>
-        <div class="hidden sm:flex space-x-4 items-center font-semibold text-sm text-gray-600">
+        <div class="hidden sm:flex space-x-4 items-center font-medium text-gray-900">
             <a href="{{ route('offers.index') }}" class="hover:text-blue-600 {{ request()->is('offers') ? 'text-blue-600' : ''}}">Offers</a>
             <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies') ? 'text-blue-600' : ''}}">Companies</a>
             <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students') ? 'text-blue-600' : ''}}">Students</a>
@@ -28,24 +28,49 @@
     </div>
     {{-- User --}}
     @if (Auth::user())
-    <a href="{{ route('dashboard.index') }}" class="flex items-center space-x-3">
-        <div class="rounded-full w-8 h-8 bg-gray-900"></div>
-        <div class="hidden sm:flex flex-col">
-            @if (Auth::user()->roleCheck('student'))
-            <p class="text-xs font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
-            @elseif (Auth::user()->roleCheck('company'))
-            <p class="text-xs font-semibold">{{ Auth::user()->company->company_name }}</p>
-            @elseif (Auth::user()->roleCheck('admin'))
-            <p class="text-xs font-semibold">Admin</p>
-            @endif
-            <p class="text-xs">{{ Auth::user()->email }}</p>
+    <div class="flex items-center space-x-2">
+        <div class="flex items-center space-x-3">
+            <div class="rounded-full w-8 h-8 bg-gray-900"></div>
+            <div class="hidden sm:flex flex-col">
+                @if (Auth::user()->roleCheck('student'))
+                <p class="text-xs font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>
+                @elseif (Auth::user()->roleCheck('company'))
+                <p class="text-xs font-semibold">{{ Auth::user()->company->company_name }}</p>
+                @elseif (Auth::user()->roleCheck('admin'))
+                <p class="text-xs font-semibold">Admin</p>
+                @endif
+                <p class="text-xs">{{ Auth::user()->email }}</p>
+            </div>
         </div>
-    </a>
+        <x-dropdown align="right" width="48">
+            <x-slot name="trigger">
+                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                    <div>
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </button>
+            </x-slot>
+            <x-slot name="content">
+                <x-dropdown-link :href="route('dashboard.index')">
+                    Dashboard
+                </x-dropdown-link>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log out') }}
+                    </x-dropdown-link>
+                </form>
+            </x-slot>
+        </x-dropdown>
+    </div>
     @else
-    <div class="flex space-x-2 items-center font-semibold text-sm text-gray-700">
-        <a href="{{ route('login') }}" class="hover:text-blue-600">Login</a>
-        <span>|</span>
-        <a href="{{ route('register') }}" class="hover:text-blue-600">Register</a>
+    <div class="flex space-x-2 items-center">
+        <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900">Login</a>
+        <a href="{{ route('register') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">Register</a>
     </div>
     @endif
 </div>

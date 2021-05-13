@@ -16,7 +16,7 @@
     {{-- MENU-MOBILE --}}
     <div class="fixed top-0 left-0 z-10 md:hidden">        
         <div id="menuMobile" style="display: none">
-            @include('partials.menu', ['menu' => 'big'])
+            @include('partials.menu')
         </div>
     </div>
     {{-- MAIN --}}

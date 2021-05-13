@@ -55,6 +55,8 @@ Route::group(['middleware' => 'language'], function () {
     // Dashboard page
     Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
+        Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+        Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     });
     // Auth
     require __DIR__.'/auth.php';
