@@ -29,7 +29,7 @@
                 @yield('content')
             </div>
         </main>
-        <footer class="border-t border-gray-200">
+        <footer class="border-t border-gray-200 py-4">
             @include('partials.footer')
         </footer>
     </div>

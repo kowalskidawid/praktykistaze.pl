@@ -35,15 +35,18 @@
 </div>
 {{-- Main --}}
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
-    {{-- Content --}}
-    <div class="w-full flex flex-col space-y-4">
-        {{-- Image --}}
-        <div class="w-full h-48 bg-gray-400 rounded-lg"></div>
-        <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
-        <p>{{ $offer->description }}</p>
-    </div>
     {{-- Aside --}}
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col space-y-4 w-80">
+        @if (Auth::user() && Auth::user()->roleCheck('student'))
+            @if(!$offer->isApplied(Auth::user()))
+            <form action="{{ route('offers.apply', $offer) }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center">Apply</button>
+            </form>
+            @else
+            <div class="text-sm font-medium px-4 py-2 rounded border text-center bg-white border-gray-300 text-gray-900">Your application was send</div>
+            @endif
+        @endif
         <a href="{{ route('companies.show', $offer->company) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
             <div class="flex space-x-4 items-center">
                 <div class="w-12 h-12 bg-gray-400 rounded-lg flex-shrink-0"></div>
@@ -56,6 +59,13 @@
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
             Offer details
         </div>
+    </div>
+    {{-- Content --}}
+    <div class="w-full flex flex-col space-y-4">
+        {{-- Image --}}
+        <div class="w-full h-48 bg-gray-400 rounded-lg"></div>
+        <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
+        <p>{{ $offer->description }}</p>
     </div>
 </div>
 @endsection
