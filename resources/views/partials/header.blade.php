@@ -70,7 +70,7 @@
     @else
     <div class="flex space-x-2 items-center">
         <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900">Login</a>
-        <a href="{{ route('register') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">Register</a>
+        <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">Register</a>
     </div>
     @endif
 </div>

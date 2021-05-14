@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Offer;
+use App\Models\Student;
+use App\Models\Companies;
 
 class Category extends Model
 {
@@ -14,5 +16,15 @@ class Category extends Model
     public function offers()
     {
         return $this->hasMany(Offer::class);
+    }
+    // Create a connection to Student model
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+    // Create a connection to Company model
+    public function companies()
+    {
+        return $this->hasMany(Companies::class);
     }
 }

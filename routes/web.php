@@ -10,6 +10,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\FavouritesController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,5 +60,10 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     });
     // Auth
+    Route::group(['prefix' => 'register', 'as' => 'register.'], function() {
+        Route::get('/', [RegisterController::class, 'index'])->name('index');
+        Route::post('/student', [RegisterController::class, 'student'])->name('student');
+        Route::post('/company', [RegisterController::class, 'company'])->name('company');
+    });
     require __DIR__.'/auth.php';
 });
