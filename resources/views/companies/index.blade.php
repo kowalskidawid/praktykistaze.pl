@@ -60,12 +60,12 @@
                 <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>
                     <p class="font-semibold">{{ $company->company_name }}</p>
-                    <p class="text-sm">Company category</p>
+                    <p class="text-sm whitespace-nowrap">{{ $company->category->name }}</p>
                 </div>
             </div>
             <div>
-                <p class="font-semibold text-right">{{ $company->size->name }}</p>
-                <p class="text-right text-sm">{{ $company->city }}<span class="hidden md:inline">, {{ $company->location->name }}</span></p>
+                <p class="font-semibold text-right">{{ $company->size->name ?? '' }}</p>
+                <p class="text-right text-sm">{{ $company->city ?? '' }}<span class="hidden md:inline">, {{ $company->location->name ?? '' }}</span></p>
             </div>
         </a>
         @endforeach

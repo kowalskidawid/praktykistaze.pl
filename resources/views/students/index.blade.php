@@ -53,13 +53,13 @@
             <div class="flex space-x-4 items-center">
                 <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>
-                    <p class="font-semibold">{{ $student->first_name }}</p>
-                    <p class="text-sm">Student category</p>
+                    <p class="font-semibold">{{ $student->first_name }} {{ $student->last_name }}</p>
+                    <p class="text-sm whitespace-nowrap">{{ $student->category->name }}</p>
                 </div>
             </div>
             <div>
                 <p class="font-semibold text-right">Nazwa uczelni</p>
-                <p class="text-right text-sm">{{ $student->city }}<span class="hidden md:inline">, {{ $student->location->name }}</span></p>
+                <p class="text-right text-sm">{{ $student->city ?? '' }}<span class="hidden md:inline">, {{ $student->location->name ?? '' }}</span></p>
             </div>
         </a>
         @endforeach

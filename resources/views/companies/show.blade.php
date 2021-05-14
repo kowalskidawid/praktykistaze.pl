@@ -19,7 +19,7 @@
                 <div class="w-12 h-12 bg-gray-400 rounded-lg flex-shrink-0"></div>
                 <div>
                     <h1 class="whitespace-nowrap font-semibold">{{ $company->company_name }}</h1>
-                    <p class="text-sm">Company category</p>
+                    <p class="text-sm whitespace-nowrap">{{ $company->category->name }}</p>
                 </div>
             </div>
             <hr>

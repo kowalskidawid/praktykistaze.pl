@@ -30,7 +30,13 @@
     @if (Auth::user())
     <div class="flex items-center space-x-2">
         <div class="flex items-center space-x-3">
+            @if (Auth::user()->roleCheck('student'))
+            <a href="{{ route('students.show', Auth::user()->student) }}" class="rounded-full w-8 h-8 bg-gray-900"></a>
+            @elseif (Auth::user()->roleCheck('company'))
+            <a href="{{ route('companies.show', Auth::user()->company) }}" class="rounded-full w-8 h-8 bg-gray-900"></a>
+            @elseif (Auth::user()->roleCheck('admin'))
             <div class="rounded-full w-8 h-8 bg-gray-900"></div>
+            @endif
             <div class="hidden sm:flex flex-col">
                 @if (Auth::user()->roleCheck('student'))
                 <p class="text-xs font-semibold">{{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}</p>

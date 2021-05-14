@@ -19,7 +19,7 @@
                 <div class="w-12 h-12 bg-gray-400 rounded-lg flex-shrink-0"></div>
                 <div>
                     <h1 class="whitespace-nowrap font-semibold">{{ $student->first_name }} {{ $student->last_name }}</h1>
-                    <p class="text-sm">Student category</p>
+                    <p class="text-sm whitespace-nowrap">{{ $student->category->name }}</p>
                 </div>
             </div>
             <hr>
