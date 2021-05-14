@@ -10,7 +10,7 @@ use App\Models\Role;
 use App\Models\Student;
 use App\Models\Company;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 

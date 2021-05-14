@@ -34,7 +34,7 @@ class OfferFactory extends Factory
             'image' => '/images/offer.jpg',
             'salary' => $this->faker->randomElement($array = array(0,2000,3000)),
             'vacancies' => $this->faker->randomElement($array = array(1,2,3,4,5,6,7,8,9,10)),
-            'description' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true)
+            'description' => $this->faker->paragraph($nbSentences = 50, $variableNbSentences = true)
         ];
     }
 }

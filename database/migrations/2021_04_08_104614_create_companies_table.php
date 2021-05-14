@@ -16,6 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('size_id')->nullable();
             $table->string('company_name');
@@ -28,6 +29,7 @@ class CreateCompaniesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('size_id')->references('id')->on('sizes');
             $table->foreign('location_id')->references('id')->on('locations');
         });
