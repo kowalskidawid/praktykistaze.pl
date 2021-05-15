@@ -49,7 +49,7 @@
                 </div>
             </div>
             {{-- Submit --}}
-            <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer w-full" value="{{ __('app/offers.search') }}">
+            <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-blue-600 rounded-lg flex justify-center cursor-pointer w-full" value="{{ __('app/offers.search') }}">
         </form>
     </div>
     {{-- Results --}}

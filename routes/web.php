@@ -56,8 +56,14 @@ Route::group(['middleware' => 'language'], function () {
     // Dashboard page
     Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
+        // Settings
         Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+        Route::post('/settings/email', [DashboardController::class, 'email'])->name('email');
+        Route::post('/settings/password', [DashboardController::class, 'password'])->name('password');
+        // Profile
         Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+        Route::post('/profile/student', [DashboardController::class, 'student'])->name('student');
+        Route::post('/profile/company', [DashboardController::class, 'company'])->name('company');
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {
