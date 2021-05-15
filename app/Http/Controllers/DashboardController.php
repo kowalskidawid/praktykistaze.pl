@@ -67,4 +67,25 @@ class DashboardController extends Controller
         $user->company->update($request->all());
         return back();
     }
+    // Favourites page
+    public function favourites()
+    {
+        $student = auth()->user()->student;
+        $favourites = $student->favourites;
+        return view('dashboard.favourites', compact('favourites'));
+    }
+    // Applications page
+    public function applications()
+    {
+        $student = auth()->user()->student;
+        $applications = $student->applications;
+        return view('dashboard.applications', compact('applications'));
+    }
+    // Offers page
+    public function offers()
+    {
+        $company = auth()->user()->company;
+        $offers = $company->offers;
+        return view('dashboard.offers', compact('offers'));
+    }
 }

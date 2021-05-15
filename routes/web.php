@@ -64,6 +64,12 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
         Route::post('/profile/student', [DashboardController::class, 'student'])->name('student');
         Route::post('/profile/company', [DashboardController::class, 'company'])->name('company');
+        // Favourites
+        Route::get('/favourites', [DashboardController::class, 'favourites'])->middleware('roleStudent')->name('favourites');
+        // Applications
+        Route::get('/applications', [DashboardController::class, 'applications'])->middleware('roleStudent')->name('applications');
+        // Offers
+        Route::get('/offers', [DashboardController::class, 'offers'])->middleware('roleCompany')->name('offers');
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {

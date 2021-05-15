@@ -62,6 +62,9 @@
     </div>
     {{-- Content --}}
     <div class="w-full flex flex-col space-y-4">
+        @if(!$offer->isActive())
+        <p>Oferta archiwalna.</p>
+        @endif
         {{-- Image --}}
         <div class="w-full h-48 bg-gray-400 rounded-lg"></div>
         <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
