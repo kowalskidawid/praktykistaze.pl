@@ -7,6 +7,18 @@
     <div class="flex flex-col space-y-4">
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-4">
             <ul class="flex flex-col space-y-2">
+                <li class="w-full font-medium px-4 py-2 rounded whitespace-nowrap">
+                    @if(Auth::user()->roleCheck('student'))
+                    {{ Auth::user()->student->first_name }} {{ Auth::user()->student->last_name }}
+                    @elseif(Auth::user()->roleCheck('company'))
+                    {{ Auth::user()->company->company_name }}
+                    @elseif(Auth::user()->roleCheck('admin'))
+                    Admin
+                    @endif
+                </li>
+                <li>
+                    <hr>
+                </li>
                 <li class="flex">
                     <a href="{{ route('dashboard.index') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-600 hover:text-white {{ request()->is('dashboard') ? 'bg-blue-600 text-white' : ''}}">Dashboard</a>
                 </li>
@@ -31,6 +43,16 @@
                     <a href="{{ route('dashboard.offers') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-600 hover:text-white {{ request()->is('dashboard/offers') ? 'bg-blue-600 text-white' : ''}}">Offers</a>
                 </li>
                 @endif
+                {{-- Logout --}}
+                <li>
+                    <hr>
+                </li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}" class="flex">
+                        @csrf
+                        <button type="submit" class="w-full text-sm text-left font-medium px-4 py-2 rounded hover:bg-red-600 hover:text-white">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

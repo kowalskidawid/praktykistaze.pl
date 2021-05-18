@@ -23,7 +23,7 @@ class ApplicationFactory extends Factory
     {
         return [
             'student_id' => 1,
-            'offer_id' => 1,
+            'offer_id' => 1
         ];
     }
 }

@@ -14,12 +14,12 @@ class Favourite extends Model
     // Create a connection to Student model
     public function students()
     {
-        return $this->belongsToMany(Student::class, 'favourites');
+        return $this->belongsToMany(Student::class, 'favourites')->withTimestamps();
     }
 
     // Create a connection to Offer model
     public function offers()
     {
-        return $this->belongsToMany(Offer::class, 'favourites');
+        return $this->belongsToMany(Offer::class, 'favourites')->withTimestamps();
     }
 }

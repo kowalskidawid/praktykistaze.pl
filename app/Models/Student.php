@@ -41,12 +41,12 @@ class Student extends Model
     // Create a connection to Favourite model
     public function favourites()
     {
-        return $this->belongsToMany(Offer::class, 'favourites', 'student_id', 'offer_id');
+        return $this->belongsToMany(Offer::class, 'favourites', 'student_id', 'offer_id')->withTimestamps()->latest('pivot_created_at');;
     }
 
     // Create a connection to Application model
     public function applications()
     {
-        return $this->belongsToMany(Offer::class, 'applications', 'student_id', 'offer_id');
+        return $this->belongsToMany(Offer::class, 'applications', 'student_id', 'offer_id')->withTimestamps()->latest('pivot_created_at');
     }
 }

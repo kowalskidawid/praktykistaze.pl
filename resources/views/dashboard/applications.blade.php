@@ -7,19 +7,17 @@
     </div>
     <div class="py-4 flex flex-col space-y-4">
         @foreach ($applications as $application)
-        <a href="{{ route('offers.show', $application) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
+        <div class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
             <div class="flex space-x-4 items-center">
-                <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
                 <div>
-                    <p class="font-semibold">{{ $application->position }}</p>
-                    <p class="text-sm">{{ $application->category->name }}</p>
+                    <a href="{{ route('offers.show', $application) }}" class="font-semibold hover:underline">{{ $application->position }}</a>
+                    <p class="text-sm">{{ $application->pivot->created_at->diffForHumans() }}</p>
                 </div>
             </div>
             <div>
-                <p class="font-semibold text-right">{{ $application->salary }} PLN</p>
-                <p class="text-right text-sm">{{ $application->city }}<span class="hidden md:inline">, {{ $application->location->name }}</span></p>
+                <span class="text-xs uppercase font-semibold px-2 py-1 border border-blue-500 rounded text-blue-600">Applied</span>
             </div>
-        </a>
+        </div>
         @endforeach
     </div>
 </div>

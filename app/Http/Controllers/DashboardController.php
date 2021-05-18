@@ -85,7 +85,7 @@ class DashboardController extends Controller
     public function offers()
     {
         $company = auth()->user()->company;
-        $offers = $company->offers;
+        $offers = $company->offers->reverse();
         return view('dashboard.offers', compact('offers'));
     }
 }
