@@ -48,19 +48,50 @@ class OffersController extends Controller
     {
         return view('offers.show', compact('offer'));
     }
-    // Apply for the offer.
-    public function apply()
+    // Add new offer.
+    public function store(Request $request)
     {
-        // TODO
+        $request->validate([
+            'position' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'city' => 'required|string',
+            'location_id' => 'required|exists:locations,id',
+            'type_id' => 'required|exists:types,id',
+            'offer_duration' => 'required|integer',
+            'job_start' => 'date|nullable',
+            'job_duration' => 'integer|nullable',
+            'salary' => 'nullable|integer',
+            'vacancies' => 'integer|nullable',
+            'description' => 'required|string'
+        ]);
+        $data = $request->all();
+        $data['image'] = '/images/offer.jpg';
+        $company = auth()->user()->company;
+        $company->offers()->create($data);
+
+        return redirect()->route('dashboard.offers')->withSuccess('Offer Created');
     }
-    // Add offer to favourites.
-    public function favourite()
+    // Update an offer.
+    public function update(Request $request, Offer $offer)
     {
-        // TODO
-    }
-    // Remove offer from favourites.
-    public function unfavourite()
-    {
-        // TODO
+        $request->validate([
+            'position' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'city' => 'required|string',
+            'location_id' => 'required|exists:locations,id',
+            'type_id' => 'required|exists:types,id',
+            'offer_duration' => 'required|integer',
+            'job_start' => 'date|nullable',
+            'job_duration' => 'integer|nullable',
+            'salary' => 'nullable|integer',
+            'vacancies' => 'integer|nullable',
+            'description' => 'required|string'
+        ]);
+        $data = $request->all();
+        $company = auth()->user()->company;
+        $offerToUpdate = $company->offers()->findOrFail($offer->id);
+        $offerToUpdate->update($data);
+
+        return redirect()->route('dashboard.offers')->withSuccess('Offer Updated');
     }
 }

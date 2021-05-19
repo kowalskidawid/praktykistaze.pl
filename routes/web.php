@@ -31,11 +31,12 @@ Route::group(['middleware' => 'language'], function () {
     // Offers page
     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
         Route::get('/', [OffersController::class, 'index'])->name('index');
+        Route::post('/store', [OffersController::class, 'store'])->middleware(['auth', 'verified', 'roleCompany'])->name('store');
         Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
-        // Favourites, student routes
+        Route::post('/id/{offer}/update', [OffersController::class, 'update'])->middleware(['auth', 'verified', 'roleCompany'])->name('update');
+        // Favourites and applications, student routes
         Route::post('/id/{offer}/favorite', [FavouritesController::class, 'store'])->middleware(['auth', 'verified', 'roleStudent'])->name('favourite');
         Route::post('/id/{offer}/unfavorite', [FavouritesController::class, 'destroy'])->middleware(['auth', 'verified', 'roleStudent'])->name('unfavourite');
-        // Applications, student and company routes
         Route::post('/id/{offer}/apply', [ApplicationsController::class, 'store'])->middleware(['auth', 'verified', 'roleStudent'])->name('apply');
     });
     // Companies page
@@ -70,6 +71,10 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/applications', [DashboardController::class, 'applications'])->middleware('roleStudent')->name('applications');
         // Offers
         Route::get('/offers', [DashboardController::class, 'offers'])->middleware('roleCompany')->name('offers');
+        Route::get('/offers/create', [DashboardController::class, 'offersCreate'])->middleware('roleCompany')->name('offersCreate');
+        Route::get('/offers/edit/{offer}', [DashboardController::class, 'offersEdit'])->middleware('roleCompany')->name('offersEdit');
+        // Applicants
+        Route::get('/applicants', [DashboardController::class, 'applicants'])->middleware('roleCompany')->name('applicants');
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {

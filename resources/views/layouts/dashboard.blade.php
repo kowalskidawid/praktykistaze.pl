@@ -42,6 +42,9 @@
                 <li class="flex">
                     <a href="{{ route('dashboard.offers') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-600 hover:text-white {{ request()->is('dashboard/offers') ? 'bg-blue-600 text-white' : ''}}">Offers</a>
                 </li>
+                <li class="flex">
+                    <a href="{{ route('dashboard.applicants') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-600 hover:text-white {{ request()->is('dashboard/applicants') ? 'bg-blue-600 text-white' : ''}}">Applicants</a>
+                </li>
                 @endif
                 {{-- Logout --}}
                 <li>

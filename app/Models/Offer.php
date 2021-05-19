@@ -24,6 +24,9 @@ class Offer extends Model
      * @var array
      */
     protected $fillable = [
+        "category_id",
+        "location_id",
+        "type_id",
         "position",
         "city",
         "location",

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Offer;
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Type;
 
 class DashboardController extends Controller
 {
@@ -87,5 +91,30 @@ class DashboardController extends Controller
         $company = auth()->user()->company;
         $offers = $company->offers->reverse();
         return view('dashboard.offers', compact('offers'));
+    }
+    public function offersCreate()
+    {
+        // List of values for select inputs in form
+        $locations = Location::get();
+        $categories = Category::get();
+        $types = Type::get();
+
+        return view('dashboard.offersCreate', compact('locations', 'categories', 'types'));
+    }
+    public function offersEdit(Offer $offer)
+    {        
+        // List of values for select inputs in form
+        $locations = Location::get();
+        $categories = Category::get();
+        $types = Type::get();
+
+        return view('dashboard.offersEdit', compact('offer', 'locations', 'categories', 'types'));
+    }
+    // Applicants page
+    public function applicants()
+    {
+        $company = auth()->user()->company;
+        $offers = $company->offers->reverse();
+        return view('dashboard.applicants', compact('offers'));
     }
 }
