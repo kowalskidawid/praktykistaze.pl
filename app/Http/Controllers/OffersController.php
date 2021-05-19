@@ -94,4 +94,12 @@ class OffersController extends Controller
 
         return redirect()->route('dashboard.offers')->withSuccess('Offer Updated');
     }
+    // Delete the offer
+    public function destroy(Offer $offer)
+    {
+        // $offer->favourites()->delete();
+        // $offer->applications()->delete();
+        $offer->delete();
+        return redirect()->back()->withSuccess('Offer Deleted');
+    }
 }

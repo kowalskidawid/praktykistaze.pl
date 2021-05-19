@@ -19,8 +19,8 @@ class CreateApplicationsTable extends Migration
             $table->unsignedBigInteger('offer_id');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('offer_id')->references('id')->on('offers');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');;
         });
     }
 
