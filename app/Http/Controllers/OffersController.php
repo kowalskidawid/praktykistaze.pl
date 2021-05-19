@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\Location;
@@ -65,7 +66,7 @@ class OffersController extends Controller
             'description' => 'required|string'
         ]);
         $data = $request->all();
-        $data['image'] = '/images/offer.jpg';
+        $data['image'] = '';
         $company = auth()->user()->company;
         $company->offers()->create($data);
 
@@ -97,9 +98,27 @@ class OffersController extends Controller
     // Delete the offer
     public function destroy(Offer $offer)
     {
-        // $offer->favourites()->delete();
-        // $offer->applications()->delete();
         $offer->delete();
         return redirect()->back()->withSuccess('Offer Deleted');
+    }
+    // Upload image
+    public function image(Request $request, Offer $offer)
+    {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+        ]);
+        // Retrieve images
+        $oldImage = $offer->image;
+        $newImage = $request->image;
+        // Generate data
+        $name = md5(time());
+        $path = 'offers/' . $offer->id . '/' . $name . '.jpg';
+        // Upload file and update Offer
+        Storage::disk('public')->put($path, file_get_contents($newImage), 'public');
+        $offer->image = $path;
+        $offer->save();
+        Storage::disk('public')->delete($oldImage);
+
+        return redirect()->back()->withSuccess('Offer updated');
     }
 }

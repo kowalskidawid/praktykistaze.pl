@@ -2,6 +2,18 @@
 
 @section('main')
 <div class="flex flex-col space-y-8">
+    {{-- <img src="{{ $offer->image }}" alt="Offer image"> --}}
+    @if ($offer->image == '')
+    <img src="/images/offer.jpg" alt="">
+    @else
+    <img src="{{ asset('storage/'.$offer->image) }}" alt="">
+    @endif
+    <div>
+        <form method="POST" action="{{route('offers.image', $offer)}}" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .gif" id="image" required onchange="form.submit()">
+        </form>
+    </div>
     <form action="{{ route('offers.update', $offer) }}" method="POST" class="flex flex-col space-y-2">
         @csrf
         {{-- Title --}}

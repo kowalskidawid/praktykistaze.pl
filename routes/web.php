@@ -35,6 +35,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
         Route::post('/id/{offer}/edit', [OffersController::class, 'update'])->middleware(['auth', 'verified', 'roleCompany'])->name('update');
         Route::post('/id/{offer}/delete', [OffersController::class, 'destroy'])->middleware(['auth', 'verified', 'roleCompany'])->name('destroy');
+        Route::post('/id/{offer}/image', [OffersController::class, 'image'])->middleware(['auth', 'verified', 'roleCompany'])->name('image');
         // Favourites and applications, student routes
         Route::post('/id/{offer}/favorite', [FavouritesController::class, 'store'])->middleware(['auth', 'verified', 'roleStudent'])->name('favourite');
         Route::post('/id/{offer}/unfavorite', [FavouritesController::class, 'destroy'])->middleware(['auth', 'verified', 'roleStudent'])->name('unfavourite');
