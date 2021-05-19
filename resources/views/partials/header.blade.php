@@ -21,9 +21,9 @@
             </svg>
         </a>
         <div class="hidden sm:flex space-x-4 items-center font-medium text-gray-500">
-            <a href="{{ route('offers.index') }}" class="hover:text-black {{ request()->is('offers') ? 'text-black' : ''}}">Offers</a>
-            <a href="{{ route('companies.index') }}" class="hover:text-black {{ request()->is('companies') ? 'text-black' : ''}}">Companies</a>
-            <a href="{{ route('students.index') }}" class="hover:text-black {{ request()->is('students') ? 'text-black' : ''}}">Students</a>
+            <a href="{{ route('offers.index') }}" class="hover:text-black {{ request()->is('offers') ? 'text-black' : ''}}">{{ __('Offers')}}</a>
+            <a href="{{ route('companies.index') }}" class="hover:text-black {{ request()->is('companies') ? 'text-black' : ''}}">{{ __('Companies')}}</a>
+            <a href="{{ route('students.index') }}" class="hover:text-black {{ request()->is('students') ? 'text-black' : ''}}">{{ __('Students')}}</a>
         </div>
     </div>
     {{-- User --}}
@@ -43,7 +43,7 @@
                 @elseif (Auth::user()->roleCheck('company'))
                 <p class="text-xs font-semibold">{{ Auth::user()->company->company_name }}</p>
                 @elseif (Auth::user()->roleCheck('admin'))
-                <p class="text-xs font-semibold">Admin</p>
+                <p class="text-xs font-semibold">{{ __('Admin')}}</p>
                 @endif
                 <p class="text-xs">{{ Auth::user()->email }}</p>
             </div>
@@ -60,7 +60,7 @@
             </x-slot>
             <x-slot name="content">
                 <x-dropdown-link :href="route('dashboard.index')">
-                    Dashboard
+                {{ __('Dashboard')}}
                 </x-dropdown-link>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -75,8 +75,8 @@
     </div>
     @else
     <div class="flex space-x-2 items-center">
-        <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900">Login</a>
-        <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">Register</a>
+        <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900">{{ __('Login')}}</a>
+        <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">{{ __('Register')}}</a>
     </div>
     @endif
 </div>

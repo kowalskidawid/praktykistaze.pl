@@ -11,7 +11,7 @@
             <path opacity="0.4" d="M11.0448 8.77979C10.8165 8.73296 10.581 8.70685 10.3357 8.70685C8.07926 8.70685 6.30726 10.8421 6.91255 13.2195C7.31906 14.8216 8.79379 15.8852 10.4369 15.842C10.6016 15.8375 10.7637 15.8221 10.9204 15.7951C11.0341 15.7753 11.0914 15.6465 11.0269 15.5511C10.4001 14.6235 10.0429 13.5077 10.0429 12.31C10.0429 11.0591 10.4333 9.89468 11.1111 8.93919C11.1326 8.90947 11.1487 8.86354 11.1272 8.82932C11.1093 8.80141 11.0762 8.787 11.0448 8.77979" fill="#111827"/>
             <path d="M7.32156 17.5127C6.21752 17.7297 5.49225 18.1719 5.19139 18.8167C4.9362 19.3453 4.9362 19.9586 5.19139 20.4872C5.65163 21.485 7.13531 21.8065 7.71195 21.8885C7.83104 21.9065 7.92595 21.8038 7.91342 21.6831C7.61883 18.9166 9.9621 17.6045 10.5692 17.3028C10.5943 17.2884 10.5996 17.2677 10.5969 17.2542C10.5951 17.2452 10.5853 17.2317 10.5656 17.2299C9.25294 17.2047 7.84358 17.3848 7.32156 17.5127" fill="#111827"/>
         </svg>
-        <h1 class="text-2xl font-semibold">Companies</h1>
+        <h1 class="text-2xl font-semibold">{{ __('Companies')}}</h1>
     </div>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatem, impedit odit rerum, obcaecati velit nesciunt quia aut, aspernatur necessitatibus unde eaque provident at enim assumenda in esse expedita quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus incidunt cum, consequatur distinctio enim omnis quam. Magnam laudantium, similique voluptatum eligendi cumque eveniet dolorem, dolores dicta nemo excepturi aspernatur a?</p>
 </div>
@@ -19,7 +19,7 @@
     {{-- Search --}}
     <div>
         <form class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8" role="form" action="{{ route('companies.index') }}" method="GET">
-            {{-- <h1 class="text-lg font-medium">Search offers</h1> --}}
+            {{-- <h1 class="text-lg font-medium">{{ __('Search offers')}}</h1> --}}
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">

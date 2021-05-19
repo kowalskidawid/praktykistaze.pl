@@ -12,12 +12,12 @@ return [
     */
 
     // Page titles
-    'home' => 'Home',
-    'offers' => 'Offers',
-    'companies' => 'Companies',
-    'students' => 'Students',
-    'login' => 'Login',
-    'register' => 'Register',
+    'home' => 'Главная страница',
+    'offers' => 'Вакансии',
+    'companies' => 'Компании',
+    'students' => 'Cтуденты',
+    'login' => 'Вход',
+    'register' => 'Регистрация',
     'dashboard' => 'Dashboard',
 
 ];
