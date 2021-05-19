@@ -91,7 +91,8 @@
             <input name="vacancies" type="number" min="1" class="border border-gray-200 rounded-lg" placeholder="Vacancies" value="{{ $offer->vacancies }}">
             {{-- Decription --}}
             <label for="description" class="text-sm font-medium">Decription*</label>
-            <input name="description" type="text" class="border border-gray-200 rounded-lg" placeholder="Decription" value="{{ $offer->description }}">
+            {{-- <input name="description" type="text" class="border border-gray-200 rounded-lg" placeholder="Decription" value="{{ $offer->description }}"> --}}
+            <textarea class="ckeditor" name="description" id="" cols="30" rows="10">{{ $offer->description }}</textarea>
         </div>
         {{-- Submit --}}
         <div class="pt-2">

@@ -70,7 +70,8 @@
             <input name="vacancies" type="number" min="1" class="border border-gray-200 rounded-lg" placeholder="Vacancies" value="">
             {{-- Decription --}}
             <label for="description" class="text-sm font-medium">Decription*</label>
-            <input name="description" type="text" class="border border-gray-200 rounded-lg" placeholder="Decription" value="">
+            {{-- <input name="description" type="text" class="border border-gray-200 rounded-lg" placeholder="Decription" value=""> --}}
+            <textarea class="ckeditor" name="description" id="" cols="30" rows="10"></textarea>
         </div>
         {{-- Submit --}}
         <div class="pt-2">

@@ -68,7 +68,7 @@
         {{-- Image --}}
         <div class="w-full h-48 bg-gray-400 rounded-lg"></div>
         <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
-        <p>{{ $offer->description }}</p>
+        <p>{!! $offer->description !!}</p>
     </div>
 </div>
 @endsection
