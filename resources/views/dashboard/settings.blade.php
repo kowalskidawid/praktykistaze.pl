@@ -22,7 +22,7 @@
             </div>
         @endif
         {{-- Inputs --}}
-        <div class="py-2 flex flex-col space-y-2 sm:w-80">
+        <div class="py-2 flex flex-col space-y-2">
             <label for="email" class="text-sm font-medium">Email</label>
             <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="Email" value="{{ Auth::user()->email }}">
             <label for="password" class="text-sm font-medium">Confirm your password</label>
@@ -53,7 +53,7 @@
             </div>
         @endif
         {{-- Inputs --}}
-        <div class="py-2 flex flex-col space-y-2 sm:w-80">
+        <div class="py-2 flex flex-col space-y-2">
             <label for="password" class="text-sm font-medium">Your current password</label>
             <input name="password" type="password" class="border border-gray-200 rounded-lg" placeholder="Your current password" value="">
             <label for="passwordNew" class="text-sm font-medium">New password</label>
