@@ -18,6 +18,10 @@
             <div class="flex flex-col">
                 <span class="text-xs uppercase font-semibold px-2 py-1 text-blue-600">{{ $offer->applications->count() }} applicants</span>
                 <a href="{{ route('dashboard.offersEdit', $offer) }}">{{ __('Edit')}}</a>
+                <form action="{{route('offers.destroy', $offer)}}" method="post" onsubmit="return confirm('Are you sure?')">
+                    @csrf
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         </div>
         @endforeach

@@ -34,6 +34,7 @@
         </footer>
     </div>
     {{-- SCRIPTS --}}
+    <script src="//cdn.ckeditor.com/4.16.0/basic/ckeditor.js"></script>
     <script>
         function toggleMobileMenu() {
             const x = document.getElementById("menuMobile");

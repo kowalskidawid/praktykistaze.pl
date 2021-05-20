@@ -31,7 +31,7 @@ class OfferFactory extends Factory
             'job_duration' => $this->faker->randomElement($array = array(30,60,90,120)),
             'position' => $this->faker->jobTitle,
             'city' => $this->faker->city,
-            'image' => '/images/offer.jpg',
+            'image' => '',
             'salary' => $this->faker->randomElement($array = array(0,2000,3000)),
             'vacancies' => $this->faker->randomElement($array = array(1,2,3,4,5,6,7,8,9,10)),
             'description' => $this->faker->paragraph($nbSentences = 50, $variableNbSentences = true)

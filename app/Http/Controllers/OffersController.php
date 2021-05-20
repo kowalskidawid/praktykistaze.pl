@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Image;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\Location;
@@ -39,6 +41,7 @@ class OffersController extends Controller
                 ->when($salary, function ($query, $salary) {
                     return $query->where('salary', '>', 0);
                 })
+                ->orderBy('created_at', 'desc')
                 ->paginate($perPage);
                 
         return view('offers.index', compact('offers', 'locations', 'categories'));
@@ -52,6 +55,7 @@ class OffersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'position' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'city' => 'required|string',
@@ -65,9 +69,20 @@ class OffersController extends Controller
             'description' => 'required|string'
         ]);
         $data = $request->all();
-        $data['image'] = '/images/offer.jpg';
+        $data['image'] = '';
+        // Store data
         $company = auth()->user()->company;
-        $company->offers()->create($data);
+        $offer = $company->offers()->create($data);
+        // After Offer created - store image if exists
+        if ($request->image) {
+            $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(1024, 320)->encode('jpg');
+            $imageName = md5(time());
+            $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
+            $offer->update(['image' => $imagePath]);
+        }
 
         return redirect()->route('dashboard.offers')->withSuccess('Offer Created');
     }
@@ -75,6 +90,7 @@ class OffersController extends Controller
     public function update(Request $request, Offer $offer)
     {
         $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'position' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'city' => 'required|string',
@@ -87,11 +103,51 @@ class OffersController extends Controller
             'vacancies' => 'integer|nullable',
             'description' => 'required|string'
         ]);
-        $data = $request->all();
         $company = auth()->user()->company;
         $offerToUpdate = $company->offers()->findOrFail($offer->id);
-        $offerToUpdate->update($data);
+        if ($request->image) {
+            $data = $request->all();
+            $oldImage = $offer->image;
+            $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(1024, 320)->encode('jpg');
+            $imageName = md5(time());
+            $imagePath = 'offers/' . $offerToUpdate->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
+            Storage::disk('public')->delete($oldImage);
+            $data['image'] = $imagePath;
+            $offerToUpdate->update($data);
+        } else {
+            $data = $request->except('image');
+            $offerToUpdate->update($data);
+        }
 
         return redirect()->route('dashboard.offers')->withSuccess('Offer Updated');
+    }
+    // Delete the offer
+    public function destroy(Offer $offer)
+    {
+        $offer->delete();
+        return redirect()->back()->withSuccess('Offer Deleted');
+    }
+    // Upload image
+    public function image(Request $request, Offer $offer)
+    {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+        ]);
+        // Retrieve images
+        $oldImage = $offer->image;
+        $newImage = $request->image;
+        // Generate data
+        $name = md5(time());
+        $path = 'offers/' . $offer->id . '/' . $name . '.jpg';
+        // Upload file and update Offer
+        Storage::disk('public')->put($path, file_get_contents($newImage), 'public');
+        $offer->image = $path;
+        $offer->save();
+        Storage::disk('public')->delete($oldImage);
+
+        return redirect()->back()->withSuccess('Offer updated');
     }
 }

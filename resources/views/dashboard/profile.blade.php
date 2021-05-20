@@ -26,7 +26,7 @@
             </div>
         @endif
         {{-- Inputs --}}
-        <div class="py-2 flex flex-col space-y-2 sm:w-80">
+        <div class="py-2 flex flex-col space-y-2">
             <label for="first_name" class="text-sm font-medium">{{ __('First name')}}</label>
             <input name="first_name" type="text" class="border border-gray-200 rounded-lg" placeholder="First name" value="{{ Auth::user()->student->first_name }}">
             <label for="last_name" class="text-sm font-medium">{{ __('Second name')}}</label>
@@ -61,7 +61,7 @@
             </div>
         @endif
         {{-- Inputs --}}
-        <div class="py-2 flex flex-col space-y-2 sm:w-80">
+        <div class="py-2 flex flex-col space-y-2">
             <label for="company_name" class="text-sm font-medium">{{ __('Company name')}}</label>
             <input name="company_name" type="text" class="border border-gray-200 rounded-lg" placeholder="Company name" value="{{ Auth::user()->company->company_name }}">
         </div>
