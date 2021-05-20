@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
-    public function store($language)
+    public function store(Request $request)
     {
-        \Session::put('locale', $language);
+        $request->validate([
+            'language' => 'required|string'
+        ]);
+        \Session::put('locale', $request->language);
         return redirect()->back();
     }
 }

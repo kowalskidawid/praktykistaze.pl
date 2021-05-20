@@ -23,7 +23,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 // Route to change language
-Route::get('language/{locale}', [LanguageController::class, 'store'])->name('language');
+Route::post('language', [LanguageController::class, 'store'])->name('language');
 // Routes
 Route::group(['middleware' => 'language'], function () {
     // Home page
