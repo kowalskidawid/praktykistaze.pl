@@ -66,7 +66,9 @@
         <p>Oferta archiwalna.</p>
         @endif
         {{-- Image --}}
-        <div class="w-full h-48 bg-gray-400 rounded-lg"></div>
+        @if ($offer->image)
+        <img src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full">
+        @endif
         <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
         <p>{!! $offer->description !!}</p>
     </div>

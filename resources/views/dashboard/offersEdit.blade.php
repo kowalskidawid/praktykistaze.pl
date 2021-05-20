@@ -2,7 +2,7 @@
 
 @section('main')
 <div class="flex flex-col space-y-8">
-    <form action="{{ route('offers.update', $offer) }}" method="POST" class="flex flex-col space-y-2">
+    <form action="{{ route('offers.update', $offer) }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
         @csrf
         {{-- Title --}}
         <div class="pb-2 border-b border-gray-200">
@@ -23,6 +23,34 @@
         @endif
         {{-- Inputs --}}
         <div class="py-2 flex flex-col space-y-2">
+            {{-- Image --}}
+            <div class="flex flex-col space-y-2 w-full">
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium">Image</p>
+                        <p class="text-sm text-gray-500">Recomended size is 1024x320px.</p>
+                    </div>
+                    <label for="imgInput" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer">
+                        <input hidden id="imgInput" type="file" name="image" accept=".jpg, .jpeg, .png, .gif">
+                        Upload
+                    </label>
+                </div>
+                @if ($offer->image)
+                <img id="imgOld" src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full">
+                @endif
+                <img id="imgPreview" src="" alt="" class="w-full">
+                <script>
+                    const imgOld = document.getElementById('imgOld');
+                    const imgInput = document.getElementById('imgInput');
+                    const imgPreview = document.getElementById('imgPreview');
+                    imgInput.addEventListener('change', (event) => {
+                        if(imgOld) {
+                            imgOld.style.display = "none";
+                        }
+                        imgPreview.src = URL.createObjectURL(event.target.files[0]);
+                    });
+                </script>
+            </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Position --}}
                 <div class="flex flex-col space-y-2 w-full">
@@ -116,18 +144,5 @@
             <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer" value="Update">
         </div>
     </form>
-    <div>
-        @if ($offer->image == '')
-        <img src="/images/offer.jpg" alt="">
-        @else
-        <img src="{{ asset('storage/'.$offer->image) }}" alt="">
-        @endif
-        <div>
-            <form method="POST" action="{{route('offers.image', $offer)}}" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .gif" id="image" required onchange="form.submit()">
-            </form>
-        </div>
-    </div>
 </div>
 @endsection

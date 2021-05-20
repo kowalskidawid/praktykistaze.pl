@@ -54,7 +54,7 @@ class OffersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'image|mimes:jpeg,jpg,png,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'position' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'city' => 'required|string',
@@ -89,6 +89,7 @@ class OffersController extends Controller
     public function update(Request $request, Offer $offer)
     {
         $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'position' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'city' => 'required|string',
@@ -101,10 +102,24 @@ class OffersController extends Controller
             'vacancies' => 'integer|nullable',
             'description' => 'required|string'
         ]);
-        $data = $request->all();
         $company = auth()->user()->company;
         $offerToUpdate = $company->offers()->findOrFail($offer->id);
-        $offerToUpdate->update($data);
+        if ($request->image) {
+            $data = $request->all();
+            $oldImage = $offer->image;
+            $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(1024, 320)->encode('jpg');
+            $imageName = md5(time());
+            $imagePath = 'offers/' . $offerToUpdate->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
+            Storage::disk('public')->delete($oldImage);
+            $data['image'] = $imagePath;
+            $offerToUpdate->update($data);
+        } else {
+            $data = $request->except('image');
+            $offerToUpdate->update($data);
+        }
 
         return redirect()->route('dashboard.offers')->withSuccess('Offer Updated');
     }

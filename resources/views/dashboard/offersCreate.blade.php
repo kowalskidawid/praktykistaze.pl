@@ -25,14 +25,20 @@
         <div class="py-2 flex flex-col space-y-2">
             {{-- Image --}}
             <div class="flex flex-col space-y-2 w-full">
-                <label for="image" class="text-sm font-medium">Image</label>
-                <p class="text-sm text-gray-500">Recomended size is 1024x320px.</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium">Image</p>
+                        <p class="text-sm text-gray-500">Recomended size is 1024x320px.</p>
+                    </div>
+                    <label for="imgInput" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer">
+                        <input hidden id="imgInput" type="file" name="image" accept=".jpg, .jpeg, .png, .gif">
+                        Upload
+                    </label>
+                </div>
                 <img id="imgPreview" src="" alt="" class="w-full">
-                <input id="imgInput" type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .gif">
                 <script>
                     const imgInput = document.getElementById('imgInput');
                     const imgPreview = document.getElementById('imgPreview');
-                    imgPreview.src = '/images/offer.jpg';
                     imgInput.addEventListener('change', (event) => {
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
