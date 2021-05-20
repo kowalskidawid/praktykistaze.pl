@@ -53,6 +53,7 @@ class OffersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'image' => 'image|mimes:jpeg,jpg,png,gif|max:2048',
             'position' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'city' => 'required|string',
@@ -67,8 +68,27 @@ class OffersController extends Controller
         ]);
         $data = $request->all();
         $data['image'] = '';
+        // Image
+        // if ($request->image) {
+        //     $image = $request->image;
+        //     $imageName = md5(time());
+        //     $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
+        //     Storage::disk('public')->put($imagePath, file_get_contents($image), 'public');
+        //     $data['image'] = $path;
+        // } else {
+        //     $data['image'] = '';
+        // }
+        // Store data
         $company = auth()->user()->company;
-        $company->offers()->create($data);
+        $offer = $company->offers()->create($data);
+        // After Offer created - store image if exists
+        if ($request->image) {
+            $image = $request->image;
+            $imageName = md5(time());
+            $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, file_get_contents($image), 'public');
+            $offer->update(['image' => $imagePath]);
+        }
 
         return redirect()->route('dashboard.offers')->withSuccess('Offer Created');
     }

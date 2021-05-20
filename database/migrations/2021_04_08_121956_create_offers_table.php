@@ -25,8 +25,8 @@ class CreateOffersTable extends Migration
             $table->string('position');
             $table->string('city');
             $table->string('image');
-            $table->integer('salary');
-            $table->integer('vacancies');
+            $table->integer('salary')->nullable();
+            $table->integer('vacancies')->nullable();
             $table->longText('description');
             $table->timestamps();
 
