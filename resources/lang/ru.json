@@ -70,7 +70,7 @@
     "Change password": "Изменить пароль",
     "Applications": "Заявки",
     "Settings": "Настройки",
-    "Profile": "Страница",
+    "Profile": "Аккаунт",
     "Favourites": "Избранные",
     "Applicants": "Кандидаты",
     "Back to offers": "Вернуться к предложениям",
@@ -90,5 +90,15 @@
     "Post an offer": "Опубликовать предложение",
     "Browse candidates": "Просмотреть кандидатов",
     "Find a job": "Найти работу",
-    "Edit profile": "Редактировать профиль"
+    "Edit profile": "Редактировать профиль",
+    "Logout": "Выход",
+    "Update profile": "Обновить профиль",
+    "Update your profile": "Обновление вашего профиля",
+    "applicants": "Кандидаты",
+    "Are you sure?": "Вы уверенны?",
+    "Delete": "Удалить",
+    "Image": "Изображение",
+    "Recomended size is 1024x320px.": "Рекомендованный размер - 1024х320px",
+    "Upload": "Загрузить"
+
 }

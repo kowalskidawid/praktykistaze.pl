@@ -63,7 +63,7 @@
         {{-- Inputs --}}
         <div class="py-2 flex flex-col space-y-2">
             <label for="company_name" class="text-sm font-medium">{{ __('Company name')}}</label>
-            <input name="company_name" type="text" class="border border-gray-200 rounded-lg" placeholder="Company name" value="{{ Auth::user()->company->company_name }}">
+            <input name="company_name" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('Company name')}}" value="{{ Auth::user()->company->company_name }}">
         </div>
         {{-- Submit --}}
         <div class="pt-2">

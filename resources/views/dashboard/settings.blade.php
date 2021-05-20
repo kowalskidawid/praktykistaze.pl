@@ -26,7 +26,7 @@
             <label for="email" class="text-sm font-medium">{{ __('Email')}}</label>
             <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="Email" value="{{ Auth::user()->email }}">
             <label for="password" class="text-sm font-medium">{{ __('Confirm your password')}}</label>
-            <input name="password" type="password" class="border border-gray-200 rounded-lg" placeholder="Confirm your password" value="">
+            <input name="password" type="password" class="border border-gray-200 rounded-lg" placeholder="{{ __('Confirm your password')}}" value="">
         </div>
         {{-- Submit --}}
         <div class="pt-2">
@@ -55,11 +55,11 @@
         {{-- Inputs --}}
         <div class="py-2 flex flex-col space-y-2">
             <label for="password" class="text-sm font-medium">{{ __('Your current password')}}</label>
-            <input name="password" type="password" class="border border-gray-200 rounded-lg" placeholder="Your current password" value="">
+            <input name="password" type="password" class="border border-gray-200 rounded-lg" placeholder="{{ __('Your current password')}}" value="">
             <label for="passwordNew" class="text-sm font-medium">{{ __('New password')}}</label>
-            <input name="passwordNew" type="password" class="border border-gray-200 rounded-lg" placeholder="New password" value="">
+            <input name="passwordNew" type="password" class="border border-gray-200 rounded-lg" placeholder="{{ __('New password')}}" value="">
             <label for="passwordConfirmed" class="text-sm font-medium">{{ __('Confirm new password')}}</label>
-            <input name="passwordConfirmed" type="password" class="border border-gray-200 rounded-lg" placeholder="Confirm new password" value="">
+            <input name="passwordConfirmed" type="password" class="border border-gray-200 rounded-lg" placeholder="{{ __('Confirm new password')}}" value="">
         </div>
         {{-- Submit --}}
         <div class="pt-2">
