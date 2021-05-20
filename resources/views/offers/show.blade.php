@@ -70,7 +70,7 @@
         <img src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full">
         @endif
         <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
-        <p>{!! $offer->description !!}</p>
+        <div>{!! $offer->description !!}</div>
     </div>
 </div>
 @endsection

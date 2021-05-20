@@ -41,6 +41,7 @@ class OffersController extends Controller
                 ->when($salary, function ($query, $salary) {
                     return $query->where('salary', '>', 0);
                 })
+                ->orderBy('created_at', 'desc')
                 ->paginate($perPage);
                 
         return view('offers.index', compact('offers', 'locations', 'categories'));
