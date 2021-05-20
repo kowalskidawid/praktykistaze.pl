@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'home' => 'Home',
-    'offers' => 'Offers',
-    'companies' => 'Companies',
-    'students' => 'Students',
-    'login' => 'Login',
-    'register' => 'Register',
-    'logout' => 'Logout',
+    'home' => 'Главная страница',
+    'offers' => 'Вакансии',
+    'companies' => 'Компании',
+    'students' => 'Cтуденты',
+    'login' => 'Вход',
+    'register' => 'Регистрация',
+    'logout' => 'Выход',
 ];

@@ -10,7 +10,7 @@
     </x-slot>
     {{-- Select form base on role --}}
     <form method="GET" action="{{ route('register.index') }}">
-        <label for="role" class="block font-medium text-sm text-gray-700">Create an account for</label>
+        <label for="role" class="block font-medium text-sm text-gray-700">{{ __('Create an account for')}}</label>
         <select id="select" name="role" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             @if ( Request::get('role') === null )
             <option value="" selected></option>
@@ -18,14 +18,14 @@
             <option value=""></option>
             @endif
             @if ( Request::get('role') === 'student' )
-            <option value="student" selected>Student</option>
+            <option value="student" selected>{{ __('Student')}}</option>
             @else
-            <option value="student">Student</option>
+            <option value="student">{{ __('Student')}}</option>
             @endif
             @if ( Request::get('role') === 'company' )
-            <option value="company" selected>Company</option>
+            <option value="company" selected>{{ __('Company')}}</option>
             @else
-            <option value="company">Company</option>
+            <option value="company">{{ __('Company')}}</option>
             @endif
         </select>
     </form>
@@ -37,12 +37,12 @@
         @csrf
         <!-- First name -->
         <div class="mt-4">
-            <label for="first_name" class="block font-medium text-sm text-gray-700">First name</label>
+            <label for="first_name" class="block font-medium text-sm text-gray-700">{{ __('First name')}}</label>
             <input id="first_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="first_name" placeholder="First name" required />
         </div>
         <!-- Last name -->
         <div class="mt-4">
-            <label for="last_name" class="block font-medium text-sm text-gray-700">Last name</label>
+            <label for="last_name" class="block font-medium text-sm text-gray-700">{{ __('Last name')}}</label>
             <input id="last_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="last_name" placeholder="Last name" required />
         </div>
         <!-- Email Address -->
@@ -62,7 +62,7 @@
         </div>
         {{-- Category --}}
         <div class="mt-4">
-            <label for="category" class="block font-medium text-sm text-gray-700">Category</label>
+            <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Category')}}</label>
             <select name="category" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 <option value="" selected></option>
                 @foreach ($categories as $category)
@@ -101,12 +101,12 @@
         </div>
         <!-- Company name -->
         <div class="mt-4">
-            <label for="company_name" class="block font-medium text-sm text-gray-700">Company name</label>
+            <label for="company_name" class="block font-medium text-sm text-gray-700">{{ __('Company name')}}</label>
             <input id="company_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="company_name" placeholder="Company name" required />
         </div>
         {{-- Category --}}
         <div class="mt-4">
-            <label for="category" class="block font-medium text-sm text-gray-700">Category</label>
+            <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Category')}}</label>
             <select name="category" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 <option value="" selected></option>
                 @foreach ($categories as $category)

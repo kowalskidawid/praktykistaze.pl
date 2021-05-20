@@ -3,7 +3,7 @@
 @section('main')
 <div class="flex flex-col space-y-2">
     <div class="border-b border-gray-200 py-2">
-        <h1 class="text-xl font-semibold">Applicants of your offers</h1>
+        <h1 class="text-xl font-semibold">{{ __('Applicants of your offers')}}</h1>
     </div>
     <div class="py-2 flex flex-col space-y-2">
         @foreach ($offers as $offer)

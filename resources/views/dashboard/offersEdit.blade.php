@@ -6,7 +6,7 @@
         @csrf
         {{-- Title --}}
         <div class="pb-2 border-b border-gray-200">
-            <h1 class="text-xl font-semibold">Edit an offer</h1>
+            <h1 class="text-xl font-semibold">{{ __('Edit an offer')}}</h1>
         </div>
         {{-- Errors --}}
         @if ($errors->any())
@@ -141,7 +141,7 @@
         </div>
         {{-- Submit --}}
         <div class="pt-2">
-            <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer" value="Update">
+            <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer" value="{{ __('Update')}}">
         </div>
     </form>
 </div>

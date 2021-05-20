@@ -47,44 +47,44 @@
 
     <div class="hidden sm:flex space-x-24">
         <div class="flex flex-col">
-            <p class="text-sm font-semibold mb-2">Sitemap</p>
+            <p class="text-sm font-semibold mb-2">{{ __('Sitemap')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">Home</a>
+                    <a href="" class="text-xs">{{ __('Home')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Offers</a>
+                    <a href="" class="text-xs">{{ __('Offers')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Companies</a>
+                    <a href="" class="text-xs">{{ __('Companies')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Students</a>
+                    <a href="" class="text-xs">{{ __('Students')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Dashboard</a>
+                    <a href="" class="text-xs">{{ __('Dashboard')}}</a>
                 </li>
             </ul>
         </div>
         <div class="flex flex-col">
-            <p class="text-sm font-semibold mb-2">Company</p>
+            <p class="text-sm font-semibold mb-2">{{ __('Company')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">Post an offer</a>
+                    <a href="" class="text-xs">{{ __('Post an offer')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Browse candidates</a>
+                    <a href="" class="text-xs">{{ __('Browse candidates')}}</a>
                 </li>
             </ul>
         </div>
         <div class="flex flex-col">
-            <p class="text-sm font-semibold mb-2">Student</p>
+            <p class="text-sm font-semibold mb-2">{{ __('Student')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">Find a job</a>
+                    <a href="" class="text-xs">{{ __('Find a job')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">Edit profile</a>
+                    <a href="" class="text-xs">{{ __('Edit profile')}}</a>
                 </li>
             </ul>
         </div>
