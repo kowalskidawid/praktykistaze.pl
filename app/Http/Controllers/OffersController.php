@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Image;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\Location;
@@ -68,25 +69,17 @@ class OffersController extends Controller
         ]);
         $data = $request->all();
         $data['image'] = '';
-        // Image
-        // if ($request->image) {
-        //     $image = $request->image;
-        //     $imageName = md5(time());
-        //     $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
-        //     Storage::disk('public')->put($imagePath, file_get_contents($image), 'public');
-        //     $data['image'] = $path;
-        // } else {
-        //     $data['image'] = '';
-        // }
         // Store data
         $company = auth()->user()->company;
         $offer = $company->offers()->create($data);
         // After Offer created - store image if exists
         if ($request->image) {
             $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(1024, 320)->encode('jpg');
             $imageName = md5(time());
             $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
-            Storage::disk('public')->put($imagePath, file_get_contents($image), 'public');
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
             $offer->update(['image' => $imagePath]);
         }
 
