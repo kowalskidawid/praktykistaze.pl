@@ -62,6 +62,23 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
+                    <label for="type" class="text-sm font-medium">Rodzaj zatrudnienia</label>
+                    <select name="type" class="border border-gray-200 rounded-lg">
+                        @if ( Request::get('type') === null )
+                            <option value="" selected></option>
+                        @else
+                            <option value=""></option>
+                        @endif
+                        @foreach ($types as $type)
+                            @if ( (int)Request::get('type') === $type->id )
+                                <option value="{{ $type->id }}" selected>{{ $type->name }}  ({{ $type->offers()->count() }})</option>
+                            @else
+                                <option value="{{ $type->id }}">{{ $type->name }}  ({{ $type->offers()->count() }})</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex flex-col space-y-2">
                     <label for="salary" class="text-sm font-medium">{{ __('app/offers.salary') }}</label>
                     <select name="salary" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('salary') === null )

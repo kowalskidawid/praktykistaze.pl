@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        Type::create(['name' => 'praktyki']);
-        Type::create(['name' => 'staż']);
+        Type::create(['name' => 'Praktyki']);
+        Type::create(['name' => 'Staż']);
     }
 }

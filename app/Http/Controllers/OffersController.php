@@ -8,6 +8,7 @@ use Image;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Type;
 
 class OffersController extends Controller
 {
@@ -17,11 +18,13 @@ class OffersController extends Controller
         // List of values for select inputs in form
         $locations = Location::get();
         $categories = Category::get();
+        $types = Type::get();
         // Requested values for filtering the results
         $location = $request->location;
         $category = $request->category;
         $position = $request->position;
         $city = $request->city;
+        $type = $request->type;
         $salary = $request->salary;
         // Number of items per page, used in pagination
         $perPage = 12;
@@ -31,6 +34,9 @@ class OffersController extends Controller
                 })
                 ->when($category, function ($query, $category) {
                     return $query->where('category_id', '=', $category);
+                })
+                ->when($type, function ($query, $type) {
+                    return $query->where('type_id', '=', $type);
                 })
                 ->when($city, function ($query, $city) {
                     return $query->where('city', 'LIKE', '%'.$city.'%');
@@ -44,7 +50,7 @@ class OffersController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate($perPage);
                 
-        return view('offers.index', compact('offers', 'locations', 'categories'));
+        return view('offers.index', compact('offers', 'locations', 'categories', 'types'));
     }
     // Display the specified resource.
     public function show(Offer $offer)
