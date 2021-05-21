@@ -24,11 +24,11 @@
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">
-                    <label for="name" class="text-sm font-medium">Company name</label>
-                    <input name="name" type="text" class="border border-gray-200 rounded-lg" placeholder="Company name" value="{{ Request::get('name') }}">
+                    <label for="name" class="text-sm font-medium">{{ __('Company name')}}</label>
+                    <input name="name" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('Company name')}}" value="{{ Request::get('name') }}">
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="category" class="text-sm font-medium">Category</label>
+                    <label for="category" class="text-sm font-medium">{{ __('Category')}}</label>
                     <select name="category" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('category') === null )
                             <option value="" selected></option>
@@ -45,11 +45,11 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="city" class="text-sm font-medium">City</label>
-                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="City" value="{{ Request::get('city') }}">
+                    <label for="city" class="text-sm font-medium">{{ __('City')}}</label>
+                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('City')}}" value="{{ Request::get('city') }}">
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="location" class="text-sm font-medium">Location</label>
+                    <label for="location" class="text-sm font-medium">{{ __('Location')}}</label>
                     <select name="location" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('location') === null )
                             <option value="" selected></option>
@@ -66,7 +66,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="size" class="text-sm font-medium">Size</label>
+                    <label for="size" class="text-sm font-medium">{{ __('Size')}}</label>
                     <select name="size" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('size') === null )
                             <option value="" selected></option>

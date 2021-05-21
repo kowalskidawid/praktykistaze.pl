@@ -89,10 +89,10 @@
             <p class="text-sm font-semibold mb-2">{{ __('Student')}}</p>
             <ul>
                 <li>
-                    <a href="{{ route('dashboard.favourites') }}" class="text-xs hover:underline">Favourites</a>
+                    <a href="{{ route('dashboard.favourites') }}" class="text-xs hover:underline">{{ __('Favourites')}}</a>
                 </li>
                 <li>
-                    <a href="{{ route('dashboard.applications') }}" class="text-xs hover:underline">Applications</a>
+                    <a href="{{ route('dashboard.applications') }}" class="text-xs hover:underline">{{ __('Applications')}}</a>
                 </li>
             </ul>
         </div>

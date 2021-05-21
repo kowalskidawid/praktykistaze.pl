@@ -22,11 +22,11 @@
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">
-                    <label for="city" class="text-sm font-medium">City</label>
-                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="City" value="{{ Request::get('city') }}">
+                    <label for="city" class="text-sm font-medium">{{ __('City')}}</label>
+                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('City')}}" value="{{ Request::get('city') }}">
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="location" class="text-sm font-medium">Location</label>
+                    <label for="location" class="text-sm font-medium">{{ __('Location')}}</label>
                     <select name="location" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('location') === null )
                             <option value="" selected></option>
@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="category" class="text-sm font-medium">Category</label>
+                    <label for="category" class="text-sm font-medium">{{ __('Category')}}</label>
                     <select name="category" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('category') === null )
                             <option value="" selected></option>
@@ -60,8 +60,8 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="education" class="text-sm font-medium">Education</label>
-                    <input name="education" type="text" class="border border-gray-200 rounded-lg" placeholder="Education" value="{{ Request::get('education') }}">
+                    <label for="education" class="text-sm font-medium">{{ __('Education')}}</label>
+                    <input name="education" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('Education')}}" value="{{ Request::get('education') }}">
                 </div>
             </div>
             {{-- Submit --}}

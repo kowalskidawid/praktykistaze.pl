@@ -70,26 +70,26 @@
                 {{-- Student --}}
                 @if (Auth::user()->roleCheck('student'))
                 <x-dropdown-link :href="route('dashboard.favourites')">
-                Favourites
+                {{ __('Favourites')}}
                 </x-dropdown-link>
                 <x-dropdown-link :href="route('dashboard.applications')">
-                Applications
+                {{ __('Applications')}}
                 </x-dropdown-link>
                 @endif
                 @if (Auth::user()->roleCheck('company'))
                 {{-- Company --}}
                 <x-dropdown-link :href="route('dashboard.offersCreate')">
-                Add offer
+                {{ __('Add offer')}}
                 </x-dropdown-link>
                 <x-dropdown-link :href="route('dashboard.offers')">
-                Your offers
+                {{ __('Your offers')}}
                 </x-dropdown-link>
                 <x-dropdown-link :href="route('dashboard.applicants')">
-                Applicants
+                {{ __('Applicants')}}
                 </x-dropdown-link>
                 @endif
                 <x-dropdown-link :href="route('dashboard.settings')">
-                    Settings
+                {{ __('Settings')}}
                 </x-dropdown-link>
                 <hr>
                 <form method="POST" action="{{ route('logout') }}">

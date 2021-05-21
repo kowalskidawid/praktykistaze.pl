@@ -62,7 +62,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="type" class="text-sm font-medium">Rodzaj zatrudnienia</label>
+                    <label for="type" class="text-sm font-medium">{{ __('Rodzaj zatrudnienia')}}</label>
                     <select name="type" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('type') === null )
                             <option value="" selected></option>

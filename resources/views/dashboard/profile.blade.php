@@ -32,7 +32,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col">
                         <p class="text-sm font-medium">{{ __('Image')}}</p>
-                        <p class="text-sm text-gray-500">Recomended size is 64x64px</p>
+                        <p class="text-sm text-gray-500">{{ __('Recomended size is 64x64px')}}</p>
                     </div>
                 </div>
                 <img id="imgOld" src="{{ asset(Auth::user()->student->image) }}" alt="" class="w-16 h-16">
@@ -104,20 +104,20 @@
                 </div>
                 {{-- Education --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="education" class="text-sm font-medium">Edukacja</label>
-                    <input name="education" type="text" class="border border-gray-200 rounded-lg" placeholder="Edukacja" value="{{ Auth::user()->student->education }}">
+                    <label for="education" class="text-sm font-medium">{{ __('Edukacja')}}</label>
+                    <input name="education" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('Edukacja')}}" value="{{ Auth::user()->student->education }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Email --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="email" class="text-sm font-medium">Email kontaktowy</label>
-                    <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="Email kontaktowy" value="{{ Auth::user()->student->email }}">
+                    <label for="email" class="text-sm font-medium">{{ __('Email kontaktowy')}}</label>
+                    <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="{{ __('Email kontaktowy')}}" value="{{ Auth::user()->student->email }}">
                 </div>
                 {{-- Phone --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="phone" class="text-sm font-medium">Numer telefonu</label>
-                    <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="Numer telefonu" value="{{ Auth::user()->student->phone }}">
+                    <label for="phone" class="text-sm font-medium">{{ __('Numer telefonu')}}</label>
+                    <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="{{ __('Numer telefonu')}}" value="{{ Auth::user()->student->phone }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
@@ -128,8 +128,8 @@
                 </div>
                 {{-- Website --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="website" class="text-sm font-medium">Website</label>
-                    <input name="website" type="url" class="border border-gray-200 rounded-lg" placeholder="Website" value="{{ Auth::user()->student->website }}">
+                    <label for="website" class="text-sm font-medium">{{ __('Website')}}</label>
+                    <input name="website" type="url" class="border border-gray-200 rounded-lg" placeholder="{{ __('Website')}}" value="{{ Auth::user()->student->website }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
@@ -140,10 +140,10 @@
                 </div>
             </div>
             {{-- Decription --}}
-            <label for="description" class="text-sm font-medium">{{ __('Decription')}}</label>
+            <label for="description" class="text-sm font-medium">{{ __('Description')}}</label>
             <textarea class="ckeditor" name="description" id="" cols="30" rows="10">{{ Auth::user()->student->description }}</textarea>
             {{-- Skills --}}
-            <label for="skills" class="text-sm font-medium">Skills</label>
+            <label for="skills" class="text-sm font-medium">{{ __('Skills')}}</label>
             <textarea class="ckeditor" name="skills" id="" cols="30" rows="10">{{ Auth::user()->student->skills }}</textarea>
         </div>
         {{-- Submit --}}
@@ -181,7 +181,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col">
                         <p class="text-sm font-medium">{{ __('Image')}}</p>
-                        <p class="text-sm text-gray-500">Recomended size is 64x64px</p>
+                        <p class="text-sm text-gray-500">{{ __('Recomended size is 64x64px')}}</p>
                     </div>
                 </div>
                 <img id="imgOld" src="{{ asset(Auth::user()->company->image) }}" alt="" class="w-16 h-16">
@@ -208,12 +208,12 @@
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Company Name --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="company_name" class="text-sm font-medium">Company name</label>
-                    <input name="company_name" type="text" class="border border-gray-200 rounded-lg" placeholder="Company name" value="{{ Auth::user()->company->company_name }}">
+                    <label for="company_name" class="text-sm font-medium">{{ __('Company name')}}</label>
+                    <input name="company_name" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('Company name')}}" value="{{ Auth::user()->company->company_name }}">
                 </div>
                 {{-- Size --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="size_id" class="text-sm font-medium">Size</label>
+                    <label for="size_id" class="text-sm font-medium">{{ __('Size')}}</label>
                     <select name="size_id" class="border border-gray-200 rounded-lg">
                         @foreach ($sizes as $size)
                         @if ( Auth::user()->company->size_id === $size->id )
@@ -263,24 +263,24 @@
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Email --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="email" class="text-sm font-medium">Email kontaktowy</label>
-                    <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="Email kontaktowy" value="{{ Auth::user()->company->email }}">
+                    <label for="email" class="text-sm font-medium">{{ __('Email kontaktowy')}}</label>
+                    <input name="email" type="email" class="border border-gray-200 rounded-lg" placeholder="{{ __('Email kontaktowy')}}" value="{{ Auth::user()->company->email }}">
                 </div>
                 {{-- Phone --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="phone" class="text-sm font-medium">Numer telefonu</label>
-                    <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="Numer telefonu" value="{{ Auth::user()->company->phone }}">
+                    <label for="phone" class="text-sm font-medium">{{ __('Numer telefonu')}}</label>
+                    <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="{{ __('Numer telefonu')}}" value="{{ Auth::user()->company->phone }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Website --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="website" class="text-sm font-medium">Website</label>
-                    <input name="website" type="url" class="border border-gray-200 rounded-lg" placeholder="Website" value="{{ Auth::user()->company->website }}">
+                    <label for="website" class="text-sm font-medium">{{ __('Website')}}</label>
+                    <input name="website" type="url" class="border border-gray-200 rounded-lg" placeholder="{{ __('Website')}}" value="{{ Auth::user()->company->website }}">
                 </div>
             </div>
             {{-- Decription --}}
-            <label for="description" class="text-sm font-medium">{{ __('Decription')}}</label>
+            <label for="description" class="text-sm font-medium">{{ __('Description')}}</label>
             <textarea class="ckeditor" name="description" id="" cols="30" rows="10">{{ Auth::user()->company->description }}</textarea>
         </div>
         {{-- Submit --}}
