@@ -41,6 +41,7 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'category_id' => $request->category,
+            'image' => '/images/student.jpg'
         ]);
         
         event(new Registered($user));
@@ -65,6 +66,7 @@ class RegisterController extends Controller
         $user->company()->create([
             'company_name' => $request->company_name,
             'category_id' => $request->category,
+            'image' => '/images/company.jpg'
         ]);
 
         event(new Registered($user));
