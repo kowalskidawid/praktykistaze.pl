@@ -7,7 +7,7 @@
     {{-- Aside --}}
     <div class="flex flex-col space-y-4">
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-4">
-            <ul class="flex flex-col space-y-2">
+            <ul class="flex flex-col space-y-2 whitespace-nowrap">
                 <li class="flex">
                     <a href="{{ route('dashboard.index') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-600 hover:text-white {{ request()->is('dashboard') ? 'bg-blue-600 text-white' : ''}}">{{ __('Dashboard')}}</a>
                 </li>
