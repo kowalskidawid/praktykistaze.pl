@@ -217,9 +217,9 @@
                     <select name="size_id" class="border border-gray-200 rounded-lg">
                         @foreach ($sizes as $size)
                         @if ( Auth::user()->company->size_id === $size->id )
-                            <option value="{{ $size->id }}" selected>{{ $size->name }}</option>
+                            <option value="{{ $size->id }}" selected>{{ $size->name.' (+'.$size->size.')' }}</option>
                         @else
-                            <option value="{{ $size->id }}">{{ $size->name }}</option>
+                            <option value="{{ $size->id }}">{{ $size->name.' (+'.$size->size.')' }}</option>
                         @endif
                         @endforeach
                     </select>

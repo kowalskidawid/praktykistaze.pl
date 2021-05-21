@@ -2,7 +2,7 @@
 
     <form method="POST" action="{{ route('language') }}" class="flex">
         @csrf
-        <div class="border border-gray-200 rounded-lg px-4 flex items-center justify-center border-r-0 rounded-r-none">
+        <div class="border border-gray-200 bg-gray-50 rounded-lg px-4 flex items-center justify-center border-r-0 rounded-r-none">
             @if (app()->getLocale() == 'pl')
             <svg class="border border-gray-300" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect y="6" width="16" height="6" fill="#E31D1C"/>
