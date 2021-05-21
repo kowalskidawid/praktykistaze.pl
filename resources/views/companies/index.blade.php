@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="p-4 m-auto max-w-screen-lg h-full">
 <div class="mb-8 p-4">
     <div class="flex space-x-2 items-center mb-4">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +58,7 @@
         @foreach ($companies as $company)
         <a href="{{ route('companies.show', $company) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex items-center justify-between transition hover:shadow">
             <div class="flex space-x-4 items-center">
-                <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
+                <img src="{{ asset($company->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <p class="font-semibold">{{ $company->company_name }}</p>
                     <p class="text-sm whitespace-nowrap">{{ $company->category->name }}</p>
@@ -71,5 +72,6 @@
         @endforeach
         {{ $companies->links() }}
     </div>
+</div>
 </div>
 @endsection

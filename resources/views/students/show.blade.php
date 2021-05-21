@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- Breadcrumbs --}}
+<div class="p-4 m-auto max-w-screen-lg h-full">
 <div class="mb-4 flex justify-between items-center">
     <a href="{{ route('students.index') }}" class="flex space-x-2 items-center">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,5 +34,6 @@
         <h1 class="text-2xl font-semibold">{{ __('About student')}}</h1>
         <p>{{ $student->description }}</p>
     </div>
+</div>
 </div>
 @endsection

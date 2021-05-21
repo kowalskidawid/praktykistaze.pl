@@ -2,6 +2,7 @@
 
 @section('content')
 {{-- Main --}}
+<div class="p-4 m-auto max-w-screen-lg h-full">
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
     {{-- Aside --}}
     <div class="flex flex-col space-y-4">
@@ -51,5 +52,6 @@
     <div class="w-full flex flex-col space-y-4">
         @yield('main')
     </div>
+</div>
 </div>
 @endsection

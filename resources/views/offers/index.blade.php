@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="p-4 m-auto max-w-screen-lg h-full">
 <div class="mb-8 p-4">
     <div class="flex space-x-2 items-center mb-4">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +86,7 @@
         @foreach ($offers as $offer)
         <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
             <div class="flex space-x-4 items-center">
-                <div class="w-16 h-16 rounded-xl bg-gray-200 flex-shrink-0"></div>
+                <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <p class="font-semibold">{{ $offer->position }}</p>
                     <p class="text-sm">{{ $offer->category->name }}</p>
@@ -99,5 +100,6 @@
         @endforeach
         {{ $offers->links() }}
     </div>
+</div>
 </div>
 @endsection

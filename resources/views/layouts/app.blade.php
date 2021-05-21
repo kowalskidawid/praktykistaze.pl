@@ -25,9 +25,9 @@
             @include('partials.header')
         </header>
         <main class="bg-gray-50 pb-8">
-            <div class="p-4 m-auto max-w-screen-lg h-full">
+            {{-- <div class="p-4 m-auto max-w-screen-lg h-full"> --}}
                 @yield('content')
-            </div>
+            {{-- </div> --}}
         </main>
         <footer class="border-t border-gray-200 py-4">
             @include('partials.footer')
