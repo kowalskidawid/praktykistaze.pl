@@ -1,6 +1,6 @@
 <div class="p-4 flex justify-between items-start max-w-screen-lg m-auto">
 
-    <form method="POST" action="{{ route('language') }}" class="flex">
+    <form method="POST" action="{{ route('language') }}" class="flex w-full">
         @csrf
         <div class="border border-gray-200 bg-gray-50 rounded-lg px-4 flex items-center justify-center border-r-0 rounded-r-none">
             @if (app()->getLocale() == 'pl')
@@ -29,7 +29,7 @@
             </svg>
             @endif
         </div>
-        <select name="language" id="" class="border border-gray-200 rounded-lg rounded-l-none" onchange="this.form.submit()">
+        <select name="language" id="" class="border border-gray-200 rounded-lg rounded-l-none w-full sm:w-auto" onchange="this.form.submit()">
             @if (app()->getLocale() == 'pl')
             <option value="pl" selected>Język polski</option>
             @else
@@ -53,7 +53,7 @@
         </select>
     </form>
 
-    <div class="hidden sm:flex space-x-24">
+    <div class="hidden md:flex space-x-24 whitespace-nowrap">
         <div class="flex flex-col">
             <p class="text-sm font-semibold mb-2">{{ __('Sitemap')}}</p>
             <ul>
