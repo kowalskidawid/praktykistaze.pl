@@ -1,7 +1,6 @@
 @extends('layouts.fullscreen')
 
 @section('content')
-
 <div class="p-4 sm:p-8 sm:bg-white sm:border sm:border-gray-100 sm:rounded-2xl sm:shadow-lg flex flex-col space-y-8 w-full sm:max-w-md">
     {{-- Header --}}
     <div class="flex items-center space-x-4">
