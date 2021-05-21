@@ -21,6 +21,7 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->string('city')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
+            $table->string('education')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->text('skills')->nullable();

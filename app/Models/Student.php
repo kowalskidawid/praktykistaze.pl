@@ -17,7 +17,18 @@ class Student extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'category_id'
+        'category_id',
+        'location_id',
+        'city',
+        'education',
+        'phone',
+        'email',
+        'website',
+        'linkedin',
+        'github',
+        'description',
+        'skills',
+        'image'
     ];
 
     // Create a connection to User model

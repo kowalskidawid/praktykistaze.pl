@@ -121,7 +121,7 @@ class OffersController extends Controller
             $imagePath = 'offers/' . $offerToUpdate->id . '/' . $imageName . '.jpg';
             Storage::disk('public')->put($imagePath, $img->encoded, 'public');
             Storage::disk('public')->delete($oldImage);
-            $data['image'] = $imagePath;
+            $data['image'] = '/storage/'.$imagePath;
             $offerToUpdate->update($data);
         } else {
             $data = $request->except('image');

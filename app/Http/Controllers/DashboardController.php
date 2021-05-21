@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Image;
 use App\Models\User;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Type;
+use App\Models\Size;
 
 class DashboardController extends Controller
 {
@@ -50,25 +53,81 @@ class DashboardController extends Controller
     // Profile page
     public function profile()
     {
-        return view('dashboard.profile');
+        $locations = Location::get();
+        $categories = Category::get();
+        $sizes = Size::get();
+
+        return view('dashboard.profile', compact('locations', 'categories', 'sizes'));
     }
     public function student(Request $request)
     {
         $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'city' => 'required|string',
+            'location_id' => 'required|exists:locations,id',
+            'email' => 'nullable',
+            'phone' => 'nullable',
+            'linkedin' => 'nullable',
+            'website' => 'nullable',
+            'github' => 'nullable',
+            'description' => 'nullable',
+            'skills' => 'nullable',
+            'category_id' => 'required|exists:categories,id',
         ]);
         $user = auth()->user();
-        $user->student->update($request->all());
+        $student = $user->student;
+        if ($request->image) {
+            $data = $request->all();
+            $oldImage = $student->image;
+            $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(64, 64)->encode('jpg');
+            $imageName = md5(time());
+            $imagePath = 'students/' . $student->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
+            Storage::disk('public')->delete($oldImage);
+            $data['image'] = '/storage/'.$imagePath;
+            $student->update($data);
+        } else {
+            $data = $request->except('image');
+            $student->update($data);
+        }
         return back();
     }
     public function company(Request $request)
     {
         $request->validate([
-            'company_name' => 'required|string'
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'company_name' => 'required|string',
+            'size_id' => 'required|exists:sizes,id',
+            'category_id' => 'required|exists:categories,id',
+            'city' => 'required|string',
+            'location_id' => 'required|exists:locations,id',
+            'email' => 'nullable',
+            'phone' => 'nullable',
+            'website' => 'nullable',
+            'description' => 'nullable',
         ]);
         $user = auth()->user();
-        $user->company->update($request->all());
+        $company = $user->company;
+        if ($request->image) {
+            $data = $request->all();
+            $oldImage = $company->image;
+            $image = $request->image;
+            $img = Image::make($image);
+            $img->fit(64, 64)->encode('jpg');
+            $imageName = md5(time());
+            $imagePath = 'companies/' . $company->id . '/' . $imageName . '.jpg';
+            Storage::disk('public')->put($imagePath, $img->encoded, 'public');
+            Storage::disk('public')->delete($oldImage);
+            $data['image'] = '/storage/'.$imagePath;
+            $company->update($data);
+        } else {
+            $data = $request->except('image');
+            $company->update($data);
+        }
         return back();
     }
     // Favourites page

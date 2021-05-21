@@ -15,8 +15,16 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
+        'image',
         'company_name',
-        'category_id'
+        'size_id',
+        'category_id',
+        'city',
+        'location_id',
+        'email',
+        'phone',
+        'website',
+        'description',
     ];
 
     // Create a connection to User model
