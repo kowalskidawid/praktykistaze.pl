@@ -21,9 +21,9 @@
             </svg>
         </a>
         <div class="hidden sm:flex space-x-4 items-center font-semibold">
-            <a href="{{ route('offers.index') }}" class="{{ request()->is('offers') ? 'text-blue-600' : ''}}">{{ __('Offers')}}</a>
-            <a href="{{ route('companies.index') }}" class="{{ request()->is('companies') ? 'text-blue-600' : ''}}">{{ __('Companies')}}</a>
-            <a href="{{ route('students.index') }}" class="{{ request()->is('students') ? 'text-blue-600' : ''}}">{{ __('Students')}}</a>
+            <a href="{{ route('offers.index') }}" class="hover:text-blue-600 {{ request()->is('offers') ? 'text-blue-600' : ''}}">{{ __('Offers')}}</a>
+            <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies') ? 'text-blue-600' : ''}}">{{ __('Companies')}}</a>
+            <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students') ? 'text-blue-600' : ''}}">{{ __('Students')}}</a>
         </div>
     </div>
     {{-- User --}}
@@ -66,6 +66,32 @@
                 <x-dropdown-link :href="route('dashboard.index')">
                 {{ __('Dashboard')}}
                 </x-dropdown-link>
+                <hr>
+                {{-- Student --}}
+                @if (Auth::user()->roleCheck('student'))
+                <x-dropdown-link :href="route('dashboard.favourites')">
+                Favourites
+                </x-dropdown-link>
+                <x-dropdown-link :href="route('dashboard.applications')">
+                Applications
+                </x-dropdown-link>
+                @endif
+                @if (Auth::user()->roleCheck('company'))
+                {{-- Company --}}
+                <x-dropdown-link :href="route('dashboard.offersCreate')">
+                Add offer
+                </x-dropdown-link>
+                <x-dropdown-link :href="route('dashboard.offers')">
+                Your offers
+                </x-dropdown-link>
+                <x-dropdown-link :href="route('dashboard.applicants')">
+                Applicants
+                </x-dropdown-link>
+                @endif
+                <x-dropdown-link :href="route('dashboard.settings')">
+                    Settings
+                </x-dropdown-link>
+                <hr>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-dropdown-link :href="route('logout')"
@@ -79,8 +105,8 @@
     </div>
     @else
     <div class="flex space-x-2 items-center">
-        <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900">{{ __('Login')}}</a>
-        <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white">{{ __('Register')}}</a>
+        <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900 hover:bg-gray-50 transition">{{ __('Login')}}</a>
+        <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register')}}</a>
     </div>
     @endif
 </div>

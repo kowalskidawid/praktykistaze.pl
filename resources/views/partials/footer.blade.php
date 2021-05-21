@@ -58,19 +58,19 @@
             <p class="text-sm font-semibold mb-2">{{ __('Sitemap')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">{{ __('Home')}}</a>
+                    <a href="{{ route('index') }}" class="text-xs hover:underline">{{ __('Home')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Offers')}}</a>
+                    <a href="{{ route('offers.index') }}" class="text-xs hover:underline">{{ __('Offers')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Companies')}}</a>
+                    <a href="{{ route('companies.index') }}" class="text-xs hover:underline">{{ __('Companies')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Students')}}</a>
+                    <a href="{{ route('students.index') }}" class="text-xs hover:underline">{{ __('Students')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Dashboard')}}</a>
+                    <a href="{{ route('dashboard.index') }}" class="text-xs hover:underline">{{ __('Dashboard')}}</a>
                 </li>
             </ul>
         </div>
@@ -78,10 +78,10 @@
             <p class="text-sm font-semibold mb-2">{{ __('Company')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">{{ __('Post an offer')}}</a>
+                    <a href="{{ route('dashboard.offersCreate') }}" class="text-xs hover:underline">{{ __('Post an offer')}}</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Browse candidates')}}</a>
+                    <a href="{{ route('dashboard.applicants') }}" class="text-xs hover:underline">{{ __('Browse candidates')}}</a>
                 </li>
             </ul>
         </div>
@@ -89,10 +89,10 @@
             <p class="text-sm font-semibold mb-2">{{ __('Student')}}</p>
             <ul>
                 <li>
-                    <a href="" class="text-xs">{{ __('Find a job')}}</a>
+                    <a href="{{ route('dashboard.favourites') }}" class="text-xs hover:underline">Favourites</a>
                 </li>
                 <li>
-                    <a href="" class="text-xs">{{ __('Edit profile')}}</a>
+                    <a href="{{ route('dashboard.applications') }}" class="text-xs hover:underline">Applications</a>
                 </li>
             </ul>
         </div>
