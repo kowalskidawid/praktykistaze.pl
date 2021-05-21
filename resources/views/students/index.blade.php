@@ -22,11 +22,11 @@
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">
-                    <label for="city" class="text-sm font-medium">{{ __('app/students.city') }}</label>
-                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/students.city') }}" value="{{ Request::get('city') }}">
+                    <label for="city" class="text-sm font-medium">City</label>
+                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="City" value="{{ Request::get('city') }}">
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="location" class="text-sm font-medium">{{ __('app/students.location') }}</label>
+                    <label for="location" class="text-sm font-medium">Location</label>
                     <select name="location" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('location') === null )
                             <option value="" selected></option>
@@ -41,6 +41,27 @@
                             @endif
                         @endforeach
                     </select>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="category" class="text-sm font-medium">Category</label>
+                    <select name="category" class="border border-gray-200 rounded-lg">
+                        @if ( Request::get('category') === null )
+                            <option value="" selected></option>
+                        @else
+                            <option value=""></option>
+                        @endif
+                        @foreach ($categories as $category)
+                            @if ( (int)Request::get('category') === $category->id )
+                                <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                            @else
+                                <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="education" class="text-sm font-medium">Education</label>
+                    <input name="education" type="text" class="border border-gray-200 rounded-lg" placeholder="Education" value="{{ Request::get('education') }}">
                 </div>
             </div>
             {{-- Submit --}}
@@ -59,7 +80,7 @@
                 </div>
             </div>
             <div>
-                <p class="font-semibold text-right">{{ __('Nazwa uczelni')}}</p>
+                <p class="font-semibold text-right">{{ $student->education ?? '' }}</p>
                 <p class="text-right text-sm">{{ $student->city ?? '' }}<span class="hidden md:inline">, {{ $student->location->name ?? '' }}</span></p>
             </div>
         </a>

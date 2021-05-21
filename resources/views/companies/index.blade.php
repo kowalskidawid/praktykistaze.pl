@@ -24,15 +24,32 @@
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">
-                    <label for="name" class="text-sm font-medium">{{ __('app/companies.name') }}</label>
-                    <input name="name" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/companies.name') }}" value="{{ Request::get('position') }}">
+                    <label for="name" class="text-sm font-medium">Company name</label>
+                    <input name="name" type="text" class="border border-gray-200 rounded-lg" placeholder="Company name" value="{{ Request::get('name') }}">
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="city" class="text-sm font-medium">{{ __('app/companies.city') }}</label>
-                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/companies.city') }}" value="{{ Request::get('city') }}">
+                    <label for="category" class="text-sm font-medium">Category</label>
+                    <select name="category" class="border border-gray-200 rounded-lg">
+                        @if ( Request::get('category') === null )
+                            <option value="" selected></option>
+                        @else
+                            <option value=""></option>
+                        @endif
+                        @foreach ($categories as $category)
+                            @if ( (int)Request::get('category') === $category->id )
+                                <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                            @else
+                                <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <label for="location" class="text-sm font-medium">{{ __('app/companies.location') }}</label>
+                    <label for="city" class="text-sm font-medium">City</label>
+                    <input name="city" type="text" class="border border-gray-200 rounded-lg" placeholder="City" value="{{ Request::get('city') }}">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="location" class="text-sm font-medium">Location</label>
                     <select name="location" class="border border-gray-200 rounded-lg">
                         @if ( Request::get('location') === null )
                             <option value="" selected></option>
@@ -44,6 +61,23 @@
                                 <option value="{{ $location->id }}" selected>{{ $location->name }}  ({{ $location->companies()->count() }})</option>
                             @else
                                 <option value="{{ $location->id }}">{{ $location->name }}  ({{ $location->companies()->count() }})</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="size" class="text-sm font-medium">Size</label>
+                    <select name="size" class="border border-gray-200 rounded-lg">
+                        @if ( Request::get('size') === null )
+                            <option value="" selected></option>
+                        @else
+                            <option value=""></option>
+                        @endif
+                        @foreach ($sizes as $size)
+                            @if ( (int)Request::get('size') === $size->id )
+                                <option value="{{ $size->id }}" selected>{{ $size->name }}</option>
+                            @else
+                                <option value="{{ $size->id }}">{{ $size->name }}</option>
                             @endif
                         @endforeach
                     </select>
