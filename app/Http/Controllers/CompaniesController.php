@@ -49,7 +49,8 @@ class CompaniesController extends Controller
     // Display the specified resource.
     public function show(Company $company)
     {
-        $offers = $company->offers()->latest()->take(3)->get();
+        // $offers = $company->offers()->latest()->take(3)->get();
+        $offers = $company->offers;
 
         return view('companies.show', compact('company', 'offers'));
     }

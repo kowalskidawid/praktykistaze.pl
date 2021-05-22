@@ -20,6 +20,10 @@
             {{-- Inputs --}}
             <div class="flex flex-col space-y-2">
                 <div class="flex flex-col space-y-2">
+                    <label for="company" class="text-sm font-medium">Nazwa firmy</label>
+                    <input name="company" type="text" class="border border-gray-200 rounded-lg" placeholder="Nazwa firmy" value="{{ Request::get('company') }}">
+                </div>
+                <div class="flex flex-col space-y-2">
                     <label for="position" class="text-sm font-medium">{{ __('app/offers.position') }}</label>
                     <input name="position" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('app/offers.position') }}" value="{{ Request::get('position') }}">
                 </div>
