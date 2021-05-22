@@ -38,7 +38,7 @@
                 <div class="flex space-x-4 items-center">
                     <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
                     <div>
-                        <h1 class="whitespace-nowrap font-semibold">{{ $offer->position }}</h1>
+                        <h1 class="whitespace-nowrap font-semibold">{{ Str::limit($offer->position, 20) }}</h1>
                         <p class="text-sm">{{ $offer->company->category->name }}</p>
                     </div>
                 </div>
