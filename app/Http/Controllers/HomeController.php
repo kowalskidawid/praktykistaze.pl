@@ -10,7 +10,8 @@ class HomeController extends Controller
     public function index()
     {
         $offers = Offer::latest()->take(3)->get();
+        $offersCount = Offer::all()->count();
 
-        return view('index', compact('offers'));
+        return view('index', compact('offers', 'offersCount'));
     }
 }
