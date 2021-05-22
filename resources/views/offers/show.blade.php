@@ -36,26 +36,33 @@
 {{-- Main --}}
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
     {{-- Aside --}}
-    <div class="flex flex-col space-y-4 whitespace-nowrap">
+    <div class="flex flex-col space-y-4 whitespace-nowrap flex-shrink-0">
         @if (Auth::user() && Auth::user()->roleCheck('student'))
             @if(!$offer->isApplied(Auth::user()))
             <form action="{{ route('offers.apply', $offer) }}" method="POST">
                 @csrf
-                <button type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center">{{ __('Apply')}}</button>
+                <button type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">{{ __('Apply')}}</button>
             </form>
             @else
             <div class="text-sm font-medium px-4 py-2 rounded border text-center bg-white border-gray-300 text-gray-900">{{ __('Your application was send')}}</div>
             @endif
+        @elseif (!Auth::user())
+        <form action="{{ route('offers.apply', $offer) }}" method="POST">
+            @csrf
+            <button type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">{{ __('Apply')}}</button>
+        </form>
         @endif
-        <a href="{{ route('companies.show', $offer->company) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
-            <div class="flex space-x-4 items-center">
-                <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
-                <div>
-                    <h1 class="whitespace-nowrap font-semibold">{{ $offer->company->company_name }}</h1>
-                    <p class="text-sm">{{ $offer->company->category->name }}</p>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">            
+            <a href="{{ route('companies.show', $offer->company) }}">
+                <div class="flex space-x-4 items-center">
+                    <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
+                    <div>
+                        <h1 class="whitespace-nowrap font-semibold">{{ $offer->company->company_name }}</h1>
+                        <p class="text-sm">{{ $offer->company->category->name }}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
             <ul class="flex flex-col space-y-4">
                 @if ($offer->type->name)
@@ -104,13 +111,17 @@
         @endif
         {{-- Image --}}
         @if ($offer->image)
-        <img src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full border border-gray-200 rounded-2xl">
+        <img src="{{ asset($offer->image) }}" alt="" class="w-full border border-gray-200 rounded-2xl">
         @endif
         <div class="flex flex-col">
             <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
-            <p class="text-xs font-medium">{{ $offer->created_at->diffForHumans() }}</p>
+            <div class="text-sm font-medium flex space-x-2 text-gray-500">
+                <span>{{ $offer->created_at->diffForHumans() }}</span>
+                <span>•</span>
+                <span>{{ $offer->applications->count() }} aplikantów</span>
+            </div>
         </div>
-        <div>{!! $offer->description !!}</div>
+        <div class="flex flex-col space-y-4">{!! $offer->description !!}</div>
     </div>
 </div>
 </div>
