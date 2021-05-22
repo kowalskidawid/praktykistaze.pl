@@ -14,6 +14,11 @@
     <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
         {{-- Aside --}}
         <div class="flex flex-col space-y-4 whitespace-nowrap flex-shrink-0">
+            @if (Auth::user() && Auth::user()->roleCheck('student') && Auth::user()->student->id == $student->id)
+                <a href="{{ route('dashboard.profile') }}" type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">
+                    Edytuj profil
+                </a>
+            @endif
             <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
                 <div class="flex space-x-4 items-center">
                     <img src="{{ asset($student->image) }}" alt="" class="w-16 h-16">
