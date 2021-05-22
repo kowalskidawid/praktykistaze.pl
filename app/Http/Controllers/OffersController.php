@@ -90,7 +90,7 @@ class OffersController extends Controller
             $offer->update(['image' => $imagePath]);
         }
 
-        return redirect()->route('dashboard.offers')->withSuccess('Offer Created');
+        return back();
     }
     // Update an offer.
     public function update(Request $request, Offer $offer)
@@ -128,7 +128,7 @@ class OffersController extends Controller
             $offerToUpdate->update($data);
         }
 
-        return redirect()->route('dashboard.offers')->withSuccess('Offer Updated');
+        return back();
     }
     // Delete the offer
     public function destroy(Offer $offer)

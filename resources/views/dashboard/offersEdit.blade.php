@@ -5,8 +5,9 @@
     <form action="{{ route('offers.update', $offer) }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
         @csrf
         {{-- Title --}}
-        <div class="pb-2 border-b border-gray-200">
+        <div class="pb-2 border-b border-gray-200 flex items-center justify-between">
             <h1 class="text-xl font-semibold">{{ __('Edit an offer')}}</h1>
+            <a href="{{ route('offers.show', $offer) }}" class="px-4 py-1 text-sm font-medium text-gray-900 border bg-white border-gray-200 rounded-lg hover:bg-gray-100">Podgląd</a>
         </div>
         {{-- Errors --}}
         @if ($errors->any())
@@ -24,7 +25,7 @@
         {{-- Inputs --}}
         <div class="py-2 flex flex-col space-y-2">
             {{-- Image --}}
-            <div class="flex flex-col space-y-2 w-full">
+            <img class="flex flex-col space-y-2 w-full">
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col">
                         <p class="text-sm font-medium">{{ __('Image')}}</p>
@@ -36,7 +37,7 @@
                     </label>
                 </div>
                 @if ($offer->image)
-                <img id="imgOld" src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full">
+                <img id="imgOld" src="{{ asset($offer->image) }}" alt="" class="w-full border border-gray-200 rounded-2xl">
                 @endif
                 <img id="imgPreview" src="" alt="" class="w-full">
                 <script>
@@ -50,7 +51,7 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
-            </div>
+            </img>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Position --}}
                 <div class="flex flex-col space-y-2 w-full">

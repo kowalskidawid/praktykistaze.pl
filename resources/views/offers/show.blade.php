@@ -52,6 +52,11 @@
             <button type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">{{ __('Apply')}}</button>
         </form>
         @endif
+        @if (Auth::user() && Auth::user()->roleCheck('company') && Auth::user()->company->id == $offer->company->id)
+            <a href="{{ route('dashboard.offersEdit', $offer) }}" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">
+                Edytuj ofertę
+            </a>
+        @endif
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">            
             <a href="{{ route('companies.show', $offer->company) }}">
                 <div class="flex space-x-4 items-center">

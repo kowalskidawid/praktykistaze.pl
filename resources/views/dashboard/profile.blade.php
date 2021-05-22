@@ -38,7 +38,7 @@
                 <img id="imgOld" src="{{ asset(Auth::user()->student->image) }}" alt="" class="w-16 h-16">
                 <img id="imgPreview" src="" alt="" class="w-16 h-16" style="display: none">
                 <div class="py-2">
-                    <label for="imgInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border border-gray-200 rounded-lg flex justify-center cursor-pointer">
+                    <label for="imgInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border bg-white border-gray-200 rounded-lg flex justify-center cursor-pointer">
                         <input hidden id="imgInput" type="file" name="image" accept=".jpg, .jpeg, .png, .gif">
                         {{ __('Upload')}}
                     </label>
@@ -187,7 +187,7 @@
                 <img id="imgOld" src="{{ asset(Auth::user()->company->image) }}" alt="" class="w-16 h-16">
                 <img id="imgPreview" src="" alt="" class="w-16 h-16" style="display: none">
                 <div class="py-2">
-                    <label for="imgInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border border-gray-200 rounded-lg flex justify-center cursor-pointer">
+                    <label for="imgInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border bg-white border-gray-200 rounded-lg flex justify-center cursor-pointer">
                         <input hidden id="imgInput" type="file" name="image" accept=".jpg, .jpeg, .png, .gif">
                         {{ __('Upload')}}
                     </label>
