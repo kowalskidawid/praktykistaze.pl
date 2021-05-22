@@ -30,7 +30,7 @@
                 @if(Auth::user()->roleCheck('company'))
                 {{-- Company links --}}
                 <li class="flex">
-                    <a href="{{ route('dashboard.offers') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/offers') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Offers')}}</a>
+                    <a href="{{ route('dashboard.offers') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/offers*') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Offers')}}</a>
                 </li>
                 <li class="flex">
                     <a href="{{ route('dashboard.applicants') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/applicants') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Applicants')}}</a>

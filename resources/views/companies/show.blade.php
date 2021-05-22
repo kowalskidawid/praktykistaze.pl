@@ -62,9 +62,19 @@
                     @endif
                 </ul>
             </div>
+        </div>
+        {{-- Content --}}
+        <div class="w-full flex flex-col space-y-4">
+            <div class="flex flex-col">
+                <h1 class="text-2xl font-semibold">{{ $company->company_name }}</h1>
+                <div class="text-sm font-medium flex space-x-2 text-gray-500">
+                    <span>{{ $company->offers->count() }} ofert</span>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-4">{!! $company->description !!}</div>
             @if($offers->count() > 0)
-            <div class="hidden md:flex flex-col space-y-4">
-                <h1 class="text-2xl font-semibold ml-4">Oferty firmy:</h1>
+            <div class="hidden md:flex flex-col space-y-4 pt-8">
+                <h1 class="text-2xl font-semibold">Oferty firmy</h1>
                 @foreach ($offers as $offer)
                 <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
                     <div class="flex space-x-4 items-center">
@@ -77,16 +87,6 @@
                 @endforeach
             </div>
             @endif
-        </div>
-        {{-- Content --}}
-        <div class="w-full flex flex-col space-y-4">
-            <div class="flex flex-col">
-                <h1 class="text-2xl font-semibold">{{ $company->company_name }}</h1>
-                <div class="text-sm font-medium flex space-x-2 text-gray-500">
-                    <span>{{ $company->offers->count() }} ofert</span>
-                </div>
-            </div>
-            <div class="flex flex-col space-y-4">{!! $company->description !!}</div>
         </div>
     </div>
 </div>
