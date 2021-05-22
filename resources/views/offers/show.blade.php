@@ -36,7 +36,7 @@
 {{-- Main --}}
 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
     {{-- Aside --}}
-    <div class="flex flex-col space-y-4 w-80">
+    <div class="flex flex-col space-y-4 whitespace-nowrap">
         @if (Auth::user() && Auth::user()->roleCheck('student'))
             @if(!$offer->isApplied(Auth::user()))
             <form action="{{ route('offers.apply', $offer) }}" method="POST">
@@ -49,15 +49,52 @@
         @endif
         <a href="{{ route('companies.show', $offer->company) }}" class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
             <div class="flex space-x-4 items-center">
-                <div class="w-12 h-12 bg-gray-400 rounded-lg flex-shrink-0"></div>
+                <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <h1 class="whitespace-nowrap font-semibold">{{ $offer->company->company_name }}</h1>
-                    <p class="text-sm">{{ __('Company category')}}</p>
+                    <p class="text-sm">{{ $offer->company->category->name }}</p>
                 </div>
             </div>
         </a>
         <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
-        {{ __('Offer details')}}
+            <ul class="flex flex-col space-y-4">
+                @if ($offer->type->name)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->type->name }}</span>
+                    <span class="text-xs font-medium">Rodzaj zatrudnienia</span>
+                </li>
+                @endif
+                @if ($offer->Salary)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->salary }} PLN</span>
+                    <span class="text-xs font-medium">Salary</span>
+                </li>
+                @endif
+                @if ($offer->city)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->city }}{{ ', '.$offer->location->name }}</span>
+                    <span class="text-xs font-medium">Lokalizacja</span>
+                </li>
+                @endif
+                @if ($offer->vacancies)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->vacancies }}</span>
+                    <span class="text-xs font-medium">Ilość miejsc</span>
+                </li>
+                @endif
+                @if ($offer->job_start)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->job_start }}</span>
+                    <span class="text-xs font-medium">Data rozpoczęcia pracy</span>
+                </li>
+                @endif
+                @if ($offer->job_duration)
+                <li class="flex flex-col">
+                    <span class="font-semibold">{{ $offer->job_duration }} dni</span>
+                    <span class="text-xs font-medium">Długość stażu</span>
+                </li>
+                @endif
+            </ul>
         </div>
     </div>
     {{-- Content --}}
@@ -67,9 +104,12 @@
         @endif
         {{-- Image --}}
         @if ($offer->image)
-        <img src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full">
+        <img src="{{ asset('storage/'.$offer->image) }}" alt="" class="w-full border border-gray-200 rounded-2xl">
         @endif
-        <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
+        <div class="flex flex-col">
+            <h1 class="text-2xl font-semibold">{{ $offer->position }}</h1>
+            <p class="text-xs font-medium">{{ $offer->created_at->diffForHumans() }}</p>
+        </div>
         <div>{!! $offer->description !!}</div>
     </div>
 </div>
