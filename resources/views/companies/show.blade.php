@@ -33,31 +33,31 @@
                     @if ($company->city)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $company->city }}{{ ', '.$company->location->name }}</span>
-                        <span class="text-xs font-medium">Lokalizacja</span>
+                        <span class="text-xs font-medium">{{ __('Lokalizacja')}}</span>
                     </li>
                     @endif
                     @if ($company->size_id)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $company->size->name }}</span>
-                        <span class="text-xs font-medium">Wielkość firmy</span>
+                        <span class="text-xs font-medium">{{ __('Wielkość firmy')}}</span>
                     </li>
                     @endif
                     @if ($company->website)
                     <li class="flex flex-col">
                         <a href="{{ $company->website }}" class="font-semibold">{{ $company->website }}</a>
-                        <span class="text-xs font-medium">Strona internetowa</span>
+                        <span class="text-xs font-medium">{{ __('Strona internetowa')}}</span>
                     </li>
                     @endif
                     @if ($company->email)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $company->email }}</span>
-                        <span class="text-xs font-medium">Email kontaktowy</span>
+                        <span class="text-xs font-medium">{{ __('Email kontaktowy')}}</span>
                     </li>
                     @endif
                     @if ($company->phone)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $company->phone }}</span>
-                        <span class="text-xs font-medium">Telefon</span>
+                        <span class="text-xs font-medium">{{ __('Telefon')}}</span>
                     </li>
                     @endif
                 </ul>
@@ -68,13 +68,13 @@
             <div class="flex flex-col">
                 <h1 class="text-2xl font-semibold">{{ $company->company_name }}</h1>
                 <div class="text-sm font-medium flex space-x-2 text-gray-500">
-                    <span>{{ $company->offers->count() }} ofert</span>
+                    <span>{{ $company->offers->count() }} {{ __('ofert')}}</span>
                 </div>
             </div>
             <div class="flex flex-col space-y-4">{!! $company->description !!}</div>
             @if($offers->count() > 0)
             <div class="hidden md:flex flex-col space-y-4 pt-8">
-                <h1 class="text-2xl font-semibold">Oferty firmy</h1>
+                <h1 class="text-2xl font-semibold">{{ __('Oferty firmy')}}</h1>
                 @foreach ($offers as $offer)
                 <a href="{{ route('offers.show', $offer) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
                     <div class="flex space-x-4 items-center">

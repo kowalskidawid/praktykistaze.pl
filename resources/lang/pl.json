@@ -113,5 +113,18 @@
     "Website": "Strona internetowa",
     "Skills": "Umiejętności",
     "Edukacja": "Edukacja",
-    "Add offer": "Dodaj ofertę"
+    "Add offer": "Dodaj ofertę",
+    "Wielkość firmy": "Wielkość firmy",
+    "Strona internetowa": "Strona internetowa",
+    "Oferty firmy": "Oferty firmy",
+    "ofert": "ofert",
+    "Ilość miejsc": "Ilość miejsc",
+    "Data rozpoczęcia pracy": "Data rozpoczęcia pracy",
+    "Długość stażu": "Długość stażu",
+    "dni": "dni",
+    "aplikantów": "aplikantów",
+    "Edytuj profil": "Edytuj profil",
+    "Najnowsze oferty": "Najnowsze oferty",
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.",
+    "Czytaj dalej": "Czytaj dalej"
 }

@@ -114,6 +114,19 @@
     "Website": "Веб-сайт",
     "Skills": "Навички",
     "Edukacja": "Освіта",
-    "Add offer": "Додати вакансію"
+    "Add offer": "Додати вакансію",
+    "Wielkość firmy": "Розмір фірми",
+    "Strona internetowa": "Веб-сайт",
+    "Oferty firmy": "Вакансії фірми",
+    "ofert": "вакансій",
+    "Ilość miejsc": "Кількість місць",
+    "Data rozpoczęcia pracy": "Дата початку роботи",
+    "Długość stażu": "Тривалість стажування",
+    "dni": "днів",
+    "aplikantów": "кандидатів",
+    "Edytuj profil": "Редагувати профіль",
+    "Najnowsze oferty": "Найновіші вакансії",
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Ось деякі недавні вакансії по стажуванню та практики. В нашій базі даних є {{$ offersCount}} вакансій, і нові додаються регулярно.",
+    "Czytaj dalej": "Докладніше"
 
 }

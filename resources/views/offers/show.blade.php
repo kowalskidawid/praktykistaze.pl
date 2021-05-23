@@ -73,37 +73,37 @@
                 @if ($offer->type->name)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->type->name }}</span>
-                    <span class="text-xs font-medium">Rodzaj zatrudnienia</span>
+                    <span class="text-xs font-medium">{{ __('Rodzaj zatrudnienia')}}</span>
                 </li>
-                @endif
+                @endif§§§§§§§§§
                 @if ($offer->Salary)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->salary }} PLN</span>
-                    <span class="text-xs font-medium">Salary</span>
+                    <span class="text-xs font-medium">{{ __('Salary')}}</span>
                 </li>
                 @endif
                 @if ($offer->city)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->city }}{{ ', '.$offer->location->name }}</span>
-                    <span class="text-xs font-medium">Lokalizacja</span>
+                    <span class="text-xs font-medium">{{ __('Lokalizacja')}}</span>
                 </li>
                 @endif
                 @if ($offer->vacancies)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->vacancies }}</span>
-                    <span class="text-xs font-medium">Ilość miejsc</span>
+                    <span class="text-xs font-medium">{{__('Ilość miejsc')}}</span>
                 </li>
                 @endif
                 @if ($offer->job_start)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->job_start }}</span>
-                    <span class="text-xs font-medium">Data rozpoczęcia pracy</span>
+                    <span class="text-xs font-medium">{{ __('Data rozpoczęcia pracy')}}</span>
                 </li>
                 @endif
                 @if ($offer->job_duration)
                 <li class="flex flex-col">
-                    <span class="font-semibold">{{ $offer->job_duration }} dni</span>
-                    <span class="text-xs font-medium">Długość stażu</span>
+                    <span class="font-semibold">{{ $offer->job_duration }} {{ __('dni')}}</span>
+                    <span class="text-xs font-medium">{{ __('Długość stażu')}}</span>
                 </li>
                 @endif
             </ul>
@@ -123,7 +123,7 @@
             <div class="text-sm font-medium flex space-x-2 text-gray-500">
                 <span>{{ $offer->created_at->diffForHumans() }}</span>
                 <span>•</span>
-                <span>{{ $offer->applications->count() }} aplikantów</span>
+                <span>{{ $offer->applications->count() }} {{('aplikantów')}}</span>
             </div>
         </div>
         <div class="flex flex-col space-y-4">{!! $offer->description !!}</div>

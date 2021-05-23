@@ -113,5 +113,18 @@
     "Website": "Website",
     "Skills": "Skills",
     "Edukacja": "Education",
-    "Add offer": "Add offer"
+    "Add offer": "Add offer",
+    "Wielkość firmy": "Company size",
+    "Strona internetowa": "Website",
+    "Oferty firmy": "Company offers",
+    "ofert": "offers",
+    "Ilość miejsc": "Number of seats",
+    "Data rozpoczęcia pracy": "Starting date of work",
+    "Długość stażu": "Length of internship",
+    "dni": "days",
+    "aplikantów": "applicants",
+    "Edytuj profil": "Edit profile",
+    "Najnowsze oferty": "Latest offers",
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Here are some recent internship and apprenticeship offers. There are {{ $offersCount }} offers in our database and new ones are added regularly.",
+    "Czytaj dalej": "Read more"
 }

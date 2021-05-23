@@ -16,7 +16,7 @@
         <div class="flex flex-col space-y-4 whitespace-nowrap flex-shrink-0">
             @if (Auth::user() && Auth::user()->roleCheck('student') && Auth::user()->student->id == $student->id)
                 <a href="{{ route('dashboard.profile') }}" type="submit" class="w-full text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white text-center hover:bg-blue-500">
-                    Edytuj profil
+                {{ __('Edytuj profil')}}
                 </a>
             @endif
             <div class="p-4 bg-white border border-gray-200 rounded-lg flex flex-col space-y-8">
@@ -33,31 +33,31 @@
                     @if ($student->education)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $student->education }}</span>
-                        <span class="text-xs font-medium">Edukacja</span>
+                        <span class="text-xs font-medium">{{ __('Edukacja')}}</span>
                     </li>
                     @endif
                     @if ($student->city)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $student->city }}{{ ', '.$student->location->name }}</span>
-                        <span class="text-xs font-medium">Lokalizacja</span>
+                        <span class="text-xs font-medium">{{ __('Lokalizacja')}}</span>
                     </li>
                     @endif
                     @if ($student->website)
                     <li class="flex flex-col">
                         <a href="{{ $student->website }}" class="font-semibold">{{ $student->website }}</a>
-                        <span class="text-xs font-medium">Strona internetowa</span>
+                        <span class="text-xs font-medium">{{ __('Strona internetowa')}}</span>
                     </li>
                     @endif
                     @if ($student->email)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $student->email }}</span>
-                        <span class="text-xs font-medium">Email kontaktowy</span>
+                        <span class="text-xs font-medium">{{ __('Email kontaktowy')}}</span>
                     </li>
                     @endif
                     @if ($student->phone)
                     <li class="flex flex-col">
                         <span class="font-semibold">{{ $student->phone }}</span>
-                        <span class="text-xs font-medium">Telefon</span>
+                        <span class="text-xs font-medium">{{ __('Telefon')}}</span>
                     </li>
                     @endif
                     @if ($student->linkedin)
@@ -80,11 +80,11 @@
             <div class="flex flex-col">
                 <h1 class="text-2xl font-semibold">{{ $student->first_name }} {{ $student->last_name }}</h1>
                 {{-- <div class="text-sm font-medium flex space-x-2 text-gray-500">
-                    <span>{{ $company->offers->count() }} ofert</span>
+                    <span>{{ $company->offers->count() }} {{ __('ofert')}}</span>
                 </div> --}}
             </div>
             <div class="flex flex-col space-y-4">{!! $student->description !!}</div>
-            <h1 class="text-2xl font-semibold">Umiejętności</h1>
+            <h1 class="text-2xl font-semibold">{{ __('Umiejętności')}}</h1>
             <div class="flex flex-col space-y-4">{!! $student->skills !!}</div>
         </div>
     </div>

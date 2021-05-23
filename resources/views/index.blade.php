@@ -27,10 +27,10 @@
     <div class="p-4 m-auto max-w-screen-lg h-full flex flex-col space-y-8 md:space-y-12 md:items-center">
         <div class="px-2 flex flex-col md:items-center space-y-2">
             <div>
-                <span class="px-2 py-1 font-semibold text-sm bg-white border border-gray-300 uppercase rounded-lg">Oferty</span>
+                <span class="px-2 py-1 font-semibold text-sm bg-white border border-gray-300 uppercase rounded-lg">{{ __('Oferty')}}</span>
             </div>
-            <h1 class="text-2xl font-semibold">Najnowsze oferty</h1>
-            <p class="md:text-center text-gray-500 max-w-md">Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.</p>
+            <h1 class="text-2xl font-semibold">{{ __('Najnowsze oferty')}}</h1>
+            <p class="md:text-center text-gray-500 max-w-md">{{ __('Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.')}}</p>
         </div>
         <div class="flex flex-col space-y-4 justify-center md:flex-row md:space-y-0 md:space-x-16">
             @foreach($offers as $offer)
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div>{!! Str::limit($offer->description, 100) !!}</div>
-                <a href="{{ route('offers.show', $offer) }}" class="text-sm font-medium text-blue-600 hover:underline">Czytaj dalej</a>
+                <a href="{{ route('offers.show', $offer) }}" class="text-sm font-medium text-blue-600 hover:underline">{{ __('Czytaj dalej')}}</a>
             </div>
             @endforeach
         </div>

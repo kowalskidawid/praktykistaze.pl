@@ -113,6 +113,20 @@
     "Website": "Веб-сайт",
     "Skills": "Навыки",
     "Edukacja": "Образование",
-    "Add offer": "Добавить вакансию"
+    "Add offer": "Добавить вакансию",
+    "Wielkość firmy": "Размер фирмы",
+    "Strona internetowa": "Веб-сайт",
+    "Oferty firmy": "Вакансии фирмы",
+    "ofert": "вакансий",
+    "Ilość miejsc": "Количество мест",
+    "Data rozpoczęcia pracy": "Дата начала работы",
+    "Długość stażu": "Продолжительность стажировки",
+    "dni": "дней",
+    "aplikantów": "кандидатов",
+    "Edytuj profil": "Редактировать профиль",
+    "Najnowsze oferty": "Самые новые вакансии",
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Вот некоторые недавние вакансии по стажировке и практики. В нашей базе данных есть {{ $offersCount }} вакансий, и новые добавляются регулярно.",
+    "Czytaj dalej": "Подробнее"
+
 
 }
