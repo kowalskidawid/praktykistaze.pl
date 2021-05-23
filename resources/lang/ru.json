@@ -125,8 +125,11 @@
     "aplikantów": "кандидатов",
     "Edytuj profil": "Редактировать профиль",
     "Najnowsze oferty": "Самые новые вакансии",
-    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Вот некоторые недавние вакансии по стажировке и практики. В нашей базе данных есть {{ $offersCount }} вакансий, и новые добавляются регулярно.",
-    "Czytaj dalej": "Подробнее"
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się": "Вот некоторые недавние вакансии по стажировке и практики. В нашей базе данных есть",
+    "ofert i regularnie dodawane są nowe.": "вакансий, и новые добавляются регулярно.",
+    "Czytaj dalej": "Подробнее",
+    "Oferty": "Вакансии",
+    "Nazwa firmy": "Название фирмы"
 
 
 }

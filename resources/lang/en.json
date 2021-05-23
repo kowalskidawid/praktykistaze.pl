@@ -125,6 +125,9 @@
     "aplikantów": "applicants",
     "Edytuj profil": "Edit profile",
     "Najnowsze oferty": "Latest offers",
-    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Here are some recent internship and apprenticeship offers. There are {{ $offersCount }} offers in our database and new ones are added regularly.",
-    "Czytaj dalej": "Read more"
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się": "Here are some recent internship and apprenticeship offers. There are",
+    "ofert i regularnie dodawane są nowe.": "offers in our database and new ones are added regularly.",
+    "Czytaj dalej": "Read more",
+    "Oferty": "Offers",
+    "Nazwa firmy": "Company name"
 }

@@ -125,6 +125,9 @@
     "aplikantów": "aplikantów",
     "Edytuj profil": "Edytuj profil",
     "Najnowsze oferty": "Najnowsze oferty",
-    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.": "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.",
-    "Czytaj dalej": "Czytaj dalej"
+    "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się": "Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się",
+    "ofert i regularnie dodawane są nowe.": "ofert i regularnie dodawane są nowe.",
+    "Czytaj dalej": "Czytaj dalej",
+    "Oferty": "Oferty",
+    "Nazwa firmy": "Nazwa firmy"
 }

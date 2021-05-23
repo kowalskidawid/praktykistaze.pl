@@ -30,7 +30,7 @@
                 <span class="px-2 py-1 font-semibold text-sm bg-white border border-gray-300 uppercase rounded-lg">{{ __('Oferty')}}</span>
             </div>
             <h1 class="text-2xl font-semibold">{{ __('Najnowsze oferty')}}</h1>
-            <p class="md:text-center text-gray-500 max-w-md">{{ __('Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się {{ $offersCount }} ofert i regularnie dodawane są nowe.')}}</p>
+            <p class="md:text-center text-gray-500 max-w-md">{{ __('Oto kilka najnowszych ofert praktyk i stażu. W naszej bazie znajduje się')}} {{ $offersCount }} {{ __('ofert i regularnie dodawane są nowe.')}}</p>
         </div>
         <div class="flex flex-col space-y-4 justify-center md:flex-row md:space-y-0 md:space-x-16">
             @foreach($offers as $offer)
