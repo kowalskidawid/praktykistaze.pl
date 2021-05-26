@@ -10,7 +10,8 @@ class ArticlesController extends Controller
     // GET: Displays a page filled with articles
     public function index(Request $request)
     {
-        return view('articles.index');
+        $articles = Article::all()->reverse();
+        return view('articles.index', compact('articles'));
     }
     // GET: Display the specified resource.
     public function show(Article $article)
