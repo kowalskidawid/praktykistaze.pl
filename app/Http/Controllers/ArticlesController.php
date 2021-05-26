@@ -3,21 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\Article;
+use App\Models\Article;
 
 class ArticlesController extends Controller
 {
+    // GET: Displays a page filled with articles
     public function index(Request $request)
     {
         return view('articles.index');
     }
-    // Display the specified resource.
-    // public function show(Article $article)
-    // {
-    //     return view('articles.show', compact('article'));
-    // }
-    public function show()
+    // GET: Display the specified resource.
+    public function show(Article $article)
     {
-        return view('articles.show');
+        return view('articles.show', compact('article'));
+    }
+    // GET: Display the article creation page.
+    public function create()
+    {
+        return view('articles.create');
+    }
+    // POST: Store the new article.
+    public function store()
+    {
+        
+    }
+    // GET: Display the article edit page.
+    public function edit(Article $article)
+    {
+        return view('articles.edit', compact('article'));
+    }
+    // POST: Edit the article.
+    public function update(Article $article)
+    {
+        
+    }
+    // DELETE: Deletes the article.
+    public function destroy(Article $article)
+    {
+
     }
 }
