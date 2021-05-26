@@ -66,7 +66,7 @@
                 <img src="{{ asset(Auth::user()->company->image) }}" alt="" class="">
             </a>
             @elseif (Auth::user()->roleCheck('admin'))
-            <div class="rounded-full w-8 h-8 bg-gray-900"></div>
+            <div class="rounded-full w-8 h-8 bg-gray-900 flex items-center justify-center text-white font-bold">A</div>
             @endif
             <div class="hidden sm:flex flex-col">
                 @if (Auth::user()->roleCheck('student'))
