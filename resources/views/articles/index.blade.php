@@ -6,8 +6,8 @@
         @foreach ($articles as $article)
             @if ($loop->first)
             <div class="col-span-1 sm:col-span-2 md:col-span-3">
-                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
-                    <img src="{{ $article->image }}" alt="" class="w-full h-auto md:w-1/2 rounded-xl">
+                <div class="flex flex-col space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:space-x-8">
+                    <div class="w-full h-80 rounded-xl" style="background: url({{ $article->image }}); background-position: center;"></div>
                     <div class="flex flex-col space-y-4">
                         <div class="flex flex-col">
                             <p class="text-sm text-blue-600 font-semibold">
@@ -25,7 +25,7 @@
             </div>
             @endif
             <div class="flex flex-col space-y-4">
-                <img src="{{ $article->image }}" alt="" class="w-full rounded-xl">
+                <div class="w-full h-48 rounded-xl" style="background: url({{ $article->image }}); background-position: center;"></div>
                 <div class="flex flex-col">
                     <p class="text-sm text-blue-600 font-semibold">
                         {{ $article->created_at->translatedFormat('F d, Y') }}

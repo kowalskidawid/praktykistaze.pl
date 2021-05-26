@@ -16,7 +16,8 @@ class ArticlesController extends Controller
     // GET: Display the specified resource.
     public function show(Article $article)
     {
-        return view('articles.show', compact('article'));
+        $articles = Article::latest()->take(5)->get();
+        return view('articles.show', compact('article', 'articles'));
     }
     // GET: Display the article creation page.
     public function create()
