@@ -42,7 +42,7 @@
                         <p class="text-sm">{{ Str::limit($offer->company->category->name, 40) }}</p>
                     </div>
                 </div>
-                <div>{!! Str::limit($offer->description, 30) !!}</div>
+                <div>{!! Str::limit($offer->description, 100) !!}</div>
                 <a href="{{ route('offers.show', $offer) }}" class="text-sm font-medium text-blue-600 hover:underline">{{ __('Czytaj dalej')}}</a>
             </div>
             @endforeach

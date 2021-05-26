@@ -75,7 +75,7 @@
                     <span class="font-semibold">{{ $offer->type->name }}</span>
                     <span class="text-xs font-medium">{{ __('Rodzaj zatrudnienia')}}</span>
                 </li>
-                @endif§§§§§§§§§
+                @endif
                 @if ($offer->Salary)
                 <li class="flex flex-col">
                     <span class="font-semibold">{{ $offer->salary }} PLN</span>

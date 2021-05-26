@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div>
-                    {!! Str::limit($article->content, 200) !!}
+                    {!! Str::limit($article->content, 100) !!}
                 </div>
             </div>
         @endforeach
