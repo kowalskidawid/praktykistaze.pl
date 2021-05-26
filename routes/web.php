@@ -50,6 +50,11 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/', [StudentsController::class, 'index'])->name('index');
         Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
     });
+    // Articles page
+    Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
+        Route::get('/', [ArticlesController::class, 'index'])->name('index');
+        Route::get('/id/{article}', [ArticlesController::class, 'show'])->name('show');
+    });
     // Articles page, TODO
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
         Route::get('/', [ArticlesController::class, 'index'])->name('index');

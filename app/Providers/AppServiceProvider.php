@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Article;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Get pinned articles
+        if (Schema::hasTable('articles')) {
+            $pinnedArticles = Article::where('pinned', '=', true)->get();
+            View::share(['pinnedArticles' => $pinnedArticles]);
+        }
     }
 }

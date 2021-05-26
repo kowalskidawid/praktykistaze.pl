@@ -12,6 +12,7 @@ use App\Models\Application;
 use App\Models\Location;
 use App\Models\Size;
 use App\Models\Type;
+use App\Models\Article;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FavouriteSeeder::class,
             ApplicationSeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }
