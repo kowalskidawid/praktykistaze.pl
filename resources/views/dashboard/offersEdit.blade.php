@@ -25,7 +25,7 @@
         {{-- Inputs --}}
         <div class="py-2 flex flex-col space-y-2">
             {{-- Image --}}
-            <img class="flex flex-col space-y-2 w-full">
+            <div class="flex flex-col space-y-2 w-full">
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col">
                         <p class="text-sm font-medium">{{ __('Image')}}</p>
@@ -51,7 +51,7 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
-            </img>
+            </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Position --}}
                 <div class="flex flex-col space-y-2 w-full">

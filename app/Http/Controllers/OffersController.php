@@ -87,7 +87,7 @@ class OffersController extends Controller
             $imageName = md5(time());
             $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
             Storage::disk('public')->put($imagePath, $img->encoded, 'public');
-            $offer->update(['image' => $imagePath]);
+            $offer->update(['image' => '/storage/'.$imagePath]);
         }
 
         return back();
@@ -136,24 +136,24 @@ class OffersController extends Controller
         $offer->delete();
         return redirect()->back()->withSuccess('Offer Deleted');
     }
-    // Upload image
-    public function image(Request $request, Offer $offer)
-    {
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-        ]);
-        // Retrieve images
-        $oldImage = $offer->image;
-        $newImage = $request->image;
-        // Generate data
-        $name = md5(time());
-        $path = 'offers/' . $offer->id . '/' . $name . '.jpg';
-        // Upload file and update Offer
-        Storage::disk('public')->put($path, file_get_contents($newImage), 'public');
-        $offer->image = $path;
-        $offer->save();
-        Storage::disk('public')->delete($oldImage);
+    // // Upload image
+    // public function image(Request $request, Offer $offer)
+    // {
+    //     $this->validate($request, [
+    //         'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+    //     ]);
+    //     // Retrieve images
+    //     $oldImage = $offer->image;
+    //     $newImage = $request->image;
+    //     // Generate data
+    //     $name = md5(time());
+    //     $path = 'offers/' . $offer->id . '/' . $name . '.jpg';
+    //     // Upload file and update Offer
+    //     Storage::disk('public')->put($path, file_get_contents($newImage), 'public');
+    //     $offer->image = $path;
+    //     $offer->save();
+    //     Storage::disk('public')->delete($oldImage);
 
-        return redirect()->back()->withSuccess('Offer updated');
-    }
+    //     return redirect()->back()->withSuccess('Offer updated');
+    // }
 }

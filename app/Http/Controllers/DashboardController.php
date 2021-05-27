@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\Type;
 use App\Models\Size;
+use App\Models\Article;
 
 class DashboardController extends Controller
 {
@@ -175,5 +176,19 @@ class DashboardController extends Controller
         $company = auth()->user()->company;
         $offers = $company->offers->reverse();
         return view('dashboard.applicants', compact('offers'));
+    }
+    // Articles page
+    public function articles()
+    {
+        $articles = Article::get()->reverse();
+        return view('dashboard.articles', compact('articles'));
+    }
+    public function articlesEdit(Article $article)
+    {
+        return view('dashboard.articlesEdit', compact('article'));
+    }
+    public function articlesCreate()
+    {
+        return view('dashboard.articlesCreate');
     }
 }

@@ -36,6 +36,12 @@
                     <a href="{{ route('dashboard.applicants') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/applicants') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Applicants')}}</a>
                 </li>
                 @endif
+                @if(Auth::user()->roleCheck('admin'))
+                {{-- Admin links --}}
+                <li class="flex">
+                    <a href="{{ route('dashboard.articles') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/articles*') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">Articles</a>
+                </li>
+                @endif
                 <li class="my-2"><hr></li>
                 {{-- Logout --}}
                 <li>

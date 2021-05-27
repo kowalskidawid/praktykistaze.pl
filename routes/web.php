@@ -54,11 +54,9 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
         Route::get('/', [ArticlesController::class, 'index'])->name('index');
         Route::get('/id/{article}', [ArticlesController::class, 'show'])->name('show');
-    });
-    // Articles page, TODO
-    Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
-        Route::get('/', [ArticlesController::class, 'index'])->name('index');
-        Route::get('/id/{student}', [ArticlesController::class, 'show'])->name('show');
+        Route::post('/store', [ArticlesController::class, 'store'])->middleware(['auth', 'verified', 'roleAdmin'])->name('store');
+        Route::post('/id/{article}/update', [ArticlesController::class, 'update'])->middleware(['auth', 'verified', 'roleAdmin'])->name('update');
+        Route::post('/id/{article}/delete', [ArticlesController::class, 'destroy'])->middleware(['auth', 'verified', 'roleAdmin'])->name('destroy');
     });
     // Dashboard page
     Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
@@ -81,6 +79,10 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/offers/edit/{offer}', [DashboardController::class, 'offersEdit'])->middleware('roleCompany')->name('offersEdit');
         // Applicants
         Route::get('/applicants', [DashboardController::class, 'applicants'])->middleware('roleCompany')->name('applicants');
+        // Articles
+        Route::get('/articles', [DashboardController::class, 'articles'])->middleware('roleAdmin')->name('articles');
+        Route::get('/articles/create', [DashboardController::class, 'articlesCreate'])->middleware('roleAdmin')->name('articlesCreate');
+        Route::get('/articles/edit/{article}', [DashboardController::class, 'articlesEdit'])->middleware('roleAdmin')->name('articlesEdit');
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {
