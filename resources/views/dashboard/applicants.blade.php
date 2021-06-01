@@ -9,7 +9,7 @@
         @foreach ($offers as $offer)
         @if ($offer->applications->count() > 0)
         <div class="pb-4 bg-white border-gray-200 border rounded-lg flex flex-col">
-            <h2 class="p-4 text-lg font-semibold text-center">{{ $offer->position }}</h2>
+            <h2 class="p-4 text-xl font-semibold">{{ $offer->position }}</h2>
             <div class="flex flex-col space-y-2">
                 @foreach ($offer->applications as $student)
                 <div class="flex justify-between items-center px-4">

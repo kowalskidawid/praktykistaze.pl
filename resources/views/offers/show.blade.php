@@ -123,7 +123,7 @@
             <div class="text-sm font-medium flex space-x-2 text-gray-500">
                 <span>{{ $offer->created_at->diffForHumans() }}</span>
                 <span>•</span>
-                <span>{{ $offer->applications->count() }} {{('aplikantów')}}</span>
+                <span>{{ $offer->applications->count() }} {{ __('aplikantów')}}</span>
             </div>
         </div>
         <div class="flex flex-col space-y-4">{!! $offer->description !!}</div>
