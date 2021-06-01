@@ -11,16 +11,16 @@
         <div class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">
             <div class="flex space-x-4 items-center">
                 <div>
-                    <a href="{{ route('offers.show', $offer) }}" class="font-semibold hover:underline">{{ $offer->position }}</a>
+                    <a href="{{ route('offers.show', $offer) }}" class="text-xl font-semibold hover:underline">{{ $offer->position }}</a>
                     <p class="text-sm">{{ $offer->created_at->diffForHumans() }}</p>
                 </div>
             </div>
             <div class="flex flex-col">
-                <span class="text-xs uppercase font-semibold px-2 py-1 text-blue-600">{{ $offer->applications->count() }} {{ __('applicants')}}</span>
-                <a href="{{ route('dashboard.offersEdit', $offer) }}">{{ __('Edit')}}</a>
+                <span class="text-xs uppercase font-semibold py-1 px-1 text-blue-600">{{ $offer->applications->count() }} {{ __('applicants')}}</span>
+                <button class="text-xs bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded"><a href="{{ route('dashboard.offersEdit', $offer) }}">{{ __('Edit')}}</a></button>
                 <form action="{{route('offers.destroy', $offer)}}" method="post" onsubmit="return confirm('{{ __('Are you sure?')}}')">
                     @csrf
-                    <button type="submit">{{ __('Delete')}}</button>
+                    <button class="text-xs bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white w-24 py-1 px-5 border border-blue-500 hover:border-transparent rounded" type="submit">{{ __('Delete')}}</button>
                 </form>
             </div>
         </div>

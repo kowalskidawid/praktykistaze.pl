@@ -17,7 +17,7 @@
                 {!! $article->content !!}
             </div>
             <div class="md:col-span-1 flex flex-col space-y-4">
-                <h1 class="text-2xl font-semibold">Other articles</h1>
+                <h1 class="text-2xl font-semibold">{{ __('Other articles')}}</h1>
                 <div class="flex flex-col space-y-4">
                     @foreach ($articles as $article)
                     <a href="{{ route('articles.show', $article) }}" class="p-4 bg-white border-gray-200 border rounded-lg flex items-center justify-between transition hover:shadow-lg">

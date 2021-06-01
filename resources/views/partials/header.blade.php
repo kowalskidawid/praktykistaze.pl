@@ -113,10 +113,10 @@
                 @if (Auth::user()->roleCheck('admin'))
                 {{-- Admin --}}
                 <x-dropdown-link :href="route('dashboard.articlesCreate')">
-                Add new article
+                {{ __('Add new article')}}
                 </x-dropdown-link>
                 <x-dropdown-link :href="route('dashboard.articles')">
-                Articles
+                {{ __('Articles')}}
                 </x-dropdown-link>
                 @endif
                 <x-dropdown-link :href="route('dashboard.settings')">
