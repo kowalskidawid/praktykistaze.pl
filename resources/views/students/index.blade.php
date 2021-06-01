@@ -35,9 +35,9 @@
                         @endif
                         @foreach ($locations as $location)
                             @if ( (int)Request::get('location') === $location->id )
-                                <option value="{{ $location->id }}" selected>{{ $location->name }}  ({{ $location->students()->count() }})</option>
+                                <option value="{{ $location->id }}" selected>{{ $location->name }}</option>
                             @else
-                                <option value="{{ $location->id }}">{{ $location->name }}  ({{ $location->students()->count() }})</option>
+                                <option value="{{ $location->id }}">{{ $location->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -52,9 +52,9 @@
                         @endif
                         @foreach ($categories as $category)
                             @if ( (int)Request::get('category') === $category->id )
-                                <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endif
                         @endforeach
                     </select>

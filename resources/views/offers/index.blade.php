@@ -37,9 +37,9 @@
                         @endif
                         @foreach ($categories as $category)
                             @if ( (int)Request::get('category') === $category->id )
-                                <option value="{{ $category->id }}" selected>{{ $category->name }} ({{ $category->offers()->count() }})</option>
+                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}  ({{ $category->offers()->count() }})</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -58,9 +58,9 @@
                         @endif
                         @foreach ($locations as $location)
                             @if ( (int)Request::get('location') === $location->id )
-                                <option value="{{ $location->id }}" selected>{{ $location->name }}  ({{ $location->offers()->count() }})</option>
+                                <option value="{{ $location->id }}" selected>{{ $location->name }}</option>
                             @else
-                                <option value="{{ $location->id }}">{{ $location->name }}  ({{ $location->offers()->count() }})</option>
+                                <option value="{{ $location->id }}">{{ $location->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -75,9 +75,9 @@
                         @endif
                         @foreach ($types as $type)
                             @if ( (int)Request::get('type') === $type->id )
-                                <option value="{{ $type->id }}" selected>{{ $type->name }}  ({{ $type->offers()->count() }})</option>
+                                <option value="{{ $type->id }}" selected>{{ $type->name }}</option>
                             @else
-                                <option value="{{ $type->id }}">{{ $type->name }}  ({{ $type->offers()->count() }})</option>
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endif
                         @endforeach
                     </select>
