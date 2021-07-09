@@ -25,6 +25,7 @@ class Company extends Model
         'phone',
         'website',
         'description',
+        'nip'
     ];
 
     // Create a connection to User model

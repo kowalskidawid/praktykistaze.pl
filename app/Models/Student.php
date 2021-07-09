@@ -28,7 +28,8 @@ class Student extends Model
         'github',
         'description',
         'skills',
-        'image'
+        'image',
+        'cv'
     ];
 
     // Create a connection to User model

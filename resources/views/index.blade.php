@@ -3,16 +3,19 @@
 @section('content')
 <div class="flex flex-col space-y-8 md:space-y-16 pb-16">
     {{-- HEADER --}}
-    <div class=" border-b border-blue-100 bg-blue-50">
+    <div class="" style="background-image: url({{ asset('images/banner-01.jpg')}});">
+    <div class="main_offer border-b border-blue-100 bg-holder">
         <div class="p-4 m-auto max-w-screen-lg h-full">
             <div class="flex flex-col md:py-12 md:flex-row md:space-x-16 items-center">
                 <img src="images/hero.svg" alt="hero" class="hidden md:block w-full md:max-h-80 md:w-auto">
                 <div class="my-8 flex flex-col space-y-4 md:max-w-md">
                     <div class="flex flex-col space-y-2">
+                        @if (!Auth::user())
                         <a href="{{ route('register.index') }}" class="flex space-x-2 items-center">
                             <h2 class="text-base md:text-lg text-blue-600 font-semibold hover:text-blue-500 transition">{{ __('Zarejestruj się')}}</h2>
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" class="HeroPill__StyledIncentiveArrow-sc-16ndsef-0 eOcbbt"><path d="M0 7h12.17l-3.28 3.28 1.41 1.41L16 6 10.3.31 8.89 1.72 12.17 5H0v2z" fill="#1652F0"></path></svg>
                         </a>
+                        @endif
                         <h1 class="text-3xl md:text-5xl font-bold">{{ __('Szukasz praktyk?')}}</h1>
                     </div>
                     <p class="text-base md:text-lg">{{ __('Przeglądaj oferty praktyk i stażów i zdobądź wymagane doświadczenie by być konkurencyjnym na rynku pracy.')}}</p>
@@ -23,6 +26,7 @@
             </div>
         </div>
     </div>
+</div>
     {{-- Latest offers --}}
     <div class="p-4 m-auto max-w-screen-lg h-full flex flex-col space-y-8 md:space-y-12 md:items-center">
         <div class="px-2 flex flex-col md:items-center space-y-2">

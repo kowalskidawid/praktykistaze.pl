@@ -187942,4 +187942,10 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-
+footer{
+  background-color: rgba(37, 54, 73);
+}
+.main_offer{
+  color: white;
+  background-color: rgba(15, 27, 46, 0.82);
+}

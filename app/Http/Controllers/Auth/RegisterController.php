@@ -28,7 +28,8 @@ class RegisterController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'category' => 'required'
+            'category' => 'required',
+            'nip' => 'required'
         ]);
 
         $role = Role::find(2);

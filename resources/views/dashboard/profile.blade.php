@@ -55,6 +55,29 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium">{{ __('Add your CV')}}</p>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <label for="cvInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border bg-white border-gray-200 rounded-lg flex justify-center cursor-pointer">
+                        <input hidden id="cvInput" type="file" name="cv" accept=".pdf">
+                        {{ __('Upload')}}
+                    </label>
+                </div>
+                <script>
+                    const cvOld = document.getElementById('cvOld');
+                    const cvInput = document.getElementById('cvInput');
+                    const cvPreview = document.getElementById('cvPreview');
+                    cvInput.addEventListener('change', (event) => {
+                        if(cvOld) {
+                            cvOld.style.display = "none";
+                            cvPreview.style.display = "block";
+                        }
+                        cvPreview.src = URL.createObjectURL(event.target.files[0]);
+                    });
+                </script>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- First Name --}}
@@ -204,6 +227,7 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
+                
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Company Name --}}
@@ -270,6 +294,13 @@
                 <div class="flex flex-col space-y-2 w-full">
                     <label for="phone" class="text-sm font-medium">{{ __('Numer telefonu')}}</label>
                     <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="{{ __('Numer telefonu')}}" value="{{ Auth::user()->company->phone }}">
+                </div>
+            </div>
+            <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+                {{-- NIP --}}
+                <div class="flex flex-col space-y-2 w-full">
+                    <label for="nip" class="text-sm font-medium">{{ __('NIP')}}</label>
+                    <input name="nip" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('NIP')}}" value="{{ Auth::user()->company->nip }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">

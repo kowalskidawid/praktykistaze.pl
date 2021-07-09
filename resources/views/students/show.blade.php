@@ -72,6 +72,12 @@
                         <span class="text-xs font-medium">Github</span>
                     </li>
                     @endif
+                    @if ($student->cv)
+                    <li class="flex flex-col">
+                        <a href="{{ $student->cv }}" class="font-semibold">{{ $student->cv }}</a>
+                        <span class="text-xs font-medium">CV</span>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
