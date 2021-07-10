@@ -146,12 +146,30 @@
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
             </div>
+            <label><input type="checkbox" id="show_pwd">&nbsp;&nbsp;&nbsp;{{ __('Show password')}}</label>
+            <script>
+                document.getElementById("show_pwd").addEventListener("click", function(e){
+                    var pwd = document.getElementById("password");
+                    if(pwd.getAttribute("type")=="password"){
+                        pwd.setAttribute("type","text");
+                    } else {
+                        pwd.setAttribute("type","password");
+                    }
+                    var pwd2 = document.getElementById("password_confirmation");
+                    if(pwd2.getAttribute("type")=="password"){
+                        pwd2.setAttribute("type","text");
+                    } else {
+                        pwd2.setAttribute("type","password");
+                    }
+                });
+
+            </script>
             <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input @error('confirm') is-invalid @enderror" required id="confirm" name="confirm">
                 <label class="custom-control-label" for="confirm">* {{ __('I accept') }} <a class="text-primary font-weight-bold" href="#">{{ __('Terms & Conditions') }}</a></label>
                 @error('confirm')
                 <span class="invalid-feedback" role="alert">
-                    Akceptacja regulaminu jest niezbędna przy rejestracji.
+                    {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
                 </span>
                 @enderror
             </div>

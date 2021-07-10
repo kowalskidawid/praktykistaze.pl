@@ -20,7 +20,7 @@
             <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies*') ? 'text-blue-600' : ''}}">{{ __('Companies')}}</a>
             <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students*') ? 'text-blue-600' : ''}}">{{ __('Students')}}</a>
             <div class="font-normal flex items-center space-x-1">
-                <a href="{{ route('articles.index') }}" class="font-semibold hover:text-blue-600 {{ request()->is('articles*') ? 'text-blue-600' : ''}}">Articles</a>
+                <a href="{{ route('articles.index') }}" class="font-semibold hover:text-blue-600 {{ request()->is('articles*') ? 'text-blue-600' : ''}}">{{ __('Articles')}}</a>
                 @if ($pinnedArticles->count() > 0)
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
