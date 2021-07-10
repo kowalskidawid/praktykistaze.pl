@@ -49,6 +49,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'students', 'as' => 'students.'], function() {
         Route::get('/', [StudentsController::class, 'index'])->name('index');
         Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
+        Route::get('/cv/{student}', [StudentsController::class, 'showCv'])->name('cv');
     });
     // Articles page
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {

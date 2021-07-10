@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Location;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class StudentsController extends Controller
 {
@@ -36,12 +37,22 @@ class StudentsController extends Controller
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate($perPage);
-                
+
         return view('students.index', compact('students', 'locations', 'categories'));
     }
     // Display the specified resource.
     public function show(Student $student)
     {
         return view('students.show', compact('student'));
+    }
+
+    public function showCv(Student $student)
+    {
+        if ($student->cv && Storage::disk('private')->exists($student->cv)) {
+            $file = Storage::disk('private')->get($student->cv);
+            return response($file)->header('Content-type', 'application/pdf');
+        } else {
+            abort(404);
+        }
     }
 }

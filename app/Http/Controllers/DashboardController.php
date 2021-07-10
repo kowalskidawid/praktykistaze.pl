@@ -97,13 +97,11 @@ class DashboardController extends Controller
         } elseif($request->cv){
             $data = $request->all();
             $oldCv = $student->cv;
-            $cv_file = $request->cv;
-            $cv = new File;;
-            $cvName = md5(time());
-            $cvPath = 'students/' . $student->id . '/' . $cvName . '.pdf';
-            Storage::disk('public')->put($cvPath, $cv, 'public');
-            Storage::disk('public')->delete($oldCv);
-            $data['cv'] = '/storage/'.$cvPath;
+            $cvPath = Storage::disk('private')->put('students/' . $student->id, $request->file('cv'));
+            if ($oldCv) {
+                Storage::disk('private')->delete($oldCv);
+            }
+            $data['cv'] = $cvPath;
             $student->update($data);
         } else {
             $data = $request->except('image');
@@ -177,7 +175,7 @@ class DashboardController extends Controller
         return view('dashboard.offersCreate', compact('locations', 'categories', 'types'));
     }
     public function offersEdit(Offer $offer)
-    {        
+    {
         // List of values for select inputs in form
         $locations = Location::get();
         $categories = Category::get();
