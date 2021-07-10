@@ -74,7 +74,7 @@
                     @endif
                     @if ($student->cv)
                     <li class="flex flex-col">
-                        <a href="{{ $student->cv }}" class="font-semibold">{{ $student->cv }}</a>
+                        <a href="{{route('students.cv',$student)}}" class="font-semibold">{{ $student->cv }}</a>
                         <span class="text-xs font-medium">CV</span>
                     </li>
                     @endif
