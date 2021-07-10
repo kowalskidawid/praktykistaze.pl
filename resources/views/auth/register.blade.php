@@ -79,7 +79,10 @@
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
             </div>
-            <label><input type="checkbox" id="show_pwd">&nbsp;&nbsp;&nbsp;{{ __('Show password')}}</label>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Show password')}}</span>
+            </label>
             <script>
                 document.getElementById("show_pwd").addEventListener("click", function(e){
                     var pwd = document.getElementById("password");
@@ -97,15 +100,15 @@
                 });
 
             </script>
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input @error('confirm') is-invalid @enderror" required id="confirm" name="confirm">
-                <label class="custom-control-label" for="confirm">* {{ __('I accept') }} <a class="text-primary font-weight-bold" href="#">{{ __('Terms & Conditions') }}</a></label>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <span class="ml-2 text-sm text-gray-600" for="confirm">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
                 @error('confirm')
                 <span class="invalid-feedback" role="alert">
-                    Akceptacja regulaminu jest niezbędna przy rejestracji.
-                 </span>
+                    {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
+                </span>
                 @enderror
-            </div>
+            </label>
             <div class="pt-4">
                 <button type="submit" class="text-base font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register') }}</button>
             </div>
@@ -146,7 +149,10 @@
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
             </div>
-            <label><input type="checkbox" id="show_pwd">&nbsp;&nbsp;&nbsp;{{ __('Show password')}}</label>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Show password')}}</span>
+            </label>
             <script>
                 document.getElementById("show_pwd").addEventListener("click", function(e){
                     var pwd = document.getElementById("password");
@@ -164,15 +170,15 @@
                 });
 
             </script>
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input @error('confirm') is-invalid @enderror" required id="confirm" name="confirm">
-                <label class="custom-control-label" for="confirm">* {{ __('I accept') }} <a class="text-primary font-weight-bold" href="#">{{ __('Terms & Conditions') }}</a></label>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <span class="ml-2 text-sm text-gray-600" for="confirm">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
                 @error('confirm')
                 <span class="invalid-feedback" role="alert">
                     {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
                 </span>
                 @enderror
-            </div>
+            </label>
             <div class="pt-4">
                 <button type="submit" class="text-base font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register') }}</button>
             </div>
