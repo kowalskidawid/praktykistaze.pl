@@ -24,7 +24,7 @@
                     <img src="{{ asset($company->image) }}" alt="" class="w-16 h-16">
                     <div>
                         <h1 class="whitespace-nowrap font-semibold">{{ $company->company_name }}</h1>
-                        <p class="text-sm">{{ $company->category->name }}</p>
+                        <p class="text-sm">{{ __('app/categories.' . $company->category->name ) }}</p>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     @endif
                     @if ($company->size_id)
                     <li class="flex flex-col">
-                        <span class="font-semibold">{{ $company->size->name }}</span>
+                        <span class="font-semibold">{{ __('app/size.' . $company->size->name ) }}</span>
                         <span class="text-xs font-medium">{{ __('Wielkość firmy')}}</span>
                     </li>
                     @endif
@@ -80,7 +80,7 @@
                     <div class="flex space-x-4 items-center">
                         <div>
                             <p class="font-semibold">{{ $offer->position }}</p>
-                            <p class="text-sm">{{ $offer->category->name }}</p>
+                            <p class="text-sm">{{ __('app/categories.' . $offer->category->name ) }}</p>
                         </div>
                     </div>
                 </a>

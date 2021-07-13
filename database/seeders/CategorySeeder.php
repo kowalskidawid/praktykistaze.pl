@@ -44,8 +44,6 @@ class CategorySeeder extends Seeder
             "Nieruchomości",
             "Logistyka",
             "Ochrona osób i mienia",
-            "Kadra zarządzająca",
-            "Kontrola jakości",
             "Organizacje pozarządowe / Wolontariat",
             "Obsługa Klienta",
             "Praca fizyczna",
@@ -60,7 +58,6 @@ class CategorySeeder extends Seeder
             "Transport / Spedycja",
             "Turystyka / Hotelarstwo",
             "Ubezpieczenia",
-            "Zarządzanie",
             "Zakupy",
             "Inne"
         ];

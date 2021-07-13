@@ -24,7 +24,7 @@
                     <img src="{{ asset($student->image) }}" alt="" class="w-16 h-16">
                     <div>
                         <h1 class="whitespace-nowrap font-semibold">{{ $student->first_name }} {{ $student->last_name }}</h1>
-                        <p class="text-sm">{{ $student->category->name }}</p>
+                        <p class="text-sm">{{ __('app/categories.' . $student->category->name ) }}</p>
                     </div>
                 </div>
             </div>

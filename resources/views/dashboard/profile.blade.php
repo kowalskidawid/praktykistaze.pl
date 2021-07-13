@@ -118,9 +118,9 @@
                     <select name="category_id" class="border border-gray-200 rounded-lg">
                         @foreach ($categories as $category)
                         @if ( Auth::user()->student->category_id === $category->id )
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                         @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -241,9 +241,9 @@
                     <select name="size_id" class="border border-gray-200 rounded-lg">
                         @foreach ($sizes as $size)
                         @if ( Auth::user()->company->size_id === $size->id )
-                            <option value="{{ $size->id }}" selected>{{ $size->name.' (+'.$size->size.')' }}</option>
+                            <option value="{{ $size->id }}" selected>{{ __('app/size.' . $size->name).' (+'.$size->size.')' }}</option>
                         @else
-                            <option value="{{ $size->id }}">{{ $size->name.' (+'.$size->size.')' }}</option>
+                            <option value="{{ $size->id }}">{{ __('app/size.' . $size->name).' (+'.$size->size.')' }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -276,9 +276,9 @@
                     <select name="category_id" class="border border-gray-200 rounded-lg">
                         @foreach ($categories as $category)
                         @if ( Auth::user()->company->category_id === $category->id )
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                         @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                         @endif
                         @endforeach
                     </select>

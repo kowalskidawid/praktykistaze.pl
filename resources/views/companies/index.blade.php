@@ -37,9 +37,9 @@
                         @endif
                         @foreach ($categories as $category)
                             @if ( (int)Request::get('category') === $category->id )
-                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -75,9 +75,9 @@
                         @endif
                         @foreach ($sizes as $size)
                             @if ( (int)Request::get('size') === $size->id )
-                                <option value="{{ $size->id }}" selected>{{ $size->name }}</option>
+                                <option value="{{ $size->id }}" selected>{{ __('app/size.' . $size->name) }}</option>
                             @else
-                                <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                <option value="{{ $size->id }}">{{ __('app/size.' . $size->name) }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -95,7 +95,7 @@
                 <img src="{{ asset($company->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <p class="font-semibold">{{ $company->company_name }}</p>
-                    <p class="text-sm whitespace-nowrap">{{ $company->category->name }}</p>
+                    <p class="text-sm whitespace-nowrap">{{ __('app/categories.' . $company->category->name ) }}</p>
                 </div>
             </div>
             <div>

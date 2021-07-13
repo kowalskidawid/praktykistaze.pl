@@ -63,7 +63,7 @@
                     <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
                     <div>
                         <h1 class="whitespace-nowrap font-semibold">{{ $offer->company->company_name }}</h1>
-                        <p class="text-sm">{{ $offer->company->category->name }}</p>
+                        <p class="text-sm">{{ __('app/categories.' . $offer->company->category->name) }}</p>
                     </div>
                 </div>
             </a>
@@ -72,7 +72,7 @@
             <ul class="flex flex-col space-y-4">
                 @if ($offer->type->name)
                 <li class="flex flex-col">
-                    <span class="font-semibold">{{ $offer->type->name }}</span>
+                    <span class="font-semibold">{{  __('app/offers.' . $offer->type->name) }}</span>
                     <span class="text-xs font-medium">{{ __('Rodzaj zatrudnienia')}}</span>
                 </li>
                 @endif

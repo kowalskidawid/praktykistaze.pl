@@ -37,9 +37,9 @@
                         @endif
                         @foreach ($categories as $category)
                             @if ( (int)Request::get('category') === $category->id )
-                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -75,9 +75,9 @@
                         @endif
                         @foreach ($types as $type)
                             @if ( (int)Request::get('type') === $type->id )
-                                <option value="{{ $type->id }}" selected>{{ $type->name }}</option>
+                                <option value="{{ $type->id }}" selected>{{ __('app/offers.' . $type->name) }}</option>
                             @else
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option value="{{ $type->id }}">{{ __('app/offers.' . $type->name) }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -110,11 +110,11 @@
                 <img src="{{ asset($offer->company->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <p class="font-semibold">{{ $offer->position }}</p>
-                    <p class="text-sm">{{ $offer->category->name }}</p>
+                    <p class="text-sm">{{ __('app/categories.' . $offer->category->name) }}</p>
                 </div>
             </div>
             <div>
-                <p class="font-semibold text-right">{{ $offer->salary }} PLN</p>
+                <p class="font-semibold text-right">{{ $offer->salary }} {{ __('PLN')}}</p>
                 <p class="text-right text-sm">{{ $offer->city }}<span class="hidden md:inline">, {{ $offer->location->name }}</span></p>
             </div>
         </a>

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'password' => 'The provided password is incorrect.',
+    'password' => 'Podane hasło jest błędne.',
     'failed' => 'Błędny login lub hasło.',
     'throttle' => 'Za dużo nieudanych prób logowania. Proszę spróbować za :seconds sekund.',
 

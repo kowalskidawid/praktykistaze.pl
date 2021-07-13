@@ -9,4 +9,6 @@ return [
     'salary-all' => 'All offers',
     'salary-paid' => 'Only paid offers',
     'search' => 'Search',
+    'Staż' => 'Internships',
+    'Praktyki' => 'Practice '
 ];
