@@ -97,11 +97,13 @@ class DashboardController extends Controller
         } elseif($request->cv){
             $data = $request->all();
             $oldCv = $student->cv;
-            $cvPath = Storage::disk('private')->put('students/' . $student->id, $request->file('cv'));
+            $cv = $request->file('cv');
+            $cvPath = Storage::disk('private')->put('students/' . $student->id, $cv);
             if ($oldCv) {
                 Storage::disk('private')->delete($oldCv);
             }
             $data['cv'] = $cvPath;
+            $data['cv_file_name'] = $cv->getClientOriginalName();
             $student->update($data);
         } else {
             $data = $request->except('image');

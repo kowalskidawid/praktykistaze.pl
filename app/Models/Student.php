@@ -29,7 +29,8 @@ class Student extends Model
         'description',
         'skills',
         'image',
-        'cv'
+        'cv',
+        'cv_file_name'
     ];
 
     // Create a connection to User model
