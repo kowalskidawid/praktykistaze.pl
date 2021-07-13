@@ -6,7 +6,7 @@
         @csrf
         {{-- Title --}}
         <div class="pb-2 border-b border-gray-200">
-            <h1 class="text-xl font-semibold">Add new article</h1>
+            <h1 class="text-xl font-semibold">{{ __('Add new article')}}</h1>
         </div>
         {{-- Errors --}}
         @if ($errors->any())
@@ -47,21 +47,21 @@
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Title --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="title" class="text-sm font-medium">Title</label>
+                    <label for="title" class="text-sm font-medium">{{ __('Title')}}</label>
                     <input name="title" type="text" class="border border-gray-200 rounded-lg" placeholder="Title" value="">
                 </div>
                 {{-- Pinned --}}
                 <div class="flex flex-col space-y-2 w-full">
-                    <label for="pinned" class="text-sm font-medium">Pinned</label>
+                    <label for="pinned" class="text-sm font-medium">{{ __('Pinned')}}</label>
                     <select name="pinned" class="border border-gray-200 rounded-lg">
                         <option selected></option>
-                        <option value="0">Nie</option>
-                        <option value="1">Tak</option>
+                        <option value="0">{{ __('Nie')}}</option>
+                        <option value="1">{{ __('Tak')}}</option>
                     </select>
                 </div>
             </div>
             {{-- Decription --}}
-            <label for="content" class="text-sm font-medium">Content</label>
+            <label for="content" class="text-sm font-medium">{{ __('Content')}}</label>
             <textarea class="ckeditor" name="content" id="" cols="30" rows="10"></textarea>
         </div>
         {{-- Submit --}}

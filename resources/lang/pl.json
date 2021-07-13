@@ -66,7 +66,7 @@
     "Change email": "Zmień e-mail",
     "Change your password": "Zmień swoje hasło",
     "Your current password": "Twoje aktualne hasło",
-    "New password": "New password",
+    "New password": "Nowe hasło",
     "Confirm new password": "Potwierdź nowe hasło",
     "Change password": "Zmień hasło",
     "Applications": "Aplikacje",
@@ -141,7 +141,7 @@
     "Pinned": "Przypięty",
     "Nie": "Nie",
     "Tak": "Tak",
-    "Content": "",
+    "Content": "Treść",
     "Zresetuj hasło": "Zresetuj hasło",
     "Utwórz konto studenckie i znajdź wymarzone praktyki lub zarejestruj się jako firma, by móc dodawać oferty pracy.": "Utwórz konto studenckie i znajdź wymarzone praktyki lub zarejestruj się jako firma, by móc dodawać oferty pracy.",
     "Wybierz rodzaj konta": "Wybierz rodzaj konta",
@@ -153,5 +153,7 @@
     "Show password": "Pokaż hasło",
     "Terms & Conditions": "Regulamin",
     "Akceptacja regulaminu jest niezbędna przy rejestracji.": "Akceptacja regulaminu jest niezbędna przy rejestracji.",
-    "Add your CV": "Dodaj swoje CV"
+    "Add your CV": "Dodaj swoje CV",
+    "Recomended size is 1024x320px.": "Zalecany rozmiar to 1024x320px.",
+    "Title": "Tytuł"
 }
