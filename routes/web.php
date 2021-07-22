@@ -31,6 +31,7 @@ Route::group(['middleware' => 'language'], function () {
     // Offers page
     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
         Route::get('/', [OffersController::class, 'index'])->name('index');
+        Route::get('/search', [OffersController::class, 'search'])->name('search');
         Route::post('/store', [OffersController::class, 'store'])->middleware(['auth', 'verified', 'roleCompany'])->name('store');
         Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
         Route::post('/id/{offer}/edit', [OffersController::class, 'update'])->middleware(['auth', 'verified', 'roleCompany'])->name('update');

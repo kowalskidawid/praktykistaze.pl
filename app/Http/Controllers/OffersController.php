@@ -12,6 +12,8 @@ use App\Models\Type;
 
 class OffersController extends Controller
 {
+    public const PER_PAGE = 12;
+
     // Display a listing of the resource.
     public function index(Request $request)
     {
@@ -27,36 +29,38 @@ class OffersController extends Controller
         $type = $request->type;
         $salary = $request->salary;
         // Number of items per page, used in pagination
-        $perPage = 12;
+
         // Requested offers
         $offers = Offer::when($location, function ($query, $location) {
-                    return $query->where('location_id', '=', $location);
-                })
-                ->when($category, function ($query, $category) {
-                    return $query->where('category_id', '=', $category);
-                })
-                ->when($type, function ($query, $type) {
-                    return $query->where('type_id', '=', $type);
-                })
-                ->when($city, function ($query, $city) {
-                    return $query->where('city', 'LIKE', '%'.$city.'%');
-                })
-                ->when($position, function ($query, $position) {
-                    return $query->where('position', 'LIKE', '%'.$position.'%');
-                })
-                ->when($salary, function ($query, $salary) {
-                    return $query->where('salary', '>', 0);
-                })
-                ->orderBy('created_at', 'desc')
-                ->paginate($perPage);
-                
+            return $query->where('location_id', '=', $location);
+        })
+            ->when($category, function ($query, $category) {
+                return $query->where('category_id', '=', $category);
+            })
+            ->when($type, function ($query, $type) {
+                return $query->where('type_id', '=', $type);
+            })
+            ->when($city, function ($query, $city) {
+                return $query->where('city', 'LIKE', '%' . $city . '%');
+            })
+            ->when($position, function ($query, $position) {
+                return $query->where('position', 'LIKE', '%' . $position . '%');
+            })
+            ->when($salary, function ($query, $salary) {
+                return $query->where('salary', '>', 0);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PER_PAGE);
+
         return view('offers.index', compact('offers', 'locations', 'categories', 'types'));
     }
+
     // Display the specified resource.
     public function show(Offer $offer)
     {
         return view('offers.show', compact('offer'));
     }
+
     // Add new offer.
     public function store(Request $request)
     {
@@ -87,11 +91,12 @@ class OffersController extends Controller
             $imageName = md5(time());
             $imagePath = 'offers/' . $offer->id . '/' . $imageName . '.jpg';
             Storage::disk('public')->put($imagePath, $img->encoded, 'public');
-            $offer->update(['image' => '/storage/'.$imagePath]);
+            $offer->update(['image' => '/storage/' . $imagePath]);
         }
 
         return back();
     }
+
     // Update an offer.
     public function update(Request $request, Offer $offer)
     {
@@ -121,7 +126,7 @@ class OffersController extends Controller
             $imagePath = 'offers/' . $offerToUpdate->id . '/' . $imageName . '.jpg';
             Storage::disk('public')->put($imagePath, $img->encoded, 'public');
             Storage::disk('public')->delete($oldImage);
-            $data['image'] = '/storage/'.$imagePath;
+            $data['image'] = '/storage/' . $imagePath;
             $offerToUpdate->update($data);
         } else {
             $data = $request->except('image');
@@ -130,6 +135,7 @@ class OffersController extends Controller
 
         return back();
     }
+
     // Delete the offer
     public function destroy(Offer $offer)
     {
@@ -156,4 +162,34 @@ class OffersController extends Controller
 
     //     return redirect()->back()->withSuccess('Offer updated');
     // }
+
+    public function search(Request $request)
+    {
+        $locations = Location::get();
+        $categories = Category::get();
+        $types = Type::get();
+        $city = $request->city;
+        $keyword = $request->keyword;
+        $offers = Offer::when($city, function ($query, $city) {
+            return $query->where('city', 'LIKE', '%' . $city . '%');
+        })->when($keyword, function ($query, $keyword) {
+            $keyword = '%' . $keyword . '%';
+            $jobCategories = Category::where('name', 'LIKE', $keyword)->pluck('id')->toArray();
+            $locations = Location::where('name', 'LIKE', $keyword)->pluck('id')->toArray();
+
+            $query = $query->where('position', 'LIKE', $keyword)
+                ->orWhere('description', 'LIKE', $keyword)
+                ->orWhere('city', 'LIKE', $keyword);
+            foreach ($jobCategories as $category) {
+                $query->orWhere('category_id', $category);
+            }
+            foreach ($locations as $location) {
+                $query->orWhere('location_id', $location);
+            }
+        })
+            ->orderBy('created_at', 'desc')
+            ->paginate(self::PER_PAGE);
+
+        return view('offers.index', compact('offers', 'locations', 'categories', 'types'));
+    }
 }
