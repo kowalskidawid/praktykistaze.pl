@@ -2,8 +2,8 @@
 
 @section('main')
 <div class="flex flex-col space-y-8">
-    {{-- 
-        Form for students    
+    {{--
+        Form for students
     --}}
     @if(Auth::user()->roleCheck('student'))
     <form action="{{ route('dashboard.student') }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="py-2">
                     <label for="cvInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border bg-white border-gray-200 rounded-lg flex justify-center cursor-pointer">
-                        <input hidden id="cvInput" type="file" name="cv" accept=".pdf">
+                        <input hidden id="cvInput" type="file" name="cv">
                         {{ __('Upload')}}
                     </label>
                 </div>
@@ -174,8 +174,8 @@
             <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer" value="{{ __('Update profile')}}">
         </div>
     </form>
-    {{-- 
-        Form for companies    
+    {{--
+        Form for companies
     --}}
     @elseif(Auth::user()->roleCheck('company'))
     <form action="{{ route('dashboard.company') }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
@@ -227,7 +227,7 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
-                
+
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Company Name --}}
