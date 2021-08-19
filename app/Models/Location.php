@@ -26,4 +26,9 @@ class Location extends Model
     {
         return $this->hasMany(Offer::class);
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

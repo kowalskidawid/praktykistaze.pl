@@ -15,8 +15,8 @@ class HomeController extends Controller
     {
         $offers = Offer::latest()->take(3)->get();
         $offersCount = Offer::all()->count();
-        $locations = Location::get();
-        $categories = Category::get();
+        $locations = Location::all()->sortBy('name');
+        $categories = Category::all()->sortBy('name');
         $types = Type::get();
 
         return view('index', compact('offers', 'offersCount', 'locations', 'categories', 'types'));

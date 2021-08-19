@@ -32088,6 +32088,18 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.locations-dropdown {
+  position: absolute !important;
+  width: 95vw;
+  left: -45vw;
+}
+
+.categories-dropdown {
+  position: absolute !important;
+  width: 70vw;
+  left: -15vw;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -187942,10 +187954,4 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-footer{
-  background-color: rgba(37, 54, 73);
-}
-.main_offer{
-  color: white;
-  background-color: rgba(15, 27, 46, 0.82);
-}
+

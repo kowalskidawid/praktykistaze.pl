@@ -189,7 +189,9 @@ class OffersController extends Controller
         })
             ->orderBy('created_at', 'desc')
             ->paginate(self::PER_PAGE);
-
+        if ($offers->isEmpty()) {
+            return redirect()->route('index', ['keyword' => $keyword])->with('no-offers', true);
+        }
         return view('offers.index', compact('offers', 'locations', 'categories', 'types'));
     }
 }

@@ -157,5 +157,8 @@
     "Recomended size is 1024x320px.": "Recomended size is 1024x320px.",
     "Title": "Title",
     "Lokalizacja": "Location",
-    "Keyword": "Keyword, position, company"
+    "Keyword": "Keyword, position, company",
+    "Categories": "Categories",
+    "We did not find job offers that met the selected criteria.": "We did not find job offers that met the selected criteria.",
+    "Check for typos in the phrases you typed, or try a more general query.": "Check for typos in the phrases you typed, or try a more general query."
 }

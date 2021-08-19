@@ -41,6 +41,9 @@
                 <li class="flex">
                     <a href="{{ route('dashboard.articles') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/articles*') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Articles')}}</a>
                 </li>
+                <li class="flex">
+                    <a href="{{ route('dashboard.categories.index') }}" class="w-full text-sm font-medium px-4 py-2 rounded hover:bg-blue-100 {{ request()->is('dashboard/categories*') ? 'bg-blue-600 text-white hover:bg-blue-600' : ''}}">{{ __('Categories')}}</a>
+                </li>
                 @endif
                 <li class="my-2"><hr></li>
                 {{-- Logout --}}

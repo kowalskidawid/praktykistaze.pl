@@ -85,6 +85,15 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/articles', [DashboardController::class, 'articles'])->middleware('roleAdmin')->name('articles');
         Route::get('/articles/create', [DashboardController::class, 'articlesCreate'])->middleware('roleAdmin')->name('articlesCreate');
         Route::get('/articles/edit/{article}', [DashboardController::class, 'articlesEdit'])->middleware('roleAdmin')->name('articlesEdit');
+
+        Route::group(['prefix' => 'categories', 'as' => 'categories.'], function() {
+            Route::get('/', [\App\Http\Controllers\CategoriesController::class, 'index'])->name('index');
+            Route::post('/store', [\App\Http\Controllers\CategoriesController::class, 'store'])->name('store');
+            Route::get('{category}', [\App\Http\Controllers\CategoriesController::class, 'edit'])->name('edit');
+            Route::get('{category}', [\App\Http\Controllers\CategoriesController::class, 'edit'])->name('edit');
+            Route::delete('{category}', [\App\Http\Controllers\CategoriesController::class, 'delete'])->name('delete');
+            Route::put('/{category}', [\App\Http\Controllers\CategoriesController::class, 'update'])->name('update');
+        });
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {

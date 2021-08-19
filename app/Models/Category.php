@@ -11,6 +11,9 @@ use App\Models\Companies;
 class Category extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name'
+    ];
 
     // Create a connection to Offer model
     public function offers()
@@ -25,6 +28,19 @@ class Category extends Model
     // Create a connection to Company model
     public function companies()
     {
-        return $this->hasMany(Companies::class);
+        return $this->hasMany(Company::class);
+    }
+
+    public function canDelete(): bool
+    {
+        $canDelete = false;
+        if (
+            $this->students->count() == 0
+            && $this->offers->count() == 0
+            && $this->companies->count() == 0
+        ) {
+            $canDelete = true;
+        }
+        return $canDelete;
     }
 }

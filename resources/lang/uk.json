@@ -158,5 +158,7 @@
     "Recomended size is 1024x320px.": "Рекомендований розмір - 1024x320px.",
     "Title": "Заголовок",
     "Lokalizacja": "Місцезнаходженння",
-    "Keyword": "Ключове слово, посада, компанія"
+    "Keyword": "Ключове слово, посада, компанія",
+    "We did not find job offers that met the selected criteria.": "Ми не знайшли жодної вакансії по роботі, яка б відповідала даним критеріям.",
+    "Check for typos in the phrases you typed, or try a more general query.": "Будь ласка перевірте кількість помилок у фразах або спробуйте більш загальний запит."
 }

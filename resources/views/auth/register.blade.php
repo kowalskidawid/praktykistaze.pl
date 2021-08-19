@@ -63,9 +63,9 @@
             <div class="flex flex-col space-y-2">
                 <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Twoja specjalizacja')}}</label>
                 <select name="category" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                    <option value="" selected></option>
+                    <option value="" selected>{{ __('Twoja specjalizacja')}}</option>
                     @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -100,9 +100,9 @@
                 });
 
             </script>
-            <label for="show_pwd" class="inline-flex items-center">
-                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
-                <span class="ml-2 text-sm text-gray-600" for="confirm">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
+            <label for="confirm" class="inline-flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <span class="ml-2 text-sm text-gray-600">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
                 @error('confirm')
                 <span class="invalid-feedback" role="alert">
                     {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
@@ -171,7 +171,7 @@
 
             </script>
             <label for="show_pwd" class="inline-flex items-center">
-                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
                 <span class="ml-2 text-sm text-gray-600" for="confirm">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
                 @error('confirm')
                 <span class="invalid-feedback" role="alert">
