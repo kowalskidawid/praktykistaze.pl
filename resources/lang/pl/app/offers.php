@@ -11,6 +11,6 @@ return [
     'salary-all' => 'Wszystkie oferty',
     'salary-paid' => 'Tylko oferty z wynagrodzeniem',
     'search'=>'Szukaj',
-    ''=>'',
-    ''=>'',
+    'Praktyki' => 'Praktyki',
+    'Staż' => 'Staż'
 ];

@@ -53,32 +53,62 @@
             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-2">
                 <div class="flex flex-col space-y-2">
                     <label for="first_name" class="block font-medium text-sm text-gray-700">{{ __('First name')}}</label>
-                    <input id="first_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="first_name" placeholder="{{ __('First name')}}" required />
+                    <input id="first_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="first_name" placeholder="{{ __('First name')}}" />
                 </div>
                 <div class="flex flex-col space-y-2">
                     <label for="last_name" class="block font-medium text-sm text-gray-700">{{ __('Last name')}}</label>
-                    <input id="last_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="last_name" placeholder="{{ __('Last name')}}" required />
+                    <input id="last_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="last_name" placeholder="{{ __('Last name')}}" />
                 </div>
             </div>
             <div class="flex flex-col space-y-2">
                 <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Twoja specjalizacja')}}</label>
                 <select name="category" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                    <option value="" selected></option>
+                    <option value="" selected>{{ __('Twoja specjalizacja')}}</option>
                     @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-2">
                 <div class="flex flex-col space-y-2">
                     <x-label for="password" :value="__('Password')" />
-                    <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                    <x-input id="password" class="block mt-1 w-full " type="password" name="password" required autocomplete="new-password" />
                 </div>
                 <div class="flex flex-col space-y-2">
                     <x-label for="password_confirmation" :value="__('Confirm Password')" />
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
             </div>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Show password')}}</span>
+            </label>
+            <script>
+                document.getElementById("show_pwd").addEventListener("click", function(e){
+                    var pwd = document.getElementById("password");
+                    if(pwd.getAttribute("type")=="password"){
+                        pwd.setAttribute("type","text");
+                    } else {
+                        pwd.setAttribute("type","password");
+                    }
+                    var pwd2 = document.getElementById("password_confirmation");
+                    if(pwd2.getAttribute("type")=="password"){
+                        pwd2.setAttribute("type","text");
+                    } else {
+                        pwd2.setAttribute("type","password");
+                    }
+                });
+
+            </script>
+            <label for="confirm" class="inline-flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <span class="ml-2 text-sm text-gray-600">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
+                @error('confirm')
+                <span class="invalid-feedback" role="alert">
+                    {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
+                </span>
+                @enderror
+            </label>
             <div class="pt-4">
                 <button type="submit" class="text-base font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register') }}</button>
             </div>
@@ -86,7 +116,7 @@
         {{-- Role: company --}}
         @elseif (Request::get('role') === 'company')
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-        <form method="POST" action="{{ route('register.student') }}" class="flex flex-col space-y-4">
+        <form method="POST" action="{{ route('register.company') }}" class="flex flex-col space-y-4">
             @csrf
             <div class="flex flex-col space-y-2">
                 <x-label for="email" :value="__('Email')" />
@@ -95,6 +125,10 @@
             <div class="flex flex-col space-y-2">
                 <label for="company_name" class="block font-medium text-sm text-gray-700">{{ __('Company name')}}</label>
                 <input id="company_name" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="company_name" placeholder="{{ __('Company name')}}" required />
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="nip" class="block font-medium text-sm text-gray-700">{{ __('NIP')}}</label>
+                <input id="nip" class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="nip" placeholder="{{ __('NIP')}}" />
             </div>
             <div class="flex flex-col space-y-2">
                 <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Kategoria firmy')}}</label>
@@ -115,6 +149,36 @@
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
             </div>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Show password')}}</span>
+            </label>
+            <script>
+                document.getElementById("show_pwd").addEventListener("click", function(e){
+                    var pwd = document.getElementById("password");
+                    if(pwd.getAttribute("type")=="password"){
+                        pwd.setAttribute("type","text");
+                    } else {
+                        pwd.setAttribute("type","password");
+                    }
+                    var pwd2 = document.getElementById("password_confirmation");
+                    if(pwd2.getAttribute("type")=="password"){
+                        pwd2.setAttribute("type","text");
+                    } else {
+                        pwd2.setAttribute("type","password");
+                    }
+                });
+
+            </script>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 @error('confirm') is-invalid @enderror" name="remember" required id="confirm">
+                <span class="ml-2 text-sm text-gray-600" for="confirm">* {{ __('I accept') }} <a class="" href="#">{{ __('Terms & Conditions') }}</a></span>
+                @error('confirm')
+                <span class="invalid-feedback" role="alert">
+                    {{ __('Akceptacja regulaminu jest niezbędna przy rejestracji.')}}
+                </span>
+                @enderror
+            </label>
             <div class="pt-4">
                 <button type="submit" class="text-base font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register') }}</button>
             </div>

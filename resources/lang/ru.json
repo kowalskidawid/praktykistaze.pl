@@ -148,6 +148,16 @@
     "Twoja specjalizacja": "Ваша специальность",
     "Last name": "Фамилия",
     "Kategoria firmy": "Категория фирмы",
-    "Zweryfikuj email": "Проверьте электронную почту"
-
+    "Zweryfikuj email": "Проверьте электронную почту",
+    "I accept": "Я принимаю",
+    "Show password": "Показать пароль",
+    "Terms & Conditions": "Правила и условия",
+    "Akceptacja regulaminu jest niezbędna przy rejestracji.": "Для регистрации необходимо принять условия и правила.",
+    "Add your CV": "Добавьте свое резюме",
+    "Recomended size is 1024x320px.": "Рекомендуемый размер - 1024x320px.",
+    "Title": "Заголовок",
+    "Lokalizacja": "Місцезнаходженння",
+    "Keyword": "Ключевое слово, должность, компания",
+    "We did not find job offers that met the selected criteria.": "Мы не нашли ни одной работы, соответствующей вашим критериям.\n",
+    "Check for typos in the phrases you typed, or try a more general query.": "Проверьте, нет ли опечаток во введенных вами фразах, или попробуйте задать более общий запрос."
 }

@@ -34,7 +34,7 @@ class StudentFactory extends Factory
             'phone' => $this->faker->tollFreePhoneNumber,
             'website' => $this->faker->domainName,
             'linkedin' => $this->faker->domainName,
-            'github' => $this->faker->domainName,
+            'github' => $this->faker->domainName
         ];
     }
 }

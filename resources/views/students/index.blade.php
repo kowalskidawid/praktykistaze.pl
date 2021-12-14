@@ -52,9 +52,9 @@
                         @endif
                         @foreach ($categories as $category)
                             @if ( (int)Request::get('category') === $category->id )
-                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" selected>{{  __('app/categories.' . $category->name) }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{  __('app/categories.' . $category->name) }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -76,7 +76,7 @@
                 <img src="{{ asset($student->image) }}" alt="" class="w-16 h-16">
                 <div>
                     <p class="font-semibold">{{ $student->first_name }} {{ $student->last_name }}</p>
-                    <p class="text-sm whitespace-nowrap">{{ $student->category->name }}</p>
+                    <p class="text-sm whitespace-nowrap">{{   __('app/categories.' . $student->category->name) }}</p>
                 </div>
             </div>
             <div>

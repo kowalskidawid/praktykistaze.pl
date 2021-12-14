@@ -32,6 +32,21 @@
                 <x-label for="password" :value="__('Password')" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required/>
             </div>
+            <label for="show_pwd" class="inline-flex items-center">
+                <input id="show_pwd" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Show password')}}</span>
+            </label>
+            <script>
+                document.getElementById("show_pwd").addEventListener("click", function(e){
+                    var pwd = document.getElementById("password");
+                    if(pwd.getAttribute("type")=="password"){
+                        pwd.setAttribute("type","text");
+                    } else {
+                        pwd.setAttribute("type","password");
+                    }
+                });
+
+            </script>
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                 <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>

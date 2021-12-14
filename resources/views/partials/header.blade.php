@@ -20,7 +20,7 @@
             <a href="{{ route('companies.index') }}" class="hover:text-blue-600 {{ request()->is('companies*') ? 'text-blue-600' : ''}}">{{ __('Companies')}}</a>
             <a href="{{ route('students.index') }}" class="hover:text-blue-600 {{ request()->is('students*') ? 'text-blue-600' : ''}}">{{ __('Students')}}</a>
             <div class="font-normal flex items-center space-x-1">
-                <a href="{{ route('articles.index') }}" class="font-semibold hover:text-blue-600 {{ request()->is('articles*') ? 'text-blue-600' : ''}}">Articles</a>
+                <a href="{{ route('articles.index') }}" class="font-semibold hover:text-blue-600 {{ request()->is('articles*') ? 'text-blue-600' : ''}}">{{ __('Articles')}}</a>
                 @if ($pinnedArticles->count() > 0)
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -133,11 +133,63 @@
                 </form>
             </x-slot>
         </x-dropdown>
+        <form method="POST" action="{{ route('language') }}" class="flex">
+        @csrf
+        <select name="language" id="" class="border border-gray-200 rounded-lg rounded-2xl-none w-full sm:w-auto" onchange="this.form.submit()">
+            @if (app()->getLocale() == 'en')
+            <option value="en" selected>EN</option>
+            @else
+            <option value="en">EN</option>
+            @endif
+            @if (app()->getLocale() == 'pl')
+            <option value="pl" selected>PL</option>
+            @else
+            <option value="pl">PL</option>
+            @endif
+            @if (app()->getLocale() == 'uk')
+            <option value="uk" selected>UK</option>
+            @else
+            <option value="uk">UK</option>
+            @endif
+            @if (app()->getLocale() == 'ru')
+            <option value="ru" selected>RU</option>
+            @else
+            <option value="ru">RU</option>
+            @endif
+        </select>
+    </form>
+
     </div>
     @else
     <div class="flex space-x-2 items-center">
         <a href="{{ route('login') }}" class="text-sm font-medium px-4 py-2 rounded border border-gray-300 text-gray-900 hover:bg-gray-50 transition">{{ __('Login')}}</a>
         <a href="{{ route('register.index') }}" class="text-sm font-medium px-4 py-2 rounded border border-blue-600 bg-blue-600 text-white hover:bg-blue-500 transition">{{ __('Register')}}</a>
+        <form method="POST" action="{{ route('language') }}" class="flex">
+        @csrf
+        <select name="language" id="" class="border border-gray-200 rounded-lg rounded-2xl-none w-full sm:w-auto" onchange="this.form.submit()">
+            @if (app()->getLocale() == 'en')
+            <option value="en" selected>EN</option>
+            @else
+            <option value="en">EN</option>
+            @endif
+            @if (app()->getLocale() == 'pl')
+            <option value="pl" selected>PL</option>
+            @else
+            <option value="pl">PL</option>
+            @endif
+            @if (app()->getLocale() == 'uk')
+            <option value="uk" selected>UK</option>
+            @else
+            <option value="uk">UK</option>
+            @endif
+            @if (app()->getLocale() == 'ru')
+            <option value="ru" selected>RU</option>
+            @else
+            <option value="ru">RU</option>
+            @endif
+        </select>
+    </form>
+
     </div>
     @endif
 </div>

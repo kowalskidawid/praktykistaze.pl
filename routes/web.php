@@ -31,6 +31,7 @@ Route::group(['middleware' => 'language'], function () {
     // Offers page
     Route::group(['prefix' => 'offers', 'as' => 'offers.'], function() {
         Route::get('/', [OffersController::class, 'index'])->name('index');
+        Route::get('/search', [OffersController::class, 'search'])->name('search');
         Route::post('/store', [OffersController::class, 'store'])->middleware(['auth', 'verified', 'roleCompany'])->name('store');
         Route::get('/id/{offer}', [OffersController::class, 'show'])->name('show');
         Route::post('/id/{offer}/edit', [OffersController::class, 'update'])->middleware(['auth', 'verified', 'roleCompany'])->name('update');
@@ -49,6 +50,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'students', 'as' => 'students.'], function() {
         Route::get('/', [StudentsController::class, 'index'])->name('index');
         Route::get('/id/{student}', [StudentsController::class, 'show'])->name('show');
+        Route::get('/cv/{student}', [StudentsController::class, 'showCv'])->name('cv');
     });
     // Articles page
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
@@ -83,6 +85,15 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/articles', [DashboardController::class, 'articles'])->middleware('roleAdmin')->name('articles');
         Route::get('/articles/create', [DashboardController::class, 'articlesCreate'])->middleware('roleAdmin')->name('articlesCreate');
         Route::get('/articles/edit/{article}', [DashboardController::class, 'articlesEdit'])->middleware('roleAdmin')->name('articlesEdit');
+
+        Route::group(['prefix' => 'categories', 'as' => 'categories.'], function() {
+            Route::get('/', [\App\Http\Controllers\CategoriesController::class, 'index'])->name('index');
+            Route::post('/store', [\App\Http\Controllers\CategoriesController::class, 'store'])->name('store');
+            Route::get('{category}', [\App\Http\Controllers\CategoriesController::class, 'edit'])->name('edit');
+            Route::get('{category}', [\App\Http\Controllers\CategoriesController::class, 'edit'])->name('edit');
+            Route::delete('{category}', [\App\Http\Controllers\CategoriesController::class, 'delete'])->name('delete');
+            Route::put('/{category}', [\App\Http\Controllers\CategoriesController::class, 'update'])->name('update');
+        });
     });
     // Auth
     Route::group(['prefix' => 'register', 'as' => 'register.'], function() {

@@ -2,8 +2,8 @@
 
 @section('main')
 <div class="flex flex-col space-y-8">
-    {{-- 
-        Form for students    
+    {{--
+        Form for students
     --}}
     @if(Auth::user()->roleCheck('student'))
     <form action="{{ route('dashboard.student') }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
@@ -55,6 +55,29 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium">{{ __('Add your CV')}}</p>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <label for="cvInput" class="px-4 py-1 whitespace-nowrap text-xs font-medium text-gray-900 border bg-white border-gray-200 rounded-lg flex justify-center cursor-pointer">
+                        <input hidden id="cvInput" type="file" name="cv">
+                        {{ __('Upload')}}
+                    </label>
+                </div>
+                <script>
+                    const cvOld = document.getElementById('cvOld');
+                    const cvInput = document.getElementById('cvInput');
+                    const cvPreview = document.getElementById('cvPreview');
+                    cvInput.addEventListener('change', (event) => {
+                        if(cvOld) {
+                            cvOld.style.display = "none";
+                            cvPreview.style.display = "block";
+                        }
+                        cvPreview.src = URL.createObjectURL(event.target.files[0]);
+                    });
+                </script>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- First Name --}}
@@ -95,9 +118,9 @@
                     <select name="category_id" class="border border-gray-200 rounded-lg">
                         @foreach ($categories as $category)
                         @if ( Auth::user()->student->category_id === $category->id )
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                         @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -151,8 +174,8 @@
             <input type="submit" class="px-8 py-2 whitespace-nowrap text-sm font-medium text-white bg-gray-900 rounded-lg flex justify-center cursor-pointer" value="{{ __('Update profile')}}">
         </div>
     </form>
-    {{-- 
-        Form for companies    
+    {{--
+        Form for companies
     --}}
     @elseif(Auth::user()->roleCheck('company'))
     <form action="{{ route('dashboard.company') }}" method="POST" class="flex flex-col space-y-2" enctype="multipart/form-data">
@@ -204,6 +227,7 @@
                         imgPreview.src = URL.createObjectURL(event.target.files[0]);
                     });
                 </script>
+
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
                 {{-- Company Name --}}
@@ -217,9 +241,9 @@
                     <select name="size_id" class="border border-gray-200 rounded-lg">
                         @foreach ($sizes as $size)
                         @if ( Auth::user()->company->size_id === $size->id )
-                            <option value="{{ $size->id }}" selected>{{ $size->name.' (+'.$size->size.')' }}</option>
+                            <option value="{{ $size->id }}" selected>{{ __('app/size.' . $size->name).' (+'.$size->size.')' }}</option>
                         @else
-                            <option value="{{ $size->id }}">{{ $size->name.' (+'.$size->size.')' }}</option>
+                            <option value="{{ $size->id }}">{{ __('app/size.' . $size->name).' (+'.$size->size.')' }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -252,9 +276,9 @@
                     <select name="category_id" class="border border-gray-200 rounded-lg">
                         @foreach ($categories as $category)
                         @if ( Auth::user()->company->category_id === $category->id )
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" selected>{{ __('app/categories.' . $category->name) }}</option>
                         @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ __('app/categories.' . $category->name) }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -270,6 +294,13 @@
                 <div class="flex flex-col space-y-2 w-full">
                     <label for="phone" class="text-sm font-medium">{{ __('Numer telefonu')}}</label>
                     <input name="phone" type="tel" class="border border-gray-200 rounded-lg" placeholder="{{ __('Numer telefonu')}}" value="{{ Auth::user()->company->phone }}">
+                </div>
+            </div>
+            <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+                {{-- NIP --}}
+                <div class="flex flex-col space-y-2 w-full">
+                    <label for="nip" class="text-sm font-medium">{{ __('NIP')}}</label>
+                    <input name="nip" type="text" class="border border-gray-200 rounded-lg" placeholder="{{ __('NIP')}}" value="{{ Auth::user()->company->nip }}">
                 </div>
             </div>
             <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">

@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white'])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'contentCss' => ''])
 
 @php
 switch ($align) {
@@ -36,7 +36,7 @@ switch ($width) {
             class="absolute z-50 mt-5 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
             style="display: none;"
             @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-20 {{ $contentClasses }}">
+        <div class="rounded-md ring-1 ring-black ring-opacity-20 {{ $contentClasses }}" style="{{ $contentCss }}">
             {{ $content }}
         </div>
     </div>

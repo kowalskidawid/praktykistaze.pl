@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\CvFile;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Location;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class StudentsController extends Controller
 {
+    use CvFile;
+
     public function index(Request $request)
     {
         // List of values for select inputs in form
@@ -36,12 +40,27 @@ class StudentsController extends Controller
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate($perPage);
-                
+
         return view('students.index', compact('students', 'locations', 'categories'));
     }
     // Display the specified resource.
     public function show(Student $student)
     {
         return view('students.show', compact('student'));
+    }
+
+    public function showCv(Student $student)
+    {
+        if ($student->cv && Storage::disk('private')->exists($student->cv)) {
+            if ($this->canOpenFileType($student->cv)) {
+                $file = Storage::disk('private')->get($student->cv);
+                return response($file)->header('Content-type', $this->getMimeType($student->cv));
+            } else {
+                $file = storage_path('app/private/') . $student->cv;
+                return response()->download($file, $student->cv_file_name);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

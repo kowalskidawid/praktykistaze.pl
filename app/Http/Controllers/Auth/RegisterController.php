@@ -28,12 +28,12 @@ class RegisterController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'category' => 'required'
+            'category' => 'required',
         ]);
 
         $role = Role::find(2);
         $role->users()->create([
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
         $user = User::where('email', $request->email)->firstOrFail();
@@ -43,7 +43,7 @@ class RegisterController extends Controller
             'category_id' => $request->category,
             'image' => '/images/student.jpg'
         ]);
-        
+
         event(new Registered($user));
         Auth::login($user);
         return redirect()->route('verification.notice');
@@ -54,12 +54,13 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
             'company_name' => 'required|string',
-            'category' => 'required'
+            'category' => 'required',
+            'nip' => 'required'
         ]);
 
         $role = Role::find(3);
         $role->users()->create([
-            'email' => $request->email, 
+            'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
         $user = User::where('email', $request->email)->firstOrFail();

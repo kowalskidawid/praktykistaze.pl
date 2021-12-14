@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Image;
 use App\Models\User;
 use App\Models\Offer;
@@ -14,6 +15,7 @@ use App\Models\Location;
 use App\Models\Type;
 use App\Models\Size;
 use App\Models\Article;
+
 
 class DashboardController extends Controller
 {
@@ -76,6 +78,7 @@ class DashboardController extends Controller
             'description' => 'nullable',
             'skills' => 'nullable',
             'category_id' => 'required|exists:categories,id',
+            'cv' => 'nullable'
         ]);
         $user = auth()->user();
         $student = $user->student;
@@ -90,6 +93,17 @@ class DashboardController extends Controller
             Storage::disk('public')->put($imagePath, $img->encoded, 'public');
             Storage::disk('public')->delete($oldImage);
             $data['image'] = '/storage/'.$imagePath;
+            $student->update($data);
+        } elseif($request->cv){
+            $data = $request->all();
+            $oldCv = $student->cv;
+            $cv = $request->file('cv');
+            $cvPath = Storage::disk('private')->put('students/' . $student->id, $cv);
+            if ($oldCv) {
+                Storage::disk('private')->delete($oldCv);
+            }
+            $data['cv'] = $cvPath;
+            $data['cv_file_name'] = $cv->getClientOriginalName();
             $student->update($data);
         } else {
             $data = $request->except('image');
@@ -110,6 +124,7 @@ class DashboardController extends Controller
             'phone' => 'nullable',
             'website' => 'nullable',
             'description' => 'nullable',
+            'nip' => 'nullable',
         ]);
         $user = auth()->user();
         $company = $user->company;
@@ -125,7 +140,7 @@ class DashboardController extends Controller
             Storage::disk('public')->delete($oldImage);
             $data['image'] = '/storage/'.$imagePath;
             $company->update($data);
-        } else {
+        }else {
             $data = $request->except('image');
             $company->update($data);
         }
@@ -162,7 +177,7 @@ class DashboardController extends Controller
         return view('dashboard.offersCreate', compact('locations', 'categories', 'types'));
     }
     public function offersEdit(Offer $offer)
-    {        
+    {
         // List of values for select inputs in form
         $locations = Location::get();
         $categories = Category::get();

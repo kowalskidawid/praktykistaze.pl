@@ -21,7 +21,7 @@
     </div>
     {{-- MAIN --}}
     <div style="min-height: 100vh; display: grid; grid-template-rows: min-content auto min-content;">
-        <header class="sticky top-0 bg-white border-b border-gray-200">
+        <header class="sticky top-0 bg-white border-b border-gray-500">
             @include('partials.header')
         </header>
         <main class="bg-gray-50 pb-8">
